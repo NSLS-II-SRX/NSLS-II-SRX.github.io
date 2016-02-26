@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Beamline Configuration &mdash; NSLS-II CSX Beamline Docs 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/united/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="NSLS-II CSX Beamline Docs 0.1 documentation" href="../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+  
+  <a href="https://github.com/NSLS-II-CSX/csxtools"
+     class="visible-desktop hidden-xs"><img
+    id="gh-banner"
+    style="position: absolute; top: 50px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
+    alt="Fork me on GitHub"></a>
+  <script>
+    // Adjust banner height.
+    $(function () {
+      var navHeight = $(".navbar .container").css("height");
+      $("#gh-banner").css("top", navHeight);
+    });
+  </script>
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          NSLS-II CSX Beamline Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../srx/index.html">SRX (5-ID-1) Beamline Documentation</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Beamline Configuration</a><ul>
+<li><a class="reference internal" href="#ipython-profiles">IPython profiles</a></li>
+<li><a class="reference internal" href="#example-configuration-file">Example Configuration File</a></li>
+<li><a class="reference internal" href="#configuring-the-olog">Configuring the Olog</a><ul>
+<li><a class="reference internal" href="#essential-configuration">Essential Configuration</a></li>
+<li><a class="reference internal" href="#integration-with-bluesky">Integration with Bluesky</a></li>
+<li><a class="reference internal" href="#integration-with-ophyd">Integration with Ophyd</a></li>
+<li><a class="reference internal" href="#olog-ipython-magics">Olog IPython &#8220;Magics&#8221;</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#defining-hardware-objects">Defining Hardware Objects</a></li>
+<li><a class="reference internal" href="#set-up-default-global-state">Set up Default (&#8220;Global State&#8221;)</a></li>
+<li><a class="reference internal" href="#customizing-ipython">Customizing IPython</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Beamline Configuration</a><ul>
+<li><a class="reference internal" href="#ipython-profiles">IPython profiles</a></li>
+<li><a class="reference internal" href="#example-configuration-file">Example Configuration File</a></li>
+<li><a class="reference internal" href="#configuring-the-olog">Configuring the Olog</a><ul>
+<li><a class="reference internal" href="#essential-configuration">Essential Configuration</a></li>
+<li><a class="reference internal" href="#integration-with-bluesky">Integration with Bluesky</a></li>
+<li><a class="reference internal" href="#integration-with-ophyd">Integration with Ophyd</a></li>
+<li><a class="reference internal" href="#olog-ipython-magics">Olog IPython &#8220;Magics&#8221;</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#defining-hardware-objects">Defining Hardware Objects</a></li>
+<li><a class="reference internal" href="#set-up-default-global-state">Set up Default (&#8220;Global State&#8221;)</a></li>
+<li><a class="reference internal" href="#customizing-ipython">Customizing IPython</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/source/beamline-configuration.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="beamline-configuration">
+<h1>Beamline Configuration<a class="headerlink" href="#beamline-configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ipython-profiles">
+<h2>IPython profiles<a class="headerlink" href="#ipython-profiles" title="Permalink to this headline">¶</a></h2>
+<p>Configuration can be done interactively or in a Python script.
+At NSLS-II, configuration is done by startup scripts that are part of an
+<a class="reference external" href="https://ipython.org/ipython-doc/dev/config/intro.html#profiles">IPython profile</a>
+. But note that it is not essential to use IPython or IPython profile in
+general &#8211; this is just a convenience.</p>
+<p>At the time of this writing, all profiles are stored in or at least soft-linked
+from <code class="docutils literal"><span class="pre">~/.ipython</span></code> in the user profile of the beamline account (e.g.,
+<code class="docutils literal"><span class="pre">xf11id</span></code>). In the future, we want users to perform data collection under
+their own user accounts, and we will probably move the profiles to a system
+location like <code class="docutils literal"><span class="pre">/usr/share/ipython</span></code>.</p>
+<p>The standard profile is called &#8220;collection,&#8221; and the startup scripts are
+located in <code class="docutils literal"><span class="pre">~/.ipython/profile_collection/startup/</span></code>. As stated in the on
+quick start page, they can be invoked by typing:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>ipython --profile<span class="o">=</span>collection
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-configuration-file">
+<h2>Example Configuration File<a class="headerlink" href="#example-configuration-file" title="Permalink to this headline">¶</a></h2>
+<p>This is a example IPython profile startup file.:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>from bluesky.standard_config import *  <span class="c1"># get all of the above for free</span>
+
+<span class="nv">RE</span> <span class="o">=</span> gs.RE  <span class="c1"># convenient alias</span>
+RE.md<span class="o">[</span><span class="s1">&#39;beamline_id&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;YOUR_BEAMLINE_HERE&#39;</span>
+
+import ophyd
+from ophyd import *
+from bluesky.plans import *
+from bluesky.callbacks import *
+
+<span class="c1"># Import matplotlib and put it in interactive mode.</span>
+import matplotlib.pyplot as plt
+plt.ion<span class="o">()</span>
+
+<span class="c1"># Uncomment the following lines to turn on verbose messages for debugging.</span>
+<span class="c1"># import logging</span>
+<span class="c1"># ophyd.logger.setLevel(logging.DEBUG)</span>
+<span class="c1"># logging.basicConfig(level=logging.DEBUG)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuring-the-olog">
+<h2>Configuring the Olog<a class="headerlink" href="#configuring-the-olog" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="essential-configuration">
+<h3>Essential Configuration<a class="headerlink" href="#essential-configuration" title="Permalink to this headline">¶</a></h3>
+<p>pyOlog requires a configuration file to specify the connection
+settings. It can go in one of several locations, but currently it is
+typically stored in the user home directory. The file should be called
+<code class="docutils literal"><span class="pre">.pyOlog.conf</span></code>. Note the leading dot. Its contents should look like:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>DEFAULT<span class="o">]</span>
+<span class="nv">url</span> <span class="o">=</span> https://&lt;beamline&gt;-log.cs.nsls2.local:8181/Olog
+<span class="nv">logbooks</span> <span class="o">=</span> Commissioning   <span class="c1"># use the name of an existing logbook</span>
+<span class="nv">username</span> <span class="o">=</span> &lt;username&gt;
+<span class="nv">password</span> <span class="o">=</span> &lt;password&gt;
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">&lt;beamline&gt;</span></code> is the designation formatted like <code class="docutils literal"><span class="pre">xf23id1</span></code>.</p>
+</div>
+<div class="section" id="integration-with-bluesky">
+<h3>Integration with Bluesky<a class="headerlink" href="#integration-with-bluesky" title="Permalink to this headline">¶</a></h3>
+<p>Bluesky automatically logs basic scan information at the start of a
+scan. (All of this information is strictly a subset of what is
+also stored in metadatastore &#8211; this is just a convenience.)</p>
+<p>Back in an IPython profile startup file, add:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>from functools import partial
+from pyOlog import SimpleOlogClient
+from bluesky.callbacks.olog import logbook_cb_factory
+
+<span class="c1"># Set up the logbook. This configures bluesky&#39;s summaries of</span>
+<span class="c1"># data acquisition (scan type, ID, etc.).</span>
+
+<span class="nv">LOGBOOKS</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;Data Acquisition&#39;</span><span class="o">]</span>  <span class="c1"># list of logbook names to publish to</span>
+<span class="nv">simple_olog_client</span> <span class="o">=</span> SimpleOlogClient<span class="o">()</span>
+<span class="nv">generic_logbook_func</span> <span class="o">=</span> simple_olog_client.log
+<span class="nv">configured_logbook_func</span> <span class="o">=</span> partial<span class="o">(</span>generic_logbook_func, <span class="nv">logbooks</span><span class="o">=</span>LOGBOOKS<span class="o">)</span>
+
+<span class="nv">cb</span> <span class="o">=</span> logbook_cb_factory<span class="o">(</span>configured_logbook_func<span class="o">)</span>
+RE.subscribe<span class="o">(</span><span class="s1">&#39;start&#39;</span>, cb<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="integration-with-ophyd">
+<h3>Integration with Ophyd<a class="headerlink" href="#integration-with-ophyd" title="Permalink to this headline">¶</a></h3>
+<p>Ophyd has as <code class="docutils literal"><span class="pre">log_pos</span></code> method that writes the current position of all
+positioners into the log. To enable this, add the following to an IPython
+profile startup file, add:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># This is for ophyd.commands.get_logbook, which simply looks for</span>
+<span class="c1"># a variable called &#39;logbook&#39; in the global IPython namespace.</span>
+<span class="nv">logbook</span> <span class="o">=</span> simple_olog_client
+</pre></div>
+</div>
+<p>The log entires will be written into the logbook specified in
+<code class="docutils literal"><span class="pre">.pyOlog.conf</span></code> (in our example, &#8220;Commissioning&#8221;), not the logbook
+used by bluesky (in our example, &#8220;Data Acquisition&#8221;).</p>
+</div>
+<div class="section" id="olog-ipython-magics">
+<h3>Olog IPython &#8220;Magics&#8221;<a class="headerlink" href="#olog-ipython-magics" title="Permalink to this headline">¶</a></h3>
+<p>&#8220;Magics&#8221; are special IPython commands (not part of Python itself). They
+begin with %. There are two IPython magics for conveniently writing to
+the Olog.</p>
+<ul class="simple">
+<li>Type <code class="docutils literal"><span class="pre">%logit</span></code> to quickly type a text log entry.</li>
+<li>Type <code class="docutils literal"><span class="pre">%grabit</span></code>, select an area of the screen to capture, and type in a
+text caption.</li>
+</ul>
+<p>These require their own special configuration. In the profile directory, such
+as <code class="docutils literal"><span class="pre">~/.ipython/profile_collection</span></code>, edit the file <code class="docutils literal"><span class="pre">ipython_config.py</span></code>.</p>
+<p>Add the line:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>c.InteractiveShellApp.extensions <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;pyOlog.cli.ipy&#39;</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>The log entires will be written into the logbook specified in
+<code class="docutils literal"><span class="pre">.pyOlog.conf</span></code> (in our example, &#8220;Commissioning&#8221;), not the logbook
+used by bluesky (in our example, &#8220;Data Acquisition&#8221;).</p>
+</div>
+</div>
+<div class="section" id="defining-hardware-objects">
+<h2>Defining Hardware Objects<a class="headerlink" href="#defining-hardware-objects" title="Permalink to this headline">¶</a></h2>
+<p>For example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>from ophyd import EpicsMotor
+
+<span class="c1"># the two-theta motor</span>
+<span class="nv">tth</span> <span class="o">=</span> EpicsMotor<span class="o">(</span><span class="s1">&#39;XF:28IDC-ES:1{Dif:1-Ax:2ThI}Mtr&#39;</span>, <span class="nv">name</span><span class="o">=</span><span class="s1">&#39;tth&#39;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>See the <a class="reference external" href="http://nsls-ii.github.io/ophyd">ophyd documentation</a> for more.</p>
+</div>
+<div class="section" id="set-up-default-global-state">
+<h2>Set up Default (&#8220;Global State&#8221;)<a class="headerlink" href="#set-up-default-global-state" title="Permalink to this headline">¶</a></h2>
+<p>Set attributes of <code class="docutils literal"><span class="pre">gs</span></code>. This can be done interactively or in a startup file.:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>gs.DETS <span class="o">=</span> <span class="o">[</span>det1, det2<span class="o">]</span>
+gs.TABLE_COLS <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;det1&#39;</span><span class="o">]</span>
+gs.PLOT_Y <span class="o">=</span> <span class="s1">&#39;det1&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="customizing-ipython">
+<h2>Customizing IPython<a class="headerlink" href="#customizing-ipython" title="Permalink to this headline">¶</a></h2>
+<p>Running the following</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="o">%</span><span class="k">config</span> PromptManager.in_template = &#39;\T In [\\#]: &#39;
+<span class="gp">In [2]: </span><span class="o">%</span><span class="k">config</span> PromptManager.out_template = &#39;\T Out[\\#]: &#39;
+</pre></div>
+</div>
+<p>will make your terminal look like this:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>10:01:40 In <span class="o">[</span>49<span class="o">]</span>: 1
+10:01:42 Out<span class="o">[</span>49<span class="o">]</span>: 1
+10:01:42 In <span class="o">[</span>50<span class="o">]</span>:
+10:02:21 In <span class="o">[</span>50<span class="o">]</span>: <span class="nv">a</span> <span class="o">=</span> 2
+10:02:28 In <span class="o">[</span>51<span class="o">]</span>:
+</pre></div>
+</div>
+<p>It is not much more work to customize that timestamp to be truncated, include
+date / day of week etc. See <a class="reference external" href="https://ipython.org/ipython-doc/3/config/details.html#prompts">this section of the IPython documentation</a> for details.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/source/beamline-configuration.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, Brookhaven Science Associates, Brookhaven National Lab..<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

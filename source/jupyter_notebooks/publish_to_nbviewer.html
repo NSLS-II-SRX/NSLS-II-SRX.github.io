@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &mdash; NSLS-II CSX Beamline Docs 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/united/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="NSLS-II CSX Beamline Docs 0.1 documentation" href="../../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+  
+  <a href="https://github.com/NSLS-II-CSX/csxtools"
+     class="visible-desktop hidden-xs"><img
+    id="gh-banner"
+    style="position: absolute; top: 50px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
+    alt="Fork me on GitHub"></a>
+  <script>
+    // Adjust banner height.
+    $(function () {
+      var navHeight = $(".navbar .container").css("height");
+      $("#gh-banner").css("top", navHeight);
+    });
+  </script>
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          NSLS-II CSX Beamline Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../srx/index.html">SRX (5-ID-1) Beamline Documentation</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul class="simple">
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul class="simple">
+</ul>
+
+<div id="sourcelink">
+  <a href="../../_sources/source/jupyter_notebooks/publish_to_nbviewer.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <ol class="arabic">
+<li><p class="first">wget <a class="reference external" href="https://github.com/ipython-contrib/IPython-notebook-extensions/raw/master/custom.example.js">https://github.com/ipython-contrib/IPython-notebook-extensions/raw/master/custom.example.js</a></p>
+</li>
+<li><p class="first">cp custom.example.js ~/.ipython/profile_default/static/custom/example.js</p>
+</li>
+<li><p class="first">edit custom.js
+#. Uncomment <code class="docutils literal"><span class="pre">//</span>&nbsp;&nbsp;&nbsp; <span class="pre">IPython.load_extensions('publishing/gist_it')</span></code>
+#. Change it to ``    IPython.load_extensions(&#8216;gist&#8217;)``</p>
+</li>
+<li><p class="first">Execute the following code in IPython:</p>
+<p>import IPython
+IPython.html.nbextensions.install_nbextension(&#8216;<a class="reference external" href="https://rawgithub.com/minrk/ipython_extensions/master/nbextensions/gist.js">https://rawgithub.com/minrk/ipython_extensions/master/nbextensions/gist.js</a>&#8216;)</p>
+</li>
+<li><p class="first">Start ipython notebook</p>
+</li>
+<li><p class="first">Look for the curvy arrow to the right of the <code class="docutils literal"><span class="pre">Cell</span> <span class="pre">Toolbar</span></code> box in the
+Toolbar</p>
+</li>
+<li><p class="first">Click it!</p>
+</li>
+<li><p class="first">It will ask for a github OAuth Token which you can create by following
+<a class="reference external" href="https://help.github.com/articles/creating-an-access-token-for-command-line-use/">these instructions</a></p>
+</li>
+</ol>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/source/jupyter_notebooks/publish_to_nbviewer.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, Brookhaven Science Associates, Brookhaven National Lab..<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

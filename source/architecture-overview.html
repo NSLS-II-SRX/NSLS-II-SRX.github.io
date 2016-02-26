@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Event-Based Architecture &mdash; NSLS-II CSX Beamline Docs 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/united/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="NSLS-II CSX Beamline Docs 0.1 documentation" href="../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+  
+  <a href="https://github.com/NSLS-II-CSX/csxtools"
+     class="visible-desktop hidden-xs"><img
+    id="gh-banner"
+    style="position: absolute; top: 50px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
+    alt="Fork me on GitHub"></a>
+  <script>
+    // Adjust banner height.
+    $(function () {
+      var navHeight = $(".navbar .container").css("height");
+      $("#gh-banner").css("top", navHeight);
+    });
+  </script>
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          NSLS-II CSX Beamline Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../srx/index.html">SRX (5-ID-1) Beamline Documentation</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Event-Based Architecture</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Event-Based Architecture</a></li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/source/architecture-overview.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="event-based-architecture">
+<span id="architecture"></span><h1>Event-Based Architecture<a class="headerlink" href="#event-based-architecture" title="Permalink to this headline">¶</a></h1>
+<p>We have implemented a next-generation event-based data collection and analysis
+toolchain.  The event-based data model supports complex, asynchronous data
+collection and enables sophisticated live, prompt, streaming, and
+<em>post-facto</em> data analysis.</p>
+<p>The data model is composed of four types of Documents. Each document class has
+a defined, but flexible, schema. Examples are sketched below, and the precise
+specifications are <a class="reference external" href="https://github.com/NSLS-II/event-model#event-model">also available</a>. The documents
+themselves are mappings. We commonly represent them in JSON, as mongoDB
+documents, or as Python dictionaries.</p>
+<p>All of the software can be understood as tools to generate, move, and process
+these documents.</p>
+<img alt="../_images/document-generation-timeline.gif" class="align-center" src="../_images/document-generation-timeline.gif" />
+<p>The scope of a “run” is left to the beamline or individual scientist. It is
+quite generic: a set of Documents generated by following a given sequence of
+instructions. This might encompass a single short measurement (say, a “a
+count”) or a multi-step procedure such as a raster scan. A run should represent
+a set of individual measurements that will be collected or processed together.</p>
+<p>Each run generates four types of Documents, as illustrated above.</p>
+<ul>
+<li><p class="first">Start: At the beginning of a run, a Document is generated with open-ended
+metadata (user name, sample information) and in general any information that
+is known from the start.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;beamline_id&#39;</span><span class="o">:</span> <span class="s1">&#39;example&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;group&#39;</span><span class="o">:</span> <span class="s1">&#39;DAMA&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;owner&#39;</span><span class="o">:</span> <span class="s1">&#39;dallan&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;mood&#39;</span><span class="o">:</span> <span class="s1">&#39;optimistic&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;sample&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;kind&#39;</span><span class="o">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;protocol&#39;</span><span class="o">:</span> <span class="s1">&#39;B&#39;</span><span class="p">},</span>
+ <span class="s1">&#39;plan_type&#39;</span><span class="o">:</span> <span class="s1">&#39;AbsScan&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;plan_args&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;detectors&#39;</span><span class="o">:</span> <span class="s1">&#39;[det]&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;motor&#39;</span><span class="o">:</span> <span class="s1">&#39;EpicsMotor(...)&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;num&#39;</span><span class="o">:</span> <span class="s1">&#39;16&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;start&#39;</span><span class="o">:</span> <span class="s1">&#39;-3&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;stop&#39;</span><span class="o">:</span> <span class="s1">&#39;3&#39;</span><span class="p">},</span>
+ <span class="s1">&#39;scan_id&#39;</span><span class="o">:</span> <span class="mi">282</span><span class="p">,</span>
+ <span class="s1">&#39;time&#39;</span><span class="o">:</span> <span class="mf">1442521005.6099606</span><span class="p">,</span>
+ <span class="s1">&#39;uid&#39;</span><span class="o">:</span> <span class="s1">&#39;8288a9a7-c531-4ef4-966b-8c6d85d5eab4&#39;</span><span class="p">,</span>
+ <span class="p">...,</span>  <span class="c1">//  any other user-specified fields</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Event: Each event is a single “data point,” which may contain several
+readings taken “at the same time” &#8211; the meaning of which depends on the
+scientific context.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;temperature&#39;</span><span class="o">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="s1">&#39;position&#39;</span><span class="o">:</span> <span class="mf">3.0</span><span class="p">},</span>
+ <span class="s1">&#39;timestamps&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;temperature&#39;</span><span class="o">:</span> <span class="mf">1442521007.9258342</span><span class="p">,</span> <span class="s1">&#39;position&#39;</span><span class="o">:</span> <span class="mf">1442521007.5029348</span><span class="p">}</span>
+ <span class="s1">&#39;time&#39;</span><span class="o">:</span> <span class="mf">1442521007.3438923</span><span class="p">,</span>
+ <span class="s1">&#39;uid&#39;</span><span class="o">:</span> <span class="p">...,</span>
+ <span class="s1">&#39;descriptor&#39;</span><span class="o">:</span> <span class="p">...,</span>  <span class="c1">//  uid pointing to a Descriptor Document</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Descriptor: Each sequence of Events has an Event Descriptor with information
+about what data is in the Events, such as the names, types, shapes and
+hardware sources of each of the measurements. The Descriptor documents can
+also contain configuration details about the hardware, such as exposure time.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;data_keys&#39;</span><span class="o">:</span>
+    <span class="p">{</span><span class="s1">&#39;temperature&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;source&#39;</span><span class="o">:</span> <span class="s1">&#39;PV:...&#39;</span><span class="p">,</span> <span class="s1">&#39;dtype&#39;</span><span class="o">:</span> <span class="s1">&#39;number&#39;</span><span class="p">,</span> <span class="s1">&#39;precision&#39;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;units&#39;</span><span class="o">:</span> <span class="s1">&#39;K&#39;</span><span class="p">},</span>
+     <span class="s1">&#39;position&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;source&#39;</span><span class="o">:</span> <span class="s1">&#39;PV:...&#39;</span><span class="p">,</span> <span class="s1">&#39;dtype&#39;</span><span class="o">:</span> <span class="s1">&#39;number&#39;</span><span class="o">:</span> <span class="s1">&#39;precision&#39;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;units&#39;</span><span class="o">:</span> <span class="s1">&#39;cm&#39;</span><span class="p">}},</span>
+ <span class="s1">&#39;configuration&#39;</span><span class="o">:</span> <span class="p">{...},</span>
+ <span class="s1">&#39;time&#39;</span><span class="o">:</span> <span class="p">...,</span>
+ <span class="s1">&#39;uid&#39;</span><span class="o">:</span> <span class="p">...,</span>
+ <span class="s1">&#39;start&#39;</span><span class="o">:</span> <span class="p">...,</span>  <span class="c1">//  uid pointing to a Start Document</span>
+ <span class="p">...,</span>  <span class="c1">//  any other user-defined fields</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Stop: At the end of a run, a Document is generated with information that is
+only known at the end &#8211; such as whether the run terminated due to some
+failure.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;exit_status&#39;</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;time&#39;</span><span class="o">:</span> <span class="p">...,</span>
+ <span class="s1">&#39;uid&#39;</span><span class="o">:</span> <span class="p">...,</span>
+ <span class="s1">&#39;start&#39;</span><span class="o">:</span> <span class="p">...,</span>  <span class="c1">//  uid pointing to a Start Document</span>
+  <span class="p">...,</span>  <span class="c1">//  any other user-defined fields</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>The precise schemas for these documents are provided as jsonschema documents
+in <a class="reference external" href="https://github.com/NSLS-II/event-model#event-model">this repository</a>.</p>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/source/architecture-overview.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, Brookhaven Science Associates, Brookhaven National Lab..<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

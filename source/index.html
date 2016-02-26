@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>NSLS-II Software Documentation &mdash; NSLS-II CSX Beamline Docs 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/united/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="NSLS-II CSX Beamline Docs 0.1 documentation" href="../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+  
+  <a href="https://github.com/NSLS-II-CSX/csxtools"
+     class="visible-desktop hidden-xs"><img
+    id="gh-banner"
+    style="position: absolute; top: 50px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
+    alt="Fork me on GitHub"></a>
+  <script>
+    // Adjust banner height.
+    $(function () {
+      var navHeight = $(".navbar .container").css("height");
+      $("#gh-banner").css("top", navHeight);
+    });
+  </script>
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          NSLS-II CSX Beamline Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../srx/index.html">SRX (5-ID-1) Beamline Documentation</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">NSLS-II Software Documentation</a><ul>
+<li><a class="reference internal" href="#design-goals">Design Goals</a></li>
+<li><a class="reference internal" href="#project-roadmap">Project Roadmap</a></li>
+<li><a class="reference internal" href="#software-packages">Software Packages</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">NSLS-II Software Documentation</a><ul>
+<li><a class="reference internal" href="#design-goals">Design Goals</a></li>
+<li><a class="reference internal" href="#project-roadmap">Project Roadmap</a></li>
+<li><a class="reference internal" href="#software-packages">Software Packages</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/source/index.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="nsls-ii-software-documentation">
+<h1>NSLS-II Software Documentation<a class="headerlink" href="#nsls-ii-software-documentation" title="Permalink to this headline">¶</a></h1>
+<p>We are deploying an event-based data collection and analysis framework.</p>
+<div class="section" id="design-goals">
+<h2>Design Goals<a class="headerlink" href="#design-goals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Provide an integrated, <strong>end-to-end solution</strong> for data collection and analysis.</li>
+<li>Support <strong>streaming</strong> data analysis, variously called &#8220;in-line&#8221; or &#8220;live.&#8221;</li>
+<li>Support <strong>prompt</strong> data analysis: immediate, semi-automated data analysis that
+can inform decisions made during an experiment</li>
+<li>Capture <strong>metadata</strong> to record a detailed snapshot of the hardware and &#8212; as
+much as possible &#8212; represent the user intention, the meaning of the
+measurements.</li>
+<li>Make datasets <strong>searchable</strong> with rich queries on metadata and data.</li>
+<li>Use <strong>existing, open-source technologies and languages</strong>; avoid inventing a
+domain-specific language.</li>
+<li>Leverage tools from the <strong>open scentific software</strong> community and in
+particular the <strong>scientific Python</strong> community, a mature and widely-used
+ecosystem of scientific code used in trusted, critical applications in
+research and beyond.</li>
+<li>Establish <strong>clear, consistent interfaces</strong> (meaning inputs and outputs,
+APIs) that allow project components to be used independently, extended, and
+interfaced with other, outside projects.</li>
+<li>Adhere to good software practices, especially code review and
+automated testing, with the goal of enabling <strong>large-scale collaboration</strong>
+while maintaining <strong>stability and robustness</strong>.</li>
+</ul>
+<img alt="../_images/collection-overview.gif" class="align-center" src="../_images/collection-overview.gif" />
+</div>
+<div class="section" id="project-roadmap">
+<h2>Project Roadmap<a class="headerlink" href="#project-roadmap" title="Permalink to this headline">¶</a></h2>
+<p>Early work has been focused on identifying common tasks and key
+abstractions to guide the development of a general-purpose framework.
+Interacting with real hardware and real users, the framework has undergone
+several iterations of re-design.</p>
+<p>Now, during the present operating cycle at NSLS-II (winter 2016), the framework
+is stabilizing. New and unforeseen applications are fitting well into the
+framework, validating its assumptions and optimizations. At the same time,
+software bugs are being discovered less often and being fixed more quickly.</p>
+<p>Looking forward, software targeted to more specific tasks will need to built.
+For example, a user who only does about five different kinds of experiment does
+not need the full power of the framework and can benefit from a simpler (if
+more limited) toolkit. The volume of such toolkits will be large, but it is
+hoped that the effort required can be greatly diminished by resting on this
+framework &#8212; and reaching outside of it when necessary.</p>
+<p>Detailed plans for each project are managed and discussed in the open on
+<a class="reference external" href="https://github.com/NSLS-II/">GitHub</a>, where the user community is invited to
+observe, comment, and contribute.</p>
+</div>
+<div class="section" id="software-packages">
+<h2>Software Packages<a class="headerlink" href="#software-packages" title="Permalink to this headline">¶</a></h2>
+<p>The following software packages work together to handle different aspects of
+data collection and analysis. They interoperate by sharing a common
+<a class="reference internal" href="architecture-overview.html#architecture"><span>event-based model</span></a>. Each package has its own detailed
+documentation, linked below.</p>
+<ul>
+<li><dl class="first docutils">
+<dt>Data Collection Packages</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://nsls-ii.github.io/bluesky">bluesky</a> &#8211; a framework for specifying and executing experiments</li>
+<li><a class="reference external" href="http://nsls-ii.github.io/ophyd">ophyd</a> &#8211; a collection of Python objects that represent hardware, providing a common high-level interface</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Data Access Packages</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>High-level Data Access</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://nsls-ii.github.io/databroker">databroker</a> &#8211; a simple interface that pulls together data from all sources</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Low-Level Data Storage and Access</dt>
+<dd><ul class="first last simple">
+<li>metadataclient (preferred), metadatastore (deprecated)</li>
+<li>filestore</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Data Munging Packages</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://nsls-ii.github.io/datamuxer">datamuxer</a> &#8211; a &#8220;de-multiplexer&#8221; for alignment and basic processing of asynchronous, event-based data</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Data Export Packages</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://nsls-ii.github.io/suitcase">suitcase</a> &#8211; a simple proof-of-concept, exporting experiment data and metadata from a database to a stand-alone file</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Scientific Data Processing Packages</dt>
+<dd><ul class="first last">
+<li><p class="first">the built-in subscriptions in <a class="reference external" href="http://nsls-ii.github.io/bluesky">bluesky</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>Beamline-specific *tools repositories:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://nsls-ii-csx.github.io/csxtools/">csxtools</a></li>
+<li><a class="reference external" href="https://github.com/NSLS-II-CHX/chxtools">chxtools</a> (undocumented)</li>
+<li><a class="reference external" href="https://github.com/NSLS-II-CHX/hxntools">hxntools</a> (undocumented)</li>
+<li><a class="reference external" href="https://github.com/NSLS-II-XPD/xpdtools">xpdtools</a> (placeholder)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound" id="data-collection">
+</div>
+<div class="toctree-wrapper compound" id="data-access">
+</div>
+<div class="toctree-wrapper compound" id="data-munging">
+</div>
+<div class="toctree-wrapper compound" id="data-export">
+</div>
+<div class="toctree-wrapper compound" id="github-links">
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/source/index.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, Brookhaven Science Associates, Brookhaven National Lab..<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
