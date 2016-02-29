@@ -49,14 +49,14 @@ High-resolution
 ---------------
 
 Mir:4 - High-resolution VFM
-~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Mechanics
 ^^^^^^^^^
 
 * Weak link flexures for all translations
 * Vertical translation system has two stepper motors, so is not
-overconstrained. 
+  overconstrained. 
 
 Motion control 
 ^^^^^^^^^^^^^^
