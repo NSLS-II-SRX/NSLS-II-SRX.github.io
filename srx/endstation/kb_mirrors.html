@@ -127,6 +127,11 @@
 <li><a class="reference internal" href="#id7">Motion axes</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#instructions">Instructions</a><ul>
+<li><a class="reference internal" href="#smaract-motor-closed-loop-operation">SmarAct motor closed-loop operation</a></li>
+<li><a class="reference internal" href="#mir-5-roll-referencing">Mir:5 roll referencing</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -192,6 +197,11 @@
 <li><a class="reference internal" href="#id7">Motion axes</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#instructions">Instructions</a><ul>
+<li><a class="reference internal" href="#smaract-motor-closed-loop-operation">SmarAct motor closed-loop operation</a></li>
+<li><a class="reference internal" href="#mir-5-roll-referencing">Mir:5 roll referencing</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -249,6 +259,10 @@ twist exceeds a specified value.</li>
 <h3>Mir:3 - High-flux HFM<a class="headerlink" href="#mir-3-high-flux-hfm" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id1">
 <h4>Mechanics<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Weak-link flexure for all stages.</li>
+<li>No overconstrained systems.</li>
+</ul>
 </div>
 <div class="section" id="id2">
 <h4>Motion control<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
@@ -256,6 +270,55 @@ twist exceeds a specified value.</li>
 </div>
 <div class="section" id="motion-axes">
 <h3>Motion axes<a class="headerlink" href="#motion-axes" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="6%" />
+<col width="12%" />
+<col width="12%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Mirror system</th>
+<th class="head">Axis</th>
+<th class="head">Motor type</th>
+<th class="head">Controller</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Mir:2 (high-flux vertical focusing)</td>
+<td>X</td>
+<td>SmarAct (2)</td>
+<td>SmarAct MCS</td>
+<td>Limited yaw capability</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Y</td>
+<td>Stepper (4)</td>
+<td>Delta Tau</td>
+<td>Overconstrained mechanical system</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Z</td>
+<td>SmarAct (1)</td>
+<td>SmarAct MCS</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Mir:3 (high-flux horizontal focusing)</td>
+<td>X</td>
+<td>SmarAct (2)</td>
+<td>SmarAct MCS</td>
+<td>Limited yaw capability</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Y</td>
+<td>Stepper (1)</td>
+<td>Delta Tau</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="section" id="high-resolution">
@@ -278,13 +341,102 @@ overconstrained.</li>
 <h3>Mir:5 - High-resolution HFM<a class="headerlink" href="#mir-5-high-resolution-hfm" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id5">
 <h4>Mechanics<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Weak link flexures for all translations</li>
+<li>Downstream X translation motor is in line with mirror center, so this motor
+does not move to implement pitch movement.</li>
+</ul>
 </div>
 <div class="section" id="id6">
 <h4>Motion control<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Roll motor has approximately +/- 5 degrees of movement.</li>
+</ul>
 </div>
 </div>
 <div class="section" id="id7">
 <h3>Motion axes<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="5%" />
+<col width="17%" />
+<col width="15%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Mirror system</th>
+<th class="head">Axis</th>
+<th class="head">Motor type</th>
+<th class="head">Controller</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Mir:2 (high-resolution vertical focusing)</td>
+<td>X</td>
+<td>SmarAct (2)</td>
+<td>SmarAct MCS</td>
+<td>Limited yaw capability</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Y</td>
+<td>Stepper (2)</td>
+<td>Delta Tau</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Z</td>
+<td>SmarAct (1)</td>
+<td>SmarAct MCS</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Mir:3 (high-resolution horizontal focusing)</td>
+<td>X</td>
+<td>SmarAct (2)</td>
+<td>SmarAct MCS</td>
+<td>Limited yaw capability</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Y</td>
+<td>Stepper (1)</td>
+<td>Delta Tau</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Roll</td>
+<td>Attocube ECGt5050</td>
+<td>Attocube ECC100</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="smaract-motor-closed-loop-operation">
+<h3>SmarAct motor closed-loop operation<a class="headerlink" href="#smaract-motor-closed-loop-operation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>To activate closed-loop operation, set the &#8216;Closed Loop&#8217; button on the desired
+axis to Enable.</li>
+<li>Moving the axis will reset this to &#8216;Disable&#8217; but the axis will remain in
+closed-loop.</li>
+<li>The motor should show &#8216;Holding&#8217; after the move has complete. &#8216;Stopped&#8217;
+indicates open-loop operation.</li>
+<li>To deactivate closed-loop operation, set the &#8216;Closed Loop&#8217; button on the
+desired axis to Disable. Even if it is already showing Disable, this will move
+the motor into open-loop operation.</li>
+<li>Pressing &#8216;Stop&#8217; will stop movement and put the motor into open-loop.</li>
+</ul>
+</div>
+<div class="section" id="mir-5-roll-referencing">
+<h3>Mir:5 roll referencing<a class="headerlink" href="#mir-5-roll-referencing" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Turn on both auto-reference and auto-reset in Advanced display.</li>
+<li>Move axis over full range until &#8216;Referenced&#8217; light turns green.</li>
+<li>Turn off both auto-reference and auto-reset.</li>
+</ul>
 </div>
 </div>
 </div>

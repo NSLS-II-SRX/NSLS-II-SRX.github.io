@@ -38,12 +38,29 @@ Mir:3 - High-flux HFM
 
 Mechanics
 ^^^^^^^^^
+* Weak-link flexure for all stages.
+* No overconstrained systems.
 
 Motion control 
 ^^^^^^^^^^^^^^
 
 Motion axes 
 ~~~~~~~~~~~
+
++---------------------------------------+------+-------------+-------------+-----------------------------------+
+| Mirror system                         | Axis | Motor type  | Controller  | Notes                             |
++=======================================+======+=============+=============+===================================+
+| Mir:2 (high-flux vertical focusing)   | X    | SmarAct (2) | SmarAct MCS | Limited yaw capability            |
++---------------------------------------+------+-------------+-------------+-----------------------------------+
+|                                       | Y    | Stepper (4) | Delta Tau   | Overconstrained mechanical system |
++---------------------------------------+------+-------------+-------------+-----------------------------------+
+|                                       | Z    | SmarAct (1) | SmarAct MCS |                                   |
++---------------------------------------+------+-------------+-------------+-----------------------------------+
+| Mir:3 (high-flux horizontal focusing) | X    | SmarAct (2) | SmarAct MCS | Limited yaw capability            |
++---------------------------------------+------+-------------+-------------+-----------------------------------+
+|                                       | Y    | Stepper (1) | Delta Tau   |                                   |
++---------------------------------------+------+-------------+-------------+-----------------------------------+
+
 
 High-resolution
 ---------------
@@ -67,10 +84,57 @@ Mir:5 - High-resolution HFM
 Mechanics
 ^^^^^^^^^
 
+* Weak link flexures for all translations
+* Downstream X translation motor is in line with mirror center, so this motor
+  does not move to implement pitch movement.
+
 Motion control 
 ^^^^^^^^^^^^^^
 
+* Roll motor has approximately +/- 5 degrees of movement.
+
 Motion axes 
 ~~~~~~~~~~~
+
++---------------------------------------------+------+-------------------+-----------------+------------------------+
+| Mirror system                               | Axis | Motor type        | Controller      | Notes                  |
++=============================================+======+===================+=================+========================+
+| Mir:2 (high-resolution vertical focusing)   | X    | SmarAct (2)       | SmarAct MCS     | Limited yaw capability |
++---------------------------------------------+------+-------------------+-----------------+------------------------+
+|                                             | Y    | Stepper (2)       | Delta Tau       |                        |
++---------------------------------------------+------+-------------------+-----------------+------------------------+
+|                                             | Z    | SmarAct (1)       | SmarAct MCS     |                        |
++---------------------------------------------+------+-------------------+-----------------+------------------------+
+| Mir:3 (high-resolution horizontal focusing) | X    | SmarAct (2)       | SmarAct MCS     | Limited yaw capability |
++---------------------------------------------+------+-------------------+-----------------+------------------------+
+|                                             | Y    | Stepper (1)       | Delta Tau       |                        |
++---------------------------------------------+------+-------------------+-----------------+------------------------+
+|                                             | Roll | Attocube ECGt5050 | Attocube ECC100 |                        |
++---------------------------------------------+------+-------------------+-----------------+------------------------+
+
+
+Instructions 
+------------
+
+SmarAct motor closed-loop operation 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* To activate closed-loop operation, set the 'Closed Loop' button on the desired
+  axis to Enable.
+* Moving the axis will reset this to 'Disable' but the axis will remain in
+  closed-loop. 
+* The motor should show 'Holding' after the move has complete. 'Stopped'
+  indicates open-loop operation.
+* To deactivate closed-loop operation, set the 'Closed Loop' button on the
+  desired axis to Disable. Even if it is already showing Disable, this will move
+  the motor into open-loop operation.
+* Pressing 'Stop' will stop movement and put the motor into open-loop.
+
+Mir:5 roll referencing
+~~~~~~~~~~~~~~~~~~~~~~
+* Turn on both auto-reference and auto-reset in Advanced display.
+* Move axis over full range until 'Referenced' light turns green.
+* Turn off both auto-reference and auto-reset.
+
+
 
 
