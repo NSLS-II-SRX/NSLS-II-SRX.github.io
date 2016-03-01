@@ -8,8 +8,8 @@ Contents
    :glob:
    :maxdepth: 4
 
-   optics/*
-   endstation/*
-   controls/*
-   software/*
+   optics/index
+   endstation/index
+   controls/index
+   software/index
 
