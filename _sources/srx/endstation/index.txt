@@ -1,9 +1,6 @@
 Endstation
 ==========
 
-Contents
---------
-
 .. toctree::
    :maxdepth: 2
 
