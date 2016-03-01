@@ -2,7 +2,7 @@ Endstation
 ==========
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 0
 
    kb_mirrors
 
