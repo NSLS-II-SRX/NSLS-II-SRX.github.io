@@ -10,7 +10,7 @@ Welcome to NSLS-II SRX's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+   staff.rst
 
 Indices and tables
 ==================
