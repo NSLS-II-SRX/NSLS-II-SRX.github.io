@@ -122,10 +122,10 @@ Cooling the cryocooler
         * Once full, in CSS click on the "A" to enable automatic filling of the cryocooler.
 
 Controls
-********
+--------
 
 IOC Monitoring
-^^^^^^^^^^^^^^
+**************
 On a Debian server, the manage-iocs tool can be used to monitor the IOC status. SSH into the server that hosts the IOC (*e.g.* xf05idd-ioc1) and run:
     * List all IOCs ::
 
@@ -161,9 +161,10 @@ On a CentOS server, the IOCs are managed using procServ. This is typically a sim
 
  
 Motion Controls
-^^^^^^^^^^^^^^^
+***************
 .. todo::
     * Insert table with: Motor controller, IOC, Motor, PV, Bluesky object
+    * Rearrange table to be motor, bluesky, IOC, controller, PV?
     * List of all IOCs on each server
 
 .. table:: xf05ida-ioc1 motors
@@ -190,11 +191,30 @@ Motion Controls
    :name: xf05idd-ioc-nkb-motors
    :align: left
 
-   ================ ============ ========= === ==============
-   Motor Controller IOC          Motor     PV  Bluesky Object
-   ================ ============ ========= === ==============
-   mc01             softioc-mc01 testmotor XF: bs.motor
-   ================ ============ ========= === ==============
+   ================ ================= ==================== ================================== ==============
+   Motor Controller IOC               Motor                PV                                 Bluesky Object
+   ================ ================= ==================== ================================== ==============
+   angleCalc        softioc-anglecalc nanoKBv angle calc   XF:05IDD-ES:1{nKB:vert-Ax:PC}Mtr   bs.motor
+   angleCalc        softioc-anglecalc nanoKBh angle calc   XF:05IDD-ES:1{nKB:horz-Ax:PC}Mtr   bs.motor
+   fpsensor1        softioc-fpsensor  testmotor            XF:05IDD-ES:1{FPS:1-Chan0}Pos-I    bs.motor
+   fpsensor1        softioc-fpsensor  testmotor            XF:05IDD-ES:1{FPS:1-Chan1}Pos-I    bs.motor
+   fpsensor1        softioc-fpsensor  testmotor            XF:05IDD-ES:1{FPS:1-Chan2}Pos-I    bs.motor
+   PI E518          softioc-mcd19     nanoKBv Fine Pitch   XF:05IDD-ES:1{nKB:vert-Ax:PFPI}Mtr bs.motor
+   PI E518          softioc-mcd19     nanoKBh Fine Pitch   XF:05IDD-ES:1{nKB:horz-Ax:PFPI}Mtr bs.motor
+   PI E712          softioc-mcd20     nanoKBh Coarse Pitch XF:05IDD-ES:1{nKB:horz-Ax:PC}Mtr   bs.motor
+   PI E712          softioc-mcd24     nanoKBv Coarse Pitch XF:05IDD-ES:1{nKB:vert-Ax:PC}Mtr   bs.motor
+   Sample Stages    softioc-mcd26     Sample Coarse Z      XF:05IDD-ES:1{nKB:Smpl-Ax:sz}Mtr   bs.motor
+   Sample Stages    softioc-mcd26     Sample Coarse X      XF:05IDD-ES:1{nKB:Smpl-Ax:sx}Mtr   bs.motor
+   Sample Stages    softioc-mcd26     Sample Coarse Y      XF:05IDD-ES:1{nKB:Smpl-Ax:sy}Mtr   bs.motor
+   Sample Stages    softioc-mcd26     Sample Theta         XF:05IDD-ES:1{nKB:Smpl-Ax:th}Mtr   bs.motor
+   Sample Stages    softioc-mcd26     Sample Top Z         XF:05IDD-ES:1{nKB:Smpl-Ax:zth}Mtr  bs.motor
+   Sample Stages    softioc-mcd26     Sample Top X         XF:05IDD-ES:1{nKB:Smpl-Ax:xth}Mtr  bs.motor
+   nPoint           softioc-nPoint    Sample Scanner X     XF:05IDD-ES:1{nKB:Smpl-Ax:ssx}Mtr  bs.motor
+   nPoint           softioc-nPoint    Sample Scanner Y     XF:05IDD-ES:1{nKB:Smpl-Ax:ssy}Mtr  bs.motor
+   nPoint           softioc-nPoint    Sample Scanner Z     XF:05IDD-ES:1{nKB:Smpl-Ax:ssz}Mtr  bs.motor
+   picoscale        softioc-picoscale testmotor            XF:                                bs.motor
+   Zebra            softioc-zebra     nanoZebra            XF:05IDD-ES:1{Dev:Zebra2}          nanoZebra
+   ================ ================= ==================== ================================== ==============
 
 .. table:: xf05idd-ioc-det1
    :name: xf05idd-ioc-det1
@@ -230,7 +250,7 @@ Motion Controls
 
 
 EPS
-^^^
+***
 
 .. todo::
     * Upload wiring diagrams
