@@ -7,9 +7,10 @@ Welcome to NSLS-II SRX's documentation!
 =======================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
+   intro.rst
    staff.rst
 
 Indices and tables
