@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Beamline Staff Pages &mdash; NSLS-II SRX  documentation</title>
+  <title>Beamline Staff Pages [staff only] &mdash; NSLS-II SRX  documentation</title>
   
 
   
@@ -39,7 +39,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Welcome to NSLS-II SRX’s documentation!" href="index.html" /> 
+    <link rel="prev" title="Introduction to SRX" href="intro.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,10 +86,29 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Beamline Staff Pages</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to SRX</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Beamline Staff Pages [staff only]</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#quick-links">Quick Links</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#setting-up-users">Setting up Users</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#beamline-setup">Beamline Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#beamline-setup">Beamline Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preparing-for-a-new-cycle">Preparing for a new cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calibrating-the-monochromator">Calibrating the monochromator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#beamline-maintenance">Beamline Maintenance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cryocooler">Cryocooler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#warming-the-cryocooler">Warming the cryocooler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cooling-the-cryocooler">Cooling the cryocooler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#controls">Controls</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ioc-monitoring">IOC Monitoring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#motion-controls">Motion Controls</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#eps">EPS</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -140,7 +159,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Beamline Staff Pages</li>
+      <li>Beamline Staff Pages [staff only]</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -159,8 +178,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="beamline-staff-pages">
-<h1>Beamline Staff Pages<a class="headerlink" href="#beamline-staff-pages" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="beamline-staff-pages-staff-only">
+<h1>Beamline Staff Pages [staff only]<a class="headerlink" href="#beamline-staff-pages-staff-only" title="Permalink to this headline">¶</a></h1>
 <p>The information provided on this page is directed towards helping beamline staff.</p>
 <div class="section" id="quick-links">
 <h2>Quick Links<a class="headerlink" href="#quick-links" title="Permalink to this headline">¶</a></h2>
@@ -175,6 +194,12 @@
 <li><a class="reference external" href="https://controlsweb01.nsls2.bnl.gov/IP/?page=login&amp;section=timeout">NSLS-II IP Address Management</a></li>
 <li><a class="reference external" href="https://ps.bnl.gov/phot/ros/Shared%20Documents/MAXIMO%20Development/Beamlines/LT-R-XFD-CO-DR-SRX-002_Rev1.xlsx">NSLS-II Sharepoint Documentation</a></li>
 </ol>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>Fix IOCs reference</li>
+</ul>
+</div>
 </div>
 <div class="section" id="setting-up-users">
 <h2>Setting up Users<a class="headerlink" href="#setting-up-users" title="Permalink to this headline">¶</a></h2>
@@ -190,11 +215,378 @@
 </dd>
 </dl>
 </li>
-<li>Perform beamline specific training. <a class="reference external" href="https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf">5-ID BST form</a></li>
+<li>Perform beamline specific training. <a class="reference external" href="https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf">5-ID BST Form</a></li>
 </ol>
 </div>
 <div class="section" id="beamline-setup">
 <h2>Beamline Setup<a class="headerlink" href="#beamline-setup" title="Permalink to this headline">¶</a></h2>
+<p><em>These tasks are typically done once a cycle</em></p>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>Beamline alignment</li>
+<li>Setting up the Merlin</li>
+<li>Setting up the Dexela</li>
+</ul>
+</div>
+<div class="section" id="preparing-for-a-new-cycle">
+<h3>Preparing for a new cycle<a class="headerlink" href="#preparing-for-a-new-cycle" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><em>This is a comprehensive list of things to consider before the start of a cycle.</em></dt>
+<dd><ul class="first last simple">
+<li>Close all system safety work permits.</li>
+<li>Check cryocooler pressure and load.</li>
+<li>Check all vacuum, temperature, water systems.</li>
+<li>Check and top-off the PPS burn-through.</li>
+<li>Confirm the RGA in the A-hutch is connected and scanning.</li>
+<li>Perform a Radiation Safety Component Checklist.</li>
+<li>Post a valid SAF and ESR.</li>
+<li>Test and deploy the latest bluesky environment.</li>
+<li>Setup lsyncd.</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="calibrating-the-monochromator">
+<h3>Calibrating the monochromator<a class="headerlink" href="#calibrating-the-monochromator" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><em>Calibrating the monochromator is done by collecting XANES spectra across several element absorption edges. A least-squares fitting routine will then calculate the HDCM parameters for the calibration</em></dt>
+<dd><ol class="first last arabic">
+<li><p class="first">Collect XANES scans at 3-5 different energies. For the best fit, a wide range of energies is best. Typically, scans are performed using V, Cr, Fe, Cu, Se, Zr foils. <em>It is a good idea to record the C1 Roll and C2 Pitch values for each energy. These can be used for a lookup table to improve the peakup function.</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">X</span> <span class="o">=</span> <span class="n">getbindingE</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">)</span>
+<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">%</span><span class="n">mov</span> <span class="n">energy</span> <span class="n">X</span>
+<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">peakup_fine</span><span class="p">())</span>
+<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">xanes_plan</span><span class="p">([</span><span class="n">X</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="n">X</span><span class="o">+</span><span class="mi">50</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">0.1</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Define a dictionary in bluesky with element symbols mapped to scan IDs.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="n">scanlogDic</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;V&#39;</span> <span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+                              <span class="s1">&#39;Cr&#39;</span><span class="p">:</span> <span class="mi">1001</span><span class="p">,</span>
+                              <span class="s1">&#39;Fe&#39;</span><span class="p">:</span> <span class="mi">1002</span><span class="p">,</span>
+                              <span class="s1">&#39;Cu&#39;</span><span class="p">:</span> <span class="mi">1003</span><span class="p">,</span>
+                              <span class="s1">&#39;Se&#39;</span><span class="p">:</span> <span class="mi">1004</span><span class="p">,</span>
+                              <span class="s1">&#39;Zr&#39;</span><span class="p">:</span> <span class="mi">1005</span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run the <em>braggcalib()</em> function with the dictionary as input. The function will go through each scan and display a plot marking where the edge was found. Finally, this will output the new HDCM parameters.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="n">braggcalib</span><span class="p">(</span><span class="n">scanlogDic</span><span class="o">=</span><span class="n">scanlogDic</span><span class="p">,</span> <span class="n">use_xrf</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Update the values in the bluesky profile (10-machine.py). Save and restart bluesky.</p>
+</li>
+</ol>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="beamline-maintenance">
+<h2>Beamline Maintenance<a class="headerlink" href="#beamline-maintenance" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>Calibrating the Xspress3</li>
+<li>Power loss preparation and recovery</li>
+</ul>
+</div>
+<div class="section" id="cryocooler">
+<h3>Cryocooler<a class="headerlink" href="#cryocooler" title="Permalink to this headline">¶</a></h3>
+<p><em>The manual for the cryocooler can be found here.</em></p>
+<div class="admonition-todo admonition" id="index-3">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>Upload cryocooler manual</li>
+</ul>
+</div>
+<div class="section" id="warming-the-cryocooler">
+<h4>Warming the cryocooler<a class="headerlink" href="#warming-the-cryocooler" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Connect a turbo-pump station to the monochromator tank. Pump the turbo so that it reads a pressure in the 10<sup>-8</sup> Torr range.</li>
+<li>Close the beamline gate valves to isolate the monochromator.</li>
+<li>Open the manual valve between the monochromator and turbo-pump.</li>
+<li>Turn off the ion pump. This should automatically put the cryocooler in “Stop” mode.</li>
+<li>The cryocooler will warm up over several days.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="cooling-the-cryocooler">
+<h4>Cooling the cryocooler<a class="headerlink" href="#cooling-the-cryocooler" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Verify the monochromator cold cathode gauge is on and the cryocooler is not inhibitted. This typically means a pressure reading better than 10<sup>-7</sup> Torr.</li>
+<li><dl class="first docutils">
+<dt>Purge the system according to the cryocooler manual, section 3.3.1, on page 28. <em>Note: V10 and V11 are variable values, 0% = Close, 100% = Open.</em></dt>
+<dd><ul class="first last">
+<li>Verify N<sub>2</sub> gas source is at a pressure between 1.5 and 3.0 bar.</li>
+<li>Verify the monochromator ion pump and cold cathode gauge are on.</li>
+<li>Close all the valves.</li>
+<li>Open V9, V10, V20, and V21 fully. Purge for 30 min.</li>
+<li>Close V9 and open V11. Purge for 15 min.</li>
+<li>Close V11. Open V17 and purge for 15 min.</li>
+<li>Close all the valves.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Following the cryocooler manual, section 4.2.1.1, fill the sub-cooler to 15% and fill the heater vessel to 20%.</dt>
+<dd><ul class="first last">
+<li>Verify the liquid N<sub>2</sub> source valve is open.</li>
+<li>Open V19 to start filling the sub-cooler.</li>
+<li>Close V19 when the sub-cooler reaches 15%.</li>
+<li>Open heater vessel valve to start filling the heater vessel.</li>
+<li>Close heater vessel valve when level reaches 20%.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Follow the automatic cool down proceedure from the manual, section 4.3.</dt>
+<dd><ul class="first last">
+<li>Verify the liquid N<sub>2</sub> source valve is open.</li>
+<li>From the cryocooler CSS page, click “Cool Down”.</li>
+<li>Once full, in CSS click on the “A” to enable automatic filling of the cryocooler.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="controls">
+<h3>Controls<a class="headerlink" href="#controls" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="ioc-monitoring">
+<h4>IOC Monitoring<a class="headerlink" href="#ioc-monitoring" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>On a Debian server, the manage-iocs tool can be used to monitor the IOC status. SSH into the server that hosts the IOC (<em>e.g.</em> xf05idd-ioc1) and run:</dt>
+<dd><ul class="first last">
+<li><p class="first">List all IOCs</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ manage-iocs report
+</pre></div>
+</div>
+</li>
+<li><p class="first">Show IOC status</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ manage-iocs status
+</pre></div>
+</div>
+</li>
+<li><p class="first">Start IOC, <em>softioc-example</em>. The path to the IOC can be found using <code class="docutils literal notranslate"><span class="pre">manage-iocs</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo /etc/init.d/softioc-example start
+</pre></div>
+</div>
+</li>
+<li><p class="first">Stop IOC, <em>softioc-example</em>. The path to the IOC can be found using <code class="docutils literal notranslate"><span class="pre">manage-iocs</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo /etc/init.d/softioc-example stop
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+<dt>On a CentOS server, the IOCs are managed using procServ. This is typically a simple executable script that will start them.</dt>
+<dd><ul class="first last">
+<li><p class="first">SSH into the camera server, xf05id1-ioc1.</p>
+</li>
+<li><p class="first">To start the IOC for the Blackfly camera</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd /epics/iocs
+$ ./start_com_bfly1
+</pre></div>
+</div>
+</li>
+<li><p class="first">Using these commands, the IOC will start and you will be in a telnet of the IOC.</p>
+</li>
+<li><p class="first">To exit the telnet, type <code class="docutils literal notranslate"><span class="pre">Ctrl+]</span></code> and then <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p>
+</li>
+<li><p class="first">To stop the IOC, the process for procServ must be stopped. The process ID is the second column.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ps aux | grep procServ
+akiss      820  0.0  0.0  27448   976 ?        Ss    2020  29:07 procServ --logstamp -n cam-bfly1 -i ^D -L /epics/iocs/cam-bfly1/log/cam-bfly1.log 20001 ./st.cmd
+$ sudo kill -9 820
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="motion-controls">
+<h4>Motion Controls<a class="headerlink" href="#motion-controls" title="Permalink to this headline">¶</a></h4>
+<div class="admonition-todo admonition" id="index-4">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>Insert table with: Motor controller, IOC, Motor, PV, Bluesky object</li>
+<li>List of all IOCs on each server</li>
+</ul>
+</div>
+<table border="1" class="docutils align-left" id="xf05ida-ioc1-motors">
+<caption><span class="caption-text">xf05ida-ioc1 motors</span><a class="headerlink" href="#xf05ida-ioc1-motors" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="30%" />
+<col width="22%" />
+<col width="17%" />
+<col width="6%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Motor Controller</th>
+<th class="head">IOC</th>
+<th class="head">Motor</th>
+<th class="head">PV</th>
+<th class="head">Bluesky Object</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>mc01</td>
+<td>softioc-mc01</td>
+<td>testmotor</td>
+<td>XF:</td>
+<td>bs.motor</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils align-left" id="xf05idd-ioc1-motors">
+<caption><span class="caption-text">xf05idd-ioc1 motors</span><a class="headerlink" href="#xf05idd-ioc1-motors" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="30%" />
+<col width="22%" />
+<col width="17%" />
+<col width="6%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Motor Controller</th>
+<th class="head">IOC</th>
+<th class="head">Motor</th>
+<th class="head">PV</th>
+<th class="head">Bluesky Object</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>mc01</td>
+<td>softioc-mc01</td>
+<td>testmotor</td>
+<td>XF:</td>
+<td>bs.motor</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils align-left" id="xf05idd-ioc-nkb-motors">
+<caption><span class="caption-text">xf05idd-ioc-nkb motors</span><a class="headerlink" href="#xf05idd-ioc-nkb-motors" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="30%" />
+<col width="22%" />
+<col width="17%" />
+<col width="6%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Motor Controller</th>
+<th class="head">IOC</th>
+<th class="head">Motor</th>
+<th class="head">PV</th>
+<th class="head">Bluesky Object</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>mc01</td>
+<td>softioc-mc01</td>
+<td>testmotor</td>
+<td>XF:</td>
+<td>bs.motor</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils align-left" id="xf05idd-ioc-det1">
+<caption><span class="caption-text">xf05idd-ioc-det1</span><a class="headerlink" href="#xf05idd-ioc-det1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="30%" />
+<col width="22%" />
+<col width="17%" />
+<col width="6%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Motor Controller</th>
+<th class="head">IOC</th>
+<th class="head">Motor</th>
+<th class="head">PV</th>
+<th class="head">Bluesky Object</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>mc01</td>
+<td>softioc-mc01</td>
+<td>testmotor</td>
+<td>XF:</td>
+<td>bs.motor</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils align-left" id="xf05idd-ioc-det2">
+<caption><span class="caption-text">xf05idd-ioc-det2</span><a class="headerlink" href="#xf05idd-ioc-det2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="30%" />
+<col width="22%" />
+<col width="17%" />
+<col width="6%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Motor Controller</th>
+<th class="head">IOC</th>
+<th class="head">Motor</th>
+<th class="head">PV</th>
+<th class="head">Bluesky Object</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>mc01</td>
+<td>softioc-mc01</td>
+<td>testmotor</td>
+<td>XF:</td>
+<td>bs.motor</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils align-left" id="xf05id1-ioc1">
+<caption><span class="caption-text">xf05id1-ioc1</span><a class="headerlink" href="#xf05id1-ioc1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="30%" />
+<col width="22%" />
+<col width="17%" />
+<col width="6%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Motor Controller</th>
+<th class="head">IOC</th>
+<th class="head">Motor</th>
+<th class="head">PV</th>
+<th class="head">Bluesky Object</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>mc01</td>
+<td>softioc-mc01</td>
+<td>testmotor</td>
+<td>XF:</td>
+<td>bs.motor</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="eps">
+<h4>EPS<a class="headerlink" href="#eps" title="Permalink to this headline">¶</a></h4>
+<div class="admonition-todo admonition" id="index-5">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>Upload wiring diagrams</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -204,7 +596,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to NSLS-II SRX’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="intro.html" class="btn btn-neutral float-left" title="Introduction to SRX" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
