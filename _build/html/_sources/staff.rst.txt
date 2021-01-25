@@ -52,6 +52,28 @@ Preparing for a new cycle
     * Test and deploy the latest bluesky environment.
     * Setup lsyncd.
 
+Aligning the Beamline
+*********************
+*Historically, the beamline and storage ring take about a day to stabilize. Therefore, on day 1 of operations, it makes sense to open the front-end shutter and get light through the monochromator. Since components will drift, optimization should take place on day 2 and after a local bump is performed.*
+    #. Previous motor positions should be captured at the end of each cycle. As a precaution, capture the current motor positions.
+    #. Check front-end (FE) slits, white-beam (WB) slits, and mirror (HFM) position.
+        * Open the gap of the undulator to 18 000 μm. Insert the camera in the HFM tank.
+        * Open the FE shutter. Open the WB slits all the way (4 mm x 4 mm). Turn off mirror pitch feedback and reset the voltage to 30 V. Remove the HFM by dropping the pitch to 0.0 mrad and translating in the positive direction by 3 mm.
+        * Tweak the FE slits so the slits are just protecting the mask.
+        * Tweak the WB slits so the slits are centered. Return the WB slit gaps to their previous values (0.5 mm V x 2.0 mm H).
+        * Bring the HFM back in. Center the mirror on the incoming beam and confirm the mirror is parallel to the beam. Pitch to the nominal 2.5 mrad. Enable the mirror pitch feedback.
+        * Close the FE shutter and retract the camera. 
+    #. Align the monochromator to allow light through.
+        * With the FE shutter closed, insert the BPM 1 camera (*this can be slow*).
+        * In bluesky, set the energy to the last used value. If starting from scratch, choose a higher energy such as 12 keV. By using bluesky, this will set the undulator gap, and monochomator positions to a reasonably close value.
+        * Open the pink-beam (PB) slits to a 4.0 mm gap to make sure they are fully open.
+        * Open the FE shutter and hopefully light will come through onto the camera.
+        * If not, set the exposure time on the camera to something large, like 0.1 s. This will help you see the light come through while you scan the motors. There are 4 motors that can be off: Bragg, crystal offset, roll, and pitch. Hopefully, by starting with Bragg you can start to see some light and then optimize by tweaking pitch and roll. Finally, the position of the beam can be translated with the crystal offset.
+        * The PB slits can be centered and closed so they are just intercepting the beam.
+        * Once the light is through the monochromator, the FE shutter can be closed, the camera removed, and alignment downstream can continue.
+    #. Tweak monochromator and mirror alignment to center secondary source aperture (SSA).
+
+
 Calibrating the monochromator
 *****************************
 *Calibrating the monochromator is done by collecting XANES spectra across several element absorption edges. A least-squares fitting routine will then calculate the HDCM parameters for the calibration*
@@ -191,30 +213,30 @@ Motion Controls
    :name: xf05idd-ioc-nkb-motors
    :align: left
 
-   ================ ================= ==================== ================================== ==============
-   Motor Controller IOC               Motor                PV                                 Bluesky Object
-   ================ ================= ==================== ================================== ==============
-   angleCalc        softioc-anglecalc nanoKBv angle calc   XF:05IDD-ES:1{nKB:vert-Ax:PC}Mtr   bs.motor
-   angleCalc        softioc-anglecalc nanoKBh angle calc   XF:05IDD-ES:1{nKB:horz-Ax:PC}Mtr   bs.motor
-   fpsensor1        softioc-fpsensor  testmotor            XF:05IDD-ES:1{FPS:1-Chan0}Pos-I    bs.motor
-   fpsensor1        softioc-fpsensor  testmotor            XF:05IDD-ES:1{FPS:1-Chan1}Pos-I    bs.motor
-   fpsensor1        softioc-fpsensor  testmotor            XF:05IDD-ES:1{FPS:1-Chan2}Pos-I    bs.motor
-   PI E518          softioc-mcd19     nanoKBv Fine Pitch   XF:05IDD-ES:1{nKB:vert-Ax:PFPI}Mtr bs.motor
-   PI E518          softioc-mcd19     nanoKBh Fine Pitch   XF:05IDD-ES:1{nKB:horz-Ax:PFPI}Mtr bs.motor
-   PI E712          softioc-mcd20     nanoKBh Coarse Pitch XF:05IDD-ES:1{nKB:horz-Ax:PC}Mtr   bs.motor
-   PI E712          softioc-mcd24     nanoKBv Coarse Pitch XF:05IDD-ES:1{nKB:vert-Ax:PC}Mtr   bs.motor
-   Sample Stages    softioc-mcd26     Sample Coarse Z      XF:05IDD-ES:1{nKB:Smpl-Ax:sz}Mtr   bs.motor
-   Sample Stages    softioc-mcd26     Sample Coarse X      XF:05IDD-ES:1{nKB:Smpl-Ax:sx}Mtr   bs.motor
-   Sample Stages    softioc-mcd26     Sample Coarse Y      XF:05IDD-ES:1{nKB:Smpl-Ax:sy}Mtr   bs.motor
-   Sample Stages    softioc-mcd26     Sample Theta         XF:05IDD-ES:1{nKB:Smpl-Ax:th}Mtr   bs.motor
-   Sample Stages    softioc-mcd26     Sample Top Z         XF:05IDD-ES:1{nKB:Smpl-Ax:zth}Mtr  bs.motor
-   Sample Stages    softioc-mcd26     Sample Top X         XF:05IDD-ES:1{nKB:Smpl-Ax:xth}Mtr  bs.motor
-   nPoint           softioc-nPoint    Sample Scanner X     XF:05IDD-ES:1{nKB:Smpl-Ax:ssx}Mtr  bs.motor
-   nPoint           softioc-nPoint    Sample Scanner Y     XF:05IDD-ES:1{nKB:Smpl-Ax:ssy}Mtr  bs.motor
-   nPoint           softioc-nPoint    Sample Scanner Z     XF:05IDD-ES:1{nKB:Smpl-Ax:ssz}Mtr  bs.motor
-   picoscale        softioc-picoscale testmotor            XF:                                bs.motor
-   Zebra            softioc-zebra     nanoZebra            XF:05IDD-ES:1{Dev:Zebra2}          nanoZebra
-   ================ ================= ==================== ================================== ==============
+   ==================== ================ ================ ================= ================================== 
+   Motor                Bluesky Object   Motor Controller IOC               PV                                 
+   ==================== ================ ================ ================= ================================== 
+   nanoKBv angle calc   bs.motor         none             softioc-anglecalc XF:05IDD-ES:1{nKB:vert-Ax:PC}Mtr   
+   nanoKBh angle calc   bs.motor         none             softioc-anglecalc XF:05IDD-ES:1{nKB:horz-Ax:PC}Mtr   
+   testmotor            bs.motor         fpsensor1        softioc-fpsensor  XF:05IDD-ES:1{FPS:1-Chan0}Pos-I    
+   testmotor            bs.motor         fpsensor1        softioc-fpsensor  XF:05IDD-ES:1{FPS:1-Chan1}Pos-I    
+   testmotor            bs.motor         fpsensor1        softioc-fpsensor  XF:05IDD-ES:1{FPS:1-Chan2}Pos-I    
+   nanoKBv Fine Pitch   bs.motor         PI E518          softioc-mcd19     XF:05IDD-ES:1{nKB:vert-Ax:PFPI}Mtr 
+   nanoKBh Fine Pitch   bs.motor         PI E518          softioc-mcd19     XF:05IDD-ES:1{nKB:horz-Ax:PFPI}Mtr 
+   nanoKBh Coarse Pitch bs.motor         PI E712          softioc-mcd20     XF:05IDD-ES:1{nKB:horz-Ax:PC}Mtr   
+   nanoKBv Coarse Pitch bs.motor         PI E712          softioc-mcd24     XF:05IDD-ES:1{nKB:vert-Ax:PC}Mtr   
+   Sample Coarse Z      nano_stage.z     Smaract          softioc-mcd26     XF:05IDD-ES:1{nKB:Smpl-Ax:sz}Mtr   
+   Sample Coarse X      nano_stage.x     Smaract          softioc-mcd26     XF:05IDD-ES:1{nKB:Smpl-Ax:sx}Mtr   
+   Sample Coarse Y      nano_stage.y     Smaract          softioc-mcd26     XF:05IDD-ES:1{nKB:Smpl-Ax:sy}Mtr   
+   Sample Theta         nano_stage.th    Smaract          softioc-mcd26     XF:05IDD-ES:1{nKB:Smpl-Ax:th}Mtr   
+   Sample Top Z         nano_stage.topx  Smaract          softioc-mcd26     XF:05IDD-ES:1{nKB:Smpl-Ax:zth}Mtr  
+   Sample Top X         nano_stage.topz  Smaract          softioc-mcd26     XF:05IDD-ES:1{nKB:Smpl-Ax:xth}Mtr  
+   Sample Scanner X     nano_stage.sx    nPoint           softioc-nPoint    XF:05IDD-ES:1{nKB:Smpl-Ax:ssx}Mtr  
+   Sample Scanner Y     nano_stage.sy    nPoint           softioc-nPoint    XF:05IDD-ES:1{nKB:Smpl-Ax:ssy}Mtr  
+   Sample Scanner Z     nano_stage.sz    nPoint           softioc-nPoint    XF:05IDD-ES:1{nKB:Smpl-Ax:ssz}Mtr  
+   testmotor            bs.motor         picoscale        softioc-picoscale XF:                                
+   nanoZebra            nanoZebra        none             softioc-zebra     XF:05IDD-ES:1{Dev:Zebra2}          
+   ==================== ================ ================ ================= ================================== 
 
 .. table:: xf05idd-ioc-det1
    :name: xf05idd-ioc-det1

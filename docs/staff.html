@@ -92,6 +92,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#setting-up-users">Setting up Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#beamline-setup">Beamline Setup</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#preparing-for-a-new-cycle">Preparing for a new cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aligning-the-beamline">Aligning the Beamline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#calibrating-the-monochromator">Calibrating the monochromator</a></li>
 </ul>
 </li>
@@ -244,6 +245,44 @@
 <li>Test and deploy the latest bluesky environment.</li>
 <li>Setup lsyncd.</li>
 </ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="aligning-the-beamline">
+<h3>Aligning the Beamline<a class="headerlink" href="#aligning-the-beamline" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><em>Historically, the beamline and storage ring take about a day to stabilize. Therefore, on day 1 of operations, it makes sense to open the front-end shutter and get light through the monochromator. Since components will drift, optimization should take place on day 2 and after a local bump is performed.</em></dt>
+<dd><ol class="first last arabic simple">
+<li>Previous motor positions should be captured at the end of each cycle. As a precaution, capture the current motor positions.</li>
+<li><dl class="first docutils">
+<dt>Check front-end (FE) slits, white-beam (WB) slits, and mirror (HFM) position.</dt>
+<dd><ul class="first last">
+<li>Open the gap of the undulator to 18 000 μm. Insert the camera in the HFM tank.</li>
+<li>Open the FE shutter. Open the WB slits all the way (4 mm x 4 mm). Turn off mirror pitch feedback and reset the voltage to 30 V. Remove the HFM by dropping the pitch to 0.0 mrad and translating in the positive direction by 3 mm.</li>
+<li>Tweak the FE slits so the slits are just protecting the mask.</li>
+<li>Tweak the WB slits so the slits are centered. Return the WB slit gaps to their previous values (0.5 mm V x 2.0 mm H).</li>
+<li>Bring the HFM back in. Center the mirror on the incoming beam and confirm the mirror is parallel to the beam. Pitch to the nominal 2.5 mrad. Enable the mirror pitch feedback.</li>
+<li>Close the FE shutter and retract the camera.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Align the monochromator to allow light through.</dt>
+<dd><ul class="first last">
+<li>With the FE shutter closed, insert the BPM 1 camera (<em>this can be slow</em>).</li>
+<li>In bluesky, set the energy to the last used value. If starting from scratch, choose a higher energy such as 12 keV. By using bluesky, this will set the undulator gap, and monochomator positions to a reasonably close value.</li>
+<li>Open the pink-beam (PB) slits to a 4.0 mm gap to make sure they are fully open.</li>
+<li>Open the FE shutter and hopefully light will come through onto the camera.</li>
+<li>If not, set the exposure time on the camera to something large, like 0.1 s. This will help you see the light come through while you scan the motors. There are 4 motors that can be off: Bragg, crystal offset, roll, and pitch. Hopefully, by starting with Bragg you can start to see some light and then optimize by tweaking pitch and roll. Finally, the position of the beam can be translated with the crystal offset.</li>
+<li>The PB slits can be centered and closed so they are just intercepting the beam.</li>
+<li>Once the light is through the monochromator, the FE shutter can be closed, the camera removed, and alignment downstream can continue.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>Tweak monochromator and mirror alignment to center secondary source aperture (SSA).</li>
+</ol>
 </dd>
 </dl>
 </div>
@@ -477,140 +516,140 @@ $ sudo kill -9 820
 <table border="1" class="docutils align-left" id="xf05idd-ioc-nkb-motors">
 <caption><span class="caption-text">xf05idd-ioc-nkb motors</span><a class="headerlink" href="#xf05idd-ioc-nkb-motors" title="Permalink to this table">¶</a></caption>
 <colgroup>
+<col width="19%" />
+<col width="16%" />
 <col width="16%" />
 <col width="17%" />
-<col width="20%" />
-<col width="34%" />
-<col width="14%" />
+<col width="33%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Motor Controller</th>
-<th class="head">IOC</th>
-<th class="head">Motor</th>
-<th class="head">PV</th>
+<tr class="row-odd"><th class="head">Motor</th>
 <th class="head">Bluesky Object</th>
+<th class="head">Motor Controller</th>
+<th class="head">IOC</th>
+<th class="head">PV</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>angleCalc</td>
+<tr class="row-even"><td>nanoKBv angle calc</td>
+<td>bs.motor</td>
+<td>none</td>
 <td>softioc-anglecalc</td>
-<td>nanoKBv angle calc</td>
 <td>XF:05IDD-ES:1{nKB:vert-Ax:PC}Mtr</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-odd"><td>angleCalc</td>
+<tr class="row-odd"><td>nanoKBh angle calc</td>
+<td>bs.motor</td>
+<td>none</td>
 <td>softioc-anglecalc</td>
-<td>nanoKBh angle calc</td>
 <td>XF:05IDD-ES:1{nKB:horz-Ax:PC}Mtr</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-even"><td>fpsensor1</td>
+<tr class="row-even"><td>testmotor</td>
+<td>bs.motor</td>
+<td>fpsensor1</td>
 <td>softioc-fpsensor</td>
-<td>testmotor</td>
 <td>XF:05IDD-ES:1{FPS:1-Chan0}Pos-I</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-odd"><td>fpsensor1</td>
+<tr class="row-odd"><td>testmotor</td>
+<td>bs.motor</td>
+<td>fpsensor1</td>
 <td>softioc-fpsensor</td>
-<td>testmotor</td>
 <td>XF:05IDD-ES:1{FPS:1-Chan1}Pos-I</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-even"><td>fpsensor1</td>
+<tr class="row-even"><td>testmotor</td>
+<td>bs.motor</td>
+<td>fpsensor1</td>
 <td>softioc-fpsensor</td>
-<td>testmotor</td>
 <td>XF:05IDD-ES:1{FPS:1-Chan2}Pos-I</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-odd"><td>PI E518</td>
+<tr class="row-odd"><td>nanoKBv Fine Pitch</td>
+<td>bs.motor</td>
+<td>PI E518</td>
 <td>softioc-mcd19</td>
-<td>nanoKBv Fine Pitch</td>
 <td>XF:05IDD-ES:1{nKB:vert-Ax:PFPI}Mtr</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-even"><td>PI E518</td>
+<tr class="row-even"><td>nanoKBh Fine Pitch</td>
+<td>bs.motor</td>
+<td>PI E518</td>
 <td>softioc-mcd19</td>
-<td>nanoKBh Fine Pitch</td>
 <td>XF:05IDD-ES:1{nKB:horz-Ax:PFPI}Mtr</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-odd"><td>PI E712</td>
+<tr class="row-odd"><td>nanoKBh Coarse Pitch</td>
+<td>bs.motor</td>
+<td>PI E712</td>
 <td>softioc-mcd20</td>
-<td>nanoKBh Coarse Pitch</td>
 <td>XF:05IDD-ES:1{nKB:horz-Ax:PC}Mtr</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-even"><td>PI E712</td>
+<tr class="row-even"><td>nanoKBv Coarse Pitch</td>
+<td>bs.motor</td>
+<td>PI E712</td>
 <td>softioc-mcd24</td>
-<td>nanoKBv Coarse Pitch</td>
 <td>XF:05IDD-ES:1{nKB:vert-Ax:PC}Mtr</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-odd"><td>Sample Stages</td>
+<tr class="row-odd"><td>Sample Coarse Z</td>
+<td>nano_stage.z</td>
+<td>Smaract</td>
 <td>softioc-mcd26</td>
-<td>Sample Coarse Z</td>
 <td>XF:05IDD-ES:1{nKB:Smpl-Ax:sz}Mtr</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-even"><td>Sample Stages</td>
+<tr class="row-even"><td>Sample Coarse X</td>
+<td>nano_stage.x</td>
+<td>Smaract</td>
 <td>softioc-mcd26</td>
-<td>Sample Coarse X</td>
 <td>XF:05IDD-ES:1{nKB:Smpl-Ax:sx}Mtr</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-odd"><td>Sample Stages</td>
+<tr class="row-odd"><td>Sample Coarse Y</td>
+<td>nano_stage.y</td>
+<td>Smaract</td>
 <td>softioc-mcd26</td>
-<td>Sample Coarse Y</td>
 <td>XF:05IDD-ES:1{nKB:Smpl-Ax:sy}Mtr</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-even"><td>Sample Stages</td>
+<tr class="row-even"><td>Sample Theta</td>
+<td>nano_stage.th</td>
+<td>Smaract</td>
 <td>softioc-mcd26</td>
-<td>Sample Theta</td>
 <td>XF:05IDD-ES:1{nKB:Smpl-Ax:th}Mtr</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-odd"><td>Sample Stages</td>
+<tr class="row-odd"><td>Sample Top Z</td>
+<td>nano_stage.topx</td>
+<td>Smaract</td>
 <td>softioc-mcd26</td>
-<td>Sample Top Z</td>
 <td>XF:05IDD-ES:1{nKB:Smpl-Ax:zth}Mtr</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-even"><td>Sample Stages</td>
+<tr class="row-even"><td>Sample Top X</td>
+<td>nano_stage.topz</td>
+<td>Smaract</td>
 <td>softioc-mcd26</td>
-<td>Sample Top X</td>
 <td>XF:05IDD-ES:1{nKB:Smpl-Ax:xth}Mtr</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-odd"><td>nPoint</td>
+<tr class="row-odd"><td>Sample Scanner X</td>
+<td>nano_stage.sx</td>
+<td>nPoint</td>
 <td>softioc-nPoint</td>
-<td>Sample Scanner X</td>
 <td>XF:05IDD-ES:1{nKB:Smpl-Ax:ssx}Mtr</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-even"><td>nPoint</td>
+<tr class="row-even"><td>Sample Scanner Y</td>
+<td>nano_stage.sy</td>
+<td>nPoint</td>
 <td>softioc-nPoint</td>
-<td>Sample Scanner Y</td>
 <td>XF:05IDD-ES:1{nKB:Smpl-Ax:ssy}Mtr</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-odd"><td>nPoint</td>
+<tr class="row-odd"><td>Sample Scanner Z</td>
+<td>nano_stage.sz</td>
+<td>nPoint</td>
 <td>softioc-nPoint</td>
-<td>Sample Scanner Z</td>
 <td>XF:05IDD-ES:1{nKB:Smpl-Ax:ssz}Mtr</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-even"><td>picoscale</td>
+<tr class="row-even"><td>testmotor</td>
+<td>bs.motor</td>
+<td>picoscale</td>
 <td>softioc-picoscale</td>
-<td>testmotor</td>
 <td>XF:</td>
-<td>bs.motor</td>
 </tr>
-<tr class="row-odd"><td>Zebra</td>
+<tr class="row-odd"><td>nanoZebra</td>
+<td>nanoZebra</td>
+<td>none</td>
 <td>softioc-zebra</td>
-<td>nanoZebra</td>
 <td>XF:05IDD-ES:1{Dev:Zebra2}</td>
-<td>nanoZebra</td>
 </tr>
 </tbody>
 </table>
