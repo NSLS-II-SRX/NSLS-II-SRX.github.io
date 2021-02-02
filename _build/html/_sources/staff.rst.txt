@@ -38,6 +38,7 @@ Beamline Setup
     * Beamline alignment
     * Setting up the Merlin
     * Setting up the Dexela
+    * Setting up the Xspress3
 
 Preparing for a new cycle
 *************************
