@@ -7,6 +7,7 @@ The information provided on this page is directed towards helping beamline staff
 Quick Links
 -----------
 #. `Analog camera web server <http://10.5.0.33>`_
+#. `Ceiling camera web server <http://10.5.0.31>`_
 #. `Trac ticket system <https://controlsweb.nsls2.bnl.gov/trac/>`_
 #. `SRX Posted SAFs <https://nsls2bid.bnl.gov/SAF/Index/5-ID>`_
 #. `SRX Olog <http://xf05id-ca1.cs.nsls2.local/logbook/index.html>`_
@@ -15,6 +16,7 @@ Quick Links
 #. `NSLS-II Controls Documentation <http://nsls-ii.github.io/>`_
 #. `NSLS-II IP Address Management <https://controlsweb01.nsls2.bnl.gov/IP/?page=login&section=timeout>`_
 #. `NSLS-II Sharepoint Documentation <https://ps.bnl.gov/phot/ros/Shared%20Documents/MAXIMO%20Development/Beamlines/LT-R-XFD-CO-DR-SRX-002_Rev1.xlsx>`_
+#. `Former SRX Wiki Staff Page <https://beamline5id.bnl.gov/index.php/Main_Page>`_
 
 .. todo::
     * Fix IOCs reference
@@ -38,6 +40,7 @@ Beamline Setup
     * Beamline alignment
     * Setting up the Merlin
     * Setting up the Dexela
+    * Setting up the Xspress3
 
 Preparing for a new cycle
 *************************

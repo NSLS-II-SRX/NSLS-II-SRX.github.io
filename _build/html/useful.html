@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Useful Commands &mdash; NSLS-II SRX  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Beamline Staff Pages [staff only]" href="staff.html" />
+    <link rel="prev" title="Introduction to SRX" href="intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> NSLS-II SRX
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to SRX</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Useful Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#starting-bluesky">Starting Bluesky</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general-functions">General Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xrf-imaging">XRF Imaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xas-spectroscopy">XAS Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="staff.html">Beamline Staff Pages [staff only]</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NSLS-II SRX</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Useful Commands</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/useful.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="useful-commands">
+<h1>Useful Commands<a class="headerlink" href="#useful-commands" title="Permalink to this headline">¶</a></h1>
+<p>Below is a list of useful commands for running the SRX beamline. Previous commands can be seen by hitting the up arrow in Bluesky. To search through them, you can start typing a command before hitting the up arrow to filter your history.</p>
+<div class="section" id="starting-bluesky">
+<h2>Starting Bluesky<a class="headerlink" href="#starting-bluesky" title="Permalink to this headline">¶</a></h2>
+<p>Start Bluesky - <em>Start Bluesky from the terminal.</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bsui
+</pre></div>
+</div>
+</div>
+<div class="section" id="general-functions">
+<h2>General Functions<a class="headerlink" href="#general-functions" title="Permalink to this headline">¶</a></h2>
+<p>Change X-ray energy - <em>Either command can be used below. The energy can be entered in units of eV or keV.</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">energy</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mf">7.2</span><span class="p">)</span>
+<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">%</span><span class="n">mov</span> <span class="n">energy</span> <span class="mf">7.2</span>
+</pre></div>
+</div>
+<p>Optimize the beam - <em>Maximize the X-ray flux.</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">peakup_fine</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Setting a region of interest - <em>Set the ROI on the detector. The specific edge is optional.</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">setroi</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Fe&#39;</span><span class="p">)</span>
+<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">setroi</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Fe&#39;</span><span class="p">,</span> <span class="s1">&#39;ka1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xrf-imaging">
+<h2>XRF Imaging<a class="headerlink" href="#xrf-imaging" title="Permalink to this headline">¶</a></h2>
+<p>Fly scan - <em>Perform a fly scan. Return an image with dimensions (numX, numY)</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">nano_scan_and_fly</span><span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span>
+                                     <span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">numY</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
+<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">nano_y_scan_and_fly</span><span class="p">(</span><span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">numY</span><span class="p">,</span>
+                                       <span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Step scan - <em>Perform a step scan. Note: these arguments take a step size, not the number of points.</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">nano_xrf</span><span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">stepX</span><span class="p">,</span>
+                            <span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">stepY</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xas-spectroscopy">
+<h2>XAS Spectroscopy<a class="headerlink" href="#xas-spectroscopy" title="Permalink to this headline">¶</a></h2>
+<p>Print element binding energies - <em>Print the binding energies for the element of interest. The “best” edge can be returned as available.</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">Fe_k</span> <span class="o">=</span> <span class="n">getbindingE</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Print element emission energies - <em>Print the emission energies for the element of interest.</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">getemissionE</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>XANES scan - <em>Run a XANES scan. This scan has 3 regions with different steps spanning the iron K-edge.</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">xanes_plan</span><span class="p">(</span><span class="n">erange</span><span class="o">=</span><span class="p">[</span><span class="n">Fe_k</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="n">Fe_k</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">Fe_k</span><span class="o">+</span><span class="mi">50</span><span class="p">,</span> <span class="n">Fe_k</span><span class="o">+</span><span class="mi">150</span><span class="p">],</span>
+                              <span class="n">estep</span><span class="o">=</span><span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span>
+                              <span class="n">acqtime</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                              <span class="n">samplename</span><span class="o">=</span><span class="s1">&#39;Fe foil&#39;</span><span class="p">,</span>
+                              <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;Fe_foil&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>Pause a scan - <em>The scan will pause at the next checkpoint.</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CTRL</span><span class="o">+</span><span class="n">C</span>
+</pre></div>
+</div>
+<p>Urgently stop a scan - <em>With each CTRL-C, Bluesky raisens the urgency of stopping the scan.</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CTRL</span><span class="o">+</span><span class="n">C</span> <span class="n">x20</span>
+</pre></div>
+</div>
+<p>Resume a scan - <em>A scan can be resumed after pausing.</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="o">.</span><span class="n">resume</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Stop a scan - <em>Stop a scan and label the scan as a success or failure.</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>   <span class="c1"># Label scan as success</span>
+<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">RE</span><span class="o">.</span><span class="n">abort</span><span class="p">()</span>  <span class="c1"># Label scan as failure</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="staff.html" class="btn btn-neutral float-right" title="Beamline Staff Pages [staff only]" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="intro.html" class="btn btn-neutral float-left" title="Introduction to SRX" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, SRX.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

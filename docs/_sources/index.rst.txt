@@ -11,6 +11,7 @@ Welcome to NSLS-II SRX's documentation!
    :caption: Contents:
 
    intro.rst
+   useful.rst
    staff.rst
 
 Indices and tables
