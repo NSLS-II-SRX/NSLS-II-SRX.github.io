@@ -11,7 +11,6 @@ Quick Links
 #. `Trac ticket system <https://controlsweb.nsls2.bnl.gov/trac/>`_
 #. `SRX Posted SAFs <https://nsls2bid.bnl.gov/SAF/Index/5-ID>`_
 #. `SRX Olog <http://xf05id-ca1.cs.nsls2.local/logbook/index.html>`_
-#. `SRX IOCs and Motor Controllers <To Do>`_
 #. `SRX Radiation Safety Component Checklist <https://ps.bnl.gov/docs/Reference/NSLS-II%20Beamline%205-ID%20Radiation%20Safety%20Component%20Checklist%20TEMPLATE.pdf>`_
 #. `NSLS-II Controls Documentation <http://nsls-ii.github.io/>`_
 #. `NSLS-II IP Address Management <https://controlsweb01.nsls2.bnl.gov/IP/?page=login&section=timeout>`_
