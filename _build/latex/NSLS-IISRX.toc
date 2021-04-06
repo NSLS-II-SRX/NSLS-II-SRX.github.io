@@ -1,0 +1,24 @@
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Introduction to SRX}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Useful Commands}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Starting Bluesky}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}General Functions}{3}{section.2.2}%
+\contentsline {section}{\numberline {2.3}XRF Imaging}{3}{section.2.3}%
+\contentsline {section}{\numberline {2.4}XAS Spectroscopy}{4}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Troubleshooting}{4}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Beamline Staff Pages {[}staff only{]}}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Quick Links}{5}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Setting up Users}{5}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Beamline Setup}{6}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Preparing for a new cycle}{6}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Aligning the Beamline}{6}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Calibrating the monochromator}{7}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Beamline Maintenance}{7}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Cryocooler}{8}{subsection.3.4.1}%
+\contentsline {subsubsection}{Warming the cryocooler}{8}{subsubsection*.3}%
+\contentsline {subsubsection}{Cooling the cryocooler}{8}{subsubsection*.4}%
+\contentsline {section}{\numberline {3.5}Controls}{9}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}IOC Monitoring}{9}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Motion Controls}{10}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}EPS}{12}{subsection.3.5.3}%
+\contentsline {chapter}{\numberline {4}Indices and tables}{13}{chapter.4}%

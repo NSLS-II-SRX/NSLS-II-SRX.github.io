@@ -6,11 +6,12 @@ The information provided on this page is directed towards helping beamline staff
 
 Quick Links
 -----------
-#. `Analog camera web server <http://10.5.0.33>`_
-#. `Ceiling camera web server <http://10.5.0.31>`_
+#. `Analog camera web server <http://xf05idd-webcam1.nsls2.bnl.local>`_
+#. `Ceiling camera web server <http://xf05idd-webcam2.nsls2.bnl.local>`_
 #. `Trac ticket system <https://controlsweb.nsls2.bnl.gov/trac/>`_
+#. `Jira ticket system <http://jira.nsls2.bnl.gov>`_
 #. `SRX Posted SAFs <https://nsls2bid.bnl.gov/SAF/Index/5-ID>`_
-#. `SRX Olog <http://xf05id-ca1.cs.nsls2.local/logbook/index.html>`_
+#. `SRX Olog <http://xf05id2-ca1.nsls2.bnl.local/logbook/index.html>`_
 #. `SRX Radiation Safety Component Checklist <https://ps.bnl.gov/docs/Reference/NSLS-II%20Beamline%205-ID%20Radiation%20Safety%20Component%20Checklist%20TEMPLATE.pdf>`_
 #. `NSLS-II Controls Documentation <http://nsls-ii.github.io/>`_
 #. `NSLS-II IP Address Management <https://controlsweb01.nsls2.bnl.gov/IP/?page=login&section=timeout>`_
@@ -24,7 +25,7 @@ Setting up Users
 ----------------
 #. Post SAF to `PASS <http://passadmin.bnl.gov>`_
 #. Update user-specific metadata
-    * Open /home/xf05id1/ipython_ophyd/90-userdata.py
+    * Open /nsls2/users/xf05id1/.ipython/profile_collection/startup/90-userdata.py
     * Update proposal dictionary with information from posted SAF. Save.
     * Restart bluesky.
 #. Perform beamline specific training. `5-ID BST Form <https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf>`_
@@ -168,11 +169,11 @@ On a Debian server, the manage-iocs tool can be used to monitor the IOC status. 
         $ sudo /etc/init.d/softioc-example stop
 
 On a CentOS server, the IOCs are managed using procServ. This is typically a simple executable script that will start them.
-    * SSH into the camera server, xf05id1-ioc1.
+    * SSH into the camera server, xf05idd-ioc2.
     * To start the IOC for the Blackfly camera ::
 
-        $ cd /epics/iocs
-        $ ./start_com_bfly1
+        $ cd /epics/iocs/cam-bfly1
+        $ ./start_cam_bfly1
 
     * Using these commands, the IOC will start and you will be in a telnet of the IOC.
     * To exit the telnet, type ``Ctrl+]`` and then ``q``.
@@ -211,8 +212,8 @@ Motion Controls
    mc01             softioc-mc01 testmotor XF: bs.motor
    ================ ============ ========= === ==============
 
-.. table:: xf05idd-ioc-nkb motors
-   :name: xf05idd-ioc-nkb-motors
+.. table:: xf05idd-ioc3 motors
+   :name: xf05idd-ioc3-motors
    :align: left
 
    ==================== ================ ================ ================= ================================== 
@@ -240,8 +241,8 @@ Motion Controls
    nanoZebra            nanoZebra        none             softioc-zebra     XF:05IDD-ES:1{Dev:Zebra2}          
    ==================== ================ ================ ================= ================================== 
 
-.. table:: xf05idd-ioc-det1
-   :name: xf05idd-ioc-det1
+.. table:: xf05idd-det1
+   :name: xf05idd-det1
    :align: left
 
    ================ ============ ========= === ==============
@@ -250,8 +251,8 @@ Motion Controls
    mc01             softioc-mc01 testmotor XF: bs.motor
    ================ ============ ========= === ==============
 
-.. table:: xf05idd-ioc-det2
-   :name: xf05idd-ioc-det2
+.. table:: xf05idd-det2
+   :name: xf05idd-det2
    :align: left
 
    ================ ============ ========= === ==============
@@ -260,8 +261,8 @@ Motion Controls
    mc01             softioc-mc01 testmotor XF: bs.motor
    ================ ============ ========= === ==============
 
-.. table:: xf05id1-ioc1
-   :name: xf05id1-ioc1
+.. table:: xf05idd-ioc2
+   :name: xf05idd-ioc2
    :align: left
 
    ================ ============ ========= === ==============
