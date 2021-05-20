@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   
@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,10 +31,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -186,116 +188,110 @@
 <div class="section" id="quick-links">
 <h2>Quick Links<a class="headerlink" href="#quick-links" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><a class="reference external" href="http://xf05idd-webcam1.nsls2.bnl.local">Analog camera web server</a></li>
-<li><a class="reference external" href="http://xf05idd-webcam2.nsls2.bnl.local">Ceiling camera web server</a></li>
-<li><a class="reference external" href="https://controlsweb.nsls2.bnl.gov/trac/">Trac ticket system</a></li>
-<li><a class="reference external" href="http://jira.nsls2.bnl.gov">Jira ticket system</a></li>
-<li><a class="reference external" href="https://nsls2bid.bnl.gov/SAF/Index/5-ID">SRX Posted SAFs</a></li>
-<li><a class="reference external" href="http://xf05id2-ca1.nsls2.bnl.local/logbook/index.html">SRX Olog</a></li>
-<li><a class="reference external" href="https://ps.bnl.gov/docs/Reference/NSLS-II%20Beamline%205-ID%20Radiation%20Safety%20Component%20Checklist%20TEMPLATE.pdf">SRX Radiation Safety Component Checklist</a></li>
-<li><a class="reference external" href="http://nsls-ii.github.io/">NSLS-II Controls Documentation</a></li>
-<li><a class="reference external" href="https://controlsweb01.nsls2.bnl.gov/IP/?page=login&amp;section=timeout">NSLS-II IP Address Management</a></li>
-<li><a class="reference external" href="https://ps.bnl.gov/phot/ros/Shared%20Documents/MAXIMO%20Development/Beamlines/LT-R-XFD-CO-DR-SRX-002_Rev1.xlsx">NSLS-II Sharepoint Documentation</a></li>
-<li><a class="reference external" href="https://beamline5id.bnl.gov/index.php/Main_Page">Former SRX Wiki Staff Page</a></li>
+<li><p><a class="reference external" href="http://xf05idd-webcam1.nsls2.bnl.local">Analog camera web server</a></p></li>
+<li><p><a class="reference external" href="http://xf05idd-webcam2.nsls2.bnl.local">Ceiling camera web server</a></p></li>
+<li><p><a class="reference external" href="https://controlsweb.nsls2.bnl.gov/trac/">Trac ticket system</a></p></li>
+<li><p><a class="reference external" href="http://jira.nsls2.bnl.gov">Jira ticket system</a></p></li>
+<li><p><a class="reference external" href="https://nsls2bid.bnl.gov/SAF/Index/5-ID">SRX Posted SAFs</a></p></li>
+<li><p><a class="reference external" href="http://xf05id2-ca1.nsls2.bnl.local/logbook/index.html">SRX Olog</a></p></li>
+<li><p><a class="reference external" href="https://ps.bnl.gov/docs/Reference/NSLS-II%20Beamline%205-ID%20Radiation%20Safety%20Component%20Checklist%20TEMPLATE.pdf">SRX Radiation Safety Component Checklist</a></p></li>
+<li><p><a class="reference external" href="http://nsls-ii.github.io/">NSLS-II Controls Documentation</a></p></li>
+<li><p><a class="reference external" href="https://controlsweb01.nsls2.bnl.gov/IP/?page=login&amp;section=timeout">NSLS-II IP Address Management</a></p></li>
+<li><p><a class="reference external" href="https://ps.bnl.gov/phot/ros/Shared%20Documents/MAXIMO%20Development/Beamlines/LT-R-XFD-CO-DR-SRX-002_Rev1.xlsx">NSLS-II Sharepoint Documentation</a></p></li>
+<li><p><a class="reference external" href="https://beamline5id.bnl.gov/index.php/Main_Page">Former SRX Wiki Staff Page</a></p></li>
 </ol>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<ul class="last simple">
-<li>Fix IOCs reference</li>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<ul class="simple">
+<li><p>Fix IOCs reference</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="setting-up-users">
 <h2>Setting up Users<a class="headerlink" href="#setting-up-users" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Post SAF to <a class="reference external" href="http://passadmin.bnl.gov">PASS</a></li>
-<li><dl class="first docutils">
-<dt>Update user-specific metadata</dt>
-<dd><ul class="first last">
-<li>Open /nsls2/users/xf05id1/.ipython/profile_collection/startup/90-userdata.py</li>
-<li>Update proposal dictionary with information from posted SAF. Save.</li>
-<li>Restart bluesky.</li>
+<li><p>Post SAF to <a class="reference external" href="http://passadmin.bnl.gov">PASS</a></p></li>
+<li><dl class="simple">
+<dt>Update user-specific metadata</dt><dd><ul class="simple">
+<li><p>Open /nsls2/users/xf05id1/.ipython/profile_collection/startup/90-userdata.py</p></li>
+<li><p>Update proposal dictionary with information from posted SAF. Save.</p></li>
+<li><p>Restart bluesky.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>Perform beamline specific training. <a class="reference external" href="https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf">5-ID BST Form</a></li>
+<li><p>Perform beamline specific training. <a class="reference external" href="https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf">5-ID BST Form</a></p></li>
 </ol>
 </div>
 <div class="section" id="beamline-setup">
 <h2>Beamline Setup<a class="headerlink" href="#beamline-setup" title="Permalink to this headline">¶</a></h2>
 <p><em>These tasks are typically done once a cycle</em></p>
-<div class="admonition-todo admonition" id="index-1">
-<p class="first admonition-title">Todo</p>
-<ul class="last simple">
-<li>Beamline alignment</li>
-<li>Setting up the Merlin</li>
-<li>Setting up the Dexela</li>
-<li>Setting up the Xspress3</li>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<ul class="simple">
+<li><p>Beamline alignment</p></li>
+<li><p>Setting up the Merlin</p></li>
+<li><p>Setting up the Dexela</p></li>
+<li><p>Setting up the Xspress3</p></li>
 </ul>
 </div>
 <div class="section" id="preparing-for-a-new-cycle">
 <h3>Preparing for a new cycle<a class="headerlink" href="#preparing-for-a-new-cycle" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt><em>This is a comprehensive list of things to consider before the start of a cycle.</em></dt>
-<dd><ul class="first last simple">
-<li>Close all system safety work permits.</li>
-<li>Check cryocooler pressure and load.</li>
-<li>Check all vacuum, temperature, water systems.</li>
-<li>Check and top-off the PPS burn-through.</li>
-<li>Confirm the RGA in the A-hutch is connected and scanning.</li>
-<li>Perform a Radiation Safety Component Checklist.</li>
-<li>Post a valid SAF and ESR.</li>
-<li>Test and deploy the latest bluesky environment.</li>
-<li>Setup lsyncd.</li>
+<dl class="simple">
+<dt><em>This is a comprehensive list of things to consider before the start of a cycle.</em></dt><dd><ul class="simple">
+<li><p>Close all system safety work permits.</p></li>
+<li><p>Check cryocooler pressure and load.</p></li>
+<li><p>Check all vacuum, temperature, water systems.</p></li>
+<li><p>Check and top-off the PPS burn-through.</p></li>
+<li><p>Confirm the RGA in the A-hutch is connected and scanning.</p></li>
+<li><p>Perform a Radiation Safety Component Checklist.</p></li>
+<li><p>Post a valid SAF and ESR.</p></li>
+<li><p>Test and deploy the latest bluesky environment.</p></li>
+<li><p>Setup lsyncd.</p></li>
 </ul>
 </dd>
 </dl>
 </div>
 <div class="section" id="aligning-the-beamline">
 <h3>Aligning the Beamline<a class="headerlink" href="#aligning-the-beamline" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt><em>Historically, the beamline and storage ring take about a day to stabilize. Therefore, on day 1 of operations, it makes sense to open the front-end shutter and get light through the monochromator. Since components will drift, optimization should take place on day 2 and after a local bump is performed.</em></dt>
-<dd><ol class="first last arabic simple">
-<li>Previous motor positions should be captured at the end of each cycle. As a precaution, capture the current motor positions.</li>
-<li><dl class="first docutils">
-<dt>Check front-end (FE) slits, white-beam (WB) slits, and mirror (HFM) position.</dt>
-<dd><ul class="first last">
-<li>Open the gap of the undulator to 18 000 μm. Insert the camera in the HFM tank.</li>
-<li>Open the FE shutter. Open the WB slits all the way (4 mm x 4 mm). Turn off mirror pitch feedback and reset the voltage to 30 V. Remove the HFM by dropping the pitch to 0.0 mrad and translating in the positive direction by 3 mm.</li>
-<li>Tweak the FE slits so the slits are just protecting the mask.</li>
-<li>Tweak the WB slits so the slits are centered. Return the WB slit gaps to their previous values (0.5 mm V x 2.0 mm H).</li>
-<li>Bring the HFM back in. Center the mirror on the incoming beam and confirm the mirror is parallel to the beam. Pitch to the nominal 2.5 mrad. Enable the mirror pitch feedback.</li>
-<li>Close the FE shutter and retract the camera.</li>
+<dl class="simple">
+<dt><em>Historically, the beamline and storage ring take about a day to stabilize. Therefore, on day 1 of operations, it makes sense to open the front-end shutter and get light through the monochromator. Since components will drift, optimization should take place on day 2 and after a local bump is performed.</em></dt><dd><ol class="arabic simple">
+<li><p>Previous motor positions should be captured at the end of each cycle. As a precaution, capture the current motor positions.</p></li>
+<li><dl class="simple">
+<dt>Check front-end (FE) slits, white-beam (WB) slits, and mirror (HFM) position.</dt><dd><ul class="simple">
+<li><p>Open the gap of the undulator to 18 000 μm. Insert the camera in the HFM tank.</p></li>
+<li><p>Open the FE shutter. Open the WB slits all the way (4 mm x 4 mm). Turn off mirror pitch feedback and reset the voltage to 30 V. Remove the HFM by dropping the pitch to 0.0 mrad and translating in the positive direction by 3 mm.</p></li>
+<li><p>Tweak the FE slits so the slits are just protecting the mask.</p></li>
+<li><p>Tweak the WB slits so the slits are centered. Return the WB slit gaps to their previous values (0.5 mm V x 2.0 mm H).</p></li>
+<li><p>Bring the HFM back in. Center the mirror on the incoming beam and confirm the mirror is parallel to the beam. Pitch to the nominal 2.5 mrad. Enable the mirror pitch feedback.</p></li>
+<li><p>Close the FE shutter and retract the camera.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Align the monochromator to allow light through.</dt>
-<dd><ul class="first last">
-<li>With the FE shutter closed, insert the BPM 1 camera (<em>this can be slow</em>).</li>
-<li>In bluesky, set the energy to the last used value. If starting from scratch, choose a higher energy such as 12 keV. By using bluesky, this will set the undulator gap, and monochomator positions to a reasonably close value.</li>
-<li>Open the pink-beam (PB) slits to a 4.0 mm gap to make sure they are fully open.</li>
-<li>Open the FE shutter and hopefully light will come through onto the camera.</li>
-<li>If not, set the exposure time on the camera to something large, like 0.1 s. This will help you see the light come through while you scan the motors. There are 4 motors that can be off: Bragg, crystal offset, roll, and pitch. Hopefully, by starting with Bragg you can start to see some light and then optimize by tweaking pitch and roll. Finally, the position of the beam can be translated with the crystal offset.</li>
-<li>The PB slits can be centered and closed so they are just intercepting the beam.</li>
-<li>Once the light is through the monochromator, the FE shutter can be closed, the camera removed, and alignment downstream can continue.</li>
+<li><dl class="simple">
+<dt>Align the monochromator to allow light through.</dt><dd><ul class="simple">
+<li><p>With the FE shutter closed, insert the BPM 1 camera (<em>this can be slow</em>).</p></li>
+<li><p>In bluesky, set the energy to the last used value. If starting from scratch, choose a higher energy such as 12 keV. By using bluesky, this will set the undulator gap, and monochomator positions to a reasonably close value.</p></li>
+<li><p>Open the pink-beam (PB) slits to a 4.0 mm gap to make sure they are fully open.</p></li>
+<li><p>Open the FE shutter and hopefully light will come through onto the camera.</p></li>
+<li><p>If not, set the exposure time on the camera to something large, like 0.1 s. This will help you see the light come through while you scan the motors. There are 4 motors that can be off: Bragg, crystal offset, roll, and pitch. Hopefully, by starting with Bragg you can start to see some light and then optimize by tweaking pitch and roll. Finally, the position of the beam can be translated with the crystal offset.</p></li>
+<li><p>The PB slits can be centered and closed so they are just intercepting the beam.</p></li>
+<li><p>Once the light is through the monochromator, the FE shutter can be closed, the camera removed, and alignment downstream can continue.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>Tweak monochromator and mirror alignment to center secondary source aperture (SSA).</li>
+<li><p>Tweak monochromator and mirror alignment to center secondary source aperture (SSA).</p></li>
 </ol>
 </dd>
 </dl>
 </div>
 <div class="section" id="calibrating-the-monochromator">
 <h3>Calibrating the monochromator<a class="headerlink" href="#calibrating-the-monochromator" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt><em>Calibrating the monochromator is done by collecting XANES spectra across several element absorption edges. A least-squares fitting routine will then calculate the HDCM parameters for the calibration</em></dt>
-<dd><ol class="first last arabic">
-<li><p class="first">Collect XANES scans at 3-5 different energies. For the best fit, a wide range of energies is best. Typically, scans are performed using V, Cr, Fe, Cu, Se, Zr foils. <em>It is a good idea to record the C1 Roll and C2 Pitch values for each energy. These can be used for a lookup table to improve the peakup function.</em>:</p>
+<dl>
+<dt><em>Calibrating the monochromator is done by collecting XANES spectra across several element absorption edges. A least-squares fitting routine will then calculate the HDCM parameters for the calibration</em></dt><dd><ol class="arabic">
+<li><p>Collect XANES scans at 3-5 different energies. For the best fit, a wide range of energies is best. Typically, scans are performed using V, Cr, Fe, Cu, Se, Zr foils. <em>It is a good idea to record the C1 Roll and C2 Pitch values for each energy. These can be used for a lookup table to improve the peakup function.</em>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">X</span> <span class="o">=</span> <span class="n">getbindingE</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">)</span>
 <span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">%</span><span class="n">mov</span> <span class="n">energy</span> <span class="n">X</span>
 <span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">peakup_fine</span><span class="p">())</span>
@@ -303,7 +299,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">Define a dictionary in bluesky with element symbols mapped to scan IDs.:</p>
+<li><p>Define a dictionary in bluesky with element symbols mapped to scan IDs.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="n">scanlogDic</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;V&#39;</span> <span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
                               <span class="s1">&#39;Cr&#39;</span><span class="p">:</span> <span class="mi">1001</span><span class="p">,</span>
                               <span class="s1">&#39;Fe&#39;</span><span class="p">:</span> <span class="mi">1002</span><span class="p">,</span>
@@ -313,13 +309,12 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">Run the <em>braggcalib()</em> function with the dictionary as input. The function will go through each scan and display a plot marking where the edge was found. Finally, this will output the new HDCM parameters.:</p>
+<li><p>Run the <em>braggcalib()</em> function with the dictionary as input. The function will go through each scan and display a plot marking where the edge was found. Finally, this will output the new HDCM parameters.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="n">braggcalib</span><span class="p">(</span><span class="n">scanlogDic</span><span class="o">=</span><span class="n">scanlogDic</span><span class="p">,</span> <span class="n">use_xrf</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Update the values in the bluesky profile (10-machine.py). Save and restart bluesky.</p>
-</li>
+<li><p>Update the values in the bluesky profile (10-machine.py). Save and restart bluesky.</p></li>
 </ol>
 </dd>
 </dl>
@@ -327,31 +322,31 @@
 </div>
 <div class="section" id="beamline-maintenance">
 <h2>Beamline Maintenance<a class="headerlink" href="#beamline-maintenance" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-2">
-<p class="first admonition-title">Todo</p>
-<ul class="last simple">
-<li>Calibrating the Xspress3</li>
-<li>Power loss preparation and recovery</li>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<ul class="simple">
+<li><p>Calibrating the Xspress3</p></li>
+<li><p>Power loss preparation and recovery</p></li>
 </ul>
 </div>
 <div class="section" id="cryocooler">
 <h3>Cryocooler<a class="headerlink" href="#cryocooler" title="Permalink to this headline">¶</a></h3>
 <p><em>The manual for the cryocooler can be found here.</em></p>
-<div class="admonition-todo admonition" id="index-3">
-<p class="first admonition-title">Todo</p>
-<ul class="last simple">
-<li>Upload cryocooler manual</li>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<ul class="simple">
+<li><p>Upload cryocooler manual</p></li>
 </ul>
 </div>
 <div class="section" id="warming-the-cryocooler">
 <h4>Warming the cryocooler<a class="headerlink" href="#warming-the-cryocooler" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Connect a turbo-pump station to the monochromator tank. Pump the turbo so that it reads a pressure in the 10<sup>-8</sup> Torr range.</li>
-<li>Close the beamline gate valves to isolate the monochromator.</li>
-<li>Open the manual valve between the monochromator and turbo-pump.</li>
-<li>Turn off the ion pump. This should automatically put the cryocooler in “Stop” mode.</li>
-<li>The cryocooler will warm up over several days.</li>
+<li><p>Connect a turbo-pump station to the monochromator tank. Pump the turbo so that it reads a pressure in the 10<sup>-8</sup> Torr range.</p></li>
+<li><p>Close the beamline gate valves to isolate the monochromator.</p></li>
+<li><p>Open the manual valve between the monochromator and turbo-pump.</p></li>
+<li><p>Turn off the ion pump. This should automatically put the cryocooler in “Stop” mode.</p></li>
+<li><p>The cryocooler will warm up over several days.</p></li>
 </ol>
 </div></blockquote>
 </div>
@@ -359,39 +354,36 @@
 <h4>Cooling the cryocooler<a class="headerlink" href="#cooling-the-cryocooler" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Verify the monochromator cold cathode gauge is on and the cryocooler is not inhibitted. This typically means a pressure reading better than 10<sup>-7</sup> Torr.</li>
-<li><dl class="first docutils">
-<dt>Purge the system according to the cryocooler manual, section 3.3.1, on page 28. <em>Note: V10 and V11 are variable values, 0% = Close, 100% = Open.</em></dt>
-<dd><ul class="first last">
-<li>Verify N<sub>2</sub> gas source is at a pressure between 1.5 and 3.0 bar.</li>
-<li>Verify the monochromator ion pump and cold cathode gauge are on.</li>
-<li>Close all the valves.</li>
-<li>Open V9, V10, V20, and V21 fully. Purge for 30 min.</li>
-<li>Close V9 and open V11. Purge for 15 min.</li>
-<li>Close V11. Open V17 and purge for 15 min.</li>
-<li>Close all the valves.</li>
+<li><p>Verify the monochromator cold cathode gauge is on and the cryocooler is not inhibitted. This typically means a pressure reading better than 10<sup>-7</sup> Torr.</p></li>
+<li><dl class="simple">
+<dt>Purge the system according to the cryocooler manual, section 3.3.1, on page 28. <em>Note: V10 and V11 are variable values, 0% = Close, 100% = Open.</em></dt><dd><ul class="simple">
+<li><p>Verify N<sub>2</sub> gas source is at a pressure between 1.5 and 3.0 bar.</p></li>
+<li><p>Verify the monochromator ion pump and cold cathode gauge are on.</p></li>
+<li><p>Close all the valves.</p></li>
+<li><p>Open V9, V10, V20, and V21 fully. Purge for 30 min.</p></li>
+<li><p>Close V9 and open V11. Purge for 15 min.</p></li>
+<li><p>Close V11. Open V17 and purge for 15 min.</p></li>
+<li><p>Close all the valves.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Following the cryocooler manual, section 4.2.1.1, fill the sub-cooler to 15% and fill the heater vessel to 20%.</dt>
-<dd><ul class="first last">
-<li>Verify the liquid N<sub>2</sub> source valve is open.</li>
-<li>Open V19 to start filling the sub-cooler.</li>
-<li>Close V19 when the sub-cooler reaches 15%.</li>
-<li>Open heater vessel valve to start filling the heater vessel.</li>
-<li>Close heater vessel valve when level reaches 20%.</li>
+<li><dl class="simple">
+<dt>Following the cryocooler manual, section 4.2.1.1, fill the sub-cooler to 15% and fill the heater vessel to 20%.</dt><dd><ul class="simple">
+<li><p>Verify the liquid N<sub>2</sub> source valve is open.</p></li>
+<li><p>Open V19 to start filling the sub-cooler.</p></li>
+<li><p>Close V19 when the sub-cooler reaches 15%.</p></li>
+<li><p>Open heater vessel valve to start filling the heater vessel.</p></li>
+<li><p>Close heater vessel valve when level reaches 20%.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Follow the automatic cool down proceedure from the manual, section 4.3.</dt>
-<dd><ul class="first last">
-<li>Verify the liquid N<sub>2</sub> source valve is open.</li>
-<li>From the cryocooler CSS page, click “Cool Down”.</li>
-<li>Once full, in CSS click on the “A” to enable automatic filling of the cryocooler.</li>
+<li><dl class="simple">
+<dt>Follow the automatic cool down proceedure from the manual, section 4.3.</dt><dd><ul class="simple">
+<li><p>Verify the liquid N<sub>2</sub> source valve is open.</p></li>
+<li><p>From the cryocooler CSS page, click “Cool Down”.</p></li>
+<li><p>Once full, in CSS click on the “A” to enable automatic filling of the cryocooler.</p></li>
 </ul>
 </dd>
 </dl>
@@ -405,46 +397,41 @@
 <h2>Controls<a class="headerlink" href="#controls" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="ioc-monitoring">
 <h3>IOC Monitoring<a class="headerlink" href="#ioc-monitoring" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>On a Debian server, the manage-iocs tool can be used to monitor the IOC status. SSH into the server that hosts the IOC (<em>e.g.</em> xf05idd-ioc1) and run:</dt>
-<dd><ul class="first last">
-<li><p class="first">List all IOCs</p>
+<dl>
+<dt>On a Debian server, the manage-iocs tool can be used to monitor the IOC status. SSH into the server that hosts the IOC (<em>e.g.</em> xf05idd-ioc1) and run:</dt><dd><ul>
+<li><p>List all IOCs</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ manage-iocs report
 </pre></div>
 </div>
 </li>
-<li><p class="first">Show IOC status</p>
+<li><p>Show IOC status</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ manage-iocs status
 </pre></div>
 </div>
 </li>
-<li><p class="first">Start IOC, <em>softioc-example</em>. The path to the IOC can be found using <code class="docutils literal notranslate"><span class="pre">manage-iocs</span></code>.</p>
+<li><p>Start IOC, <em>softioc-example</em>. The path to the IOC can be found using <code class="docutils literal notranslate"><span class="pre">manage-iocs</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo /etc/init.d/softioc-example start
 </pre></div>
 </div>
 </li>
-<li><p class="first">Stop IOC, <em>softioc-example</em>. The path to the IOC can be found using <code class="docutils literal notranslate"><span class="pre">manage-iocs</span></code>.</p>
+<li><p>Stop IOC, <em>softioc-example</em>. The path to the IOC can be found using <code class="docutils literal notranslate"><span class="pre">manage-iocs</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo /etc/init.d/softioc-example stop
 </pre></div>
 </div>
 </li>
 </ul>
 </dd>
-<dt>On a CentOS server, the IOCs are managed using procServ. This is typically a simple executable script that will start them.</dt>
-<dd><ul class="first last">
-<li><p class="first">SSH into the camera server, xf05idd-ioc2.</p>
-</li>
-<li><p class="first">To start the IOC for the Blackfly camera</p>
+<dt>On a CentOS server, the IOCs are managed using procServ. This is typically a simple executable script that will start them.</dt><dd><ul>
+<li><p>SSH into the camera server, xf05idd-ioc2.</p></li>
+<li><p>To start the IOC for the Blackfly camera</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd /epics/iocs/cam-bfly1
 $ ./start_cam_bfly1
 </pre></div>
 </div>
 </li>
-<li><p class="first">Using these commands, the IOC will start and you will be in a telnet of the IOC.</p>
-</li>
-<li><p class="first">To exit the telnet, type <code class="docutils literal notranslate"><span class="pre">Ctrl+]</span></code> and then <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p>
-</li>
-<li><p class="first">To stop the IOC, the process for procServ must be stopped. The process ID is the second column.</p>
+<li><p>Using these commands, the IOC will start and you will be in a telnet of the IOC.</p></li>
+<li><p>To exit the telnet, type <code class="docutils literal notranslate"><span class="pre">Ctrl+]</span></code> and then <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p></li>
+<li><p>To stop the IOC, the process for procServ must be stopped. The process ID is the second column.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ps aux | grep procServ
 akiss      820  0.0  0.0  27448   976 ?        Ss    2020  29:07 procServ --logstamp -n cam-bfly1 -i ^D -L /epics/iocs/cam-bfly1/log/cam-bfly1.log 20001 ./st.cmd
 $ sudo kill -9 820
@@ -457,291 +444,291 @@ $ sudo kill -9 820
 </div>
 <div class="section" id="motion-controls">
 <h3>Motion Controls<a class="headerlink" href="#motion-controls" title="Permalink to this headline">¶</a></h3>
-<div class="admonition-todo admonition" id="index-4">
-<p class="first admonition-title">Todo</p>
-<ul class="last simple">
-<li>Insert table with: Motor controller, IOC, Motor, PV, Bluesky object</li>
-<li>Rearrange table to be motor, bluesky, IOC, controller, PV?</li>
-<li>List of all IOCs on each server</li>
+<div class="admonition-todo admonition" id="id5">
+<p class="admonition-title">Todo</p>
+<ul class="simple">
+<li><p>Insert table with: Motor controller, IOC, Motor, PV, Bluesky object</p></li>
+<li><p>Rearrange table to be motor, bluesky, IOC, controller, PV?</p></li>
+<li><p>List of all IOCs on each server</p></li>
 </ul>
 </div>
-<table border="1" class="docutils align-left" id="xf05ida-ioc1-motors">
+<table class="docutils align-left" id="xf05ida-ioc1-motors">
 <caption><span class="caption-text">xf05ida-ioc1 motors</span><a class="headerlink" href="#xf05ida-ioc1-motors" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="30%" />
-<col width="22%" />
-<col width="17%" />
-<col width="6%" />
-<col width="26%" />
+<col style="width: 30%" />
+<col style="width: 22%" />
+<col style="width: 17%" />
+<col style="width: 6%" />
+<col style="width: 26%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Motor Controller</th>
-<th class="head">IOC</th>
-<th class="head">Motor</th>
-<th class="head">PV</th>
-<th class="head">Bluesky Object</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Motor Controller</p></th>
+<th class="head"><p>IOC</p></th>
+<th class="head"><p>Motor</p></th>
+<th class="head"><p>PV</p></th>
+<th class="head"><p>Bluesky Object</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>mc01</td>
-<td>softioc-mc01</td>
-<td>testmotor</td>
-<td>XF:</td>
-<td>bs.motor</td>
+<tbody>
+<tr class="row-even"><td><p>mc01</p></td>
+<td><p>softioc-mc01</p></td>
+<td><p>testmotor</p></td>
+<td><p>XF:</p></td>
+<td><p>bs.motor</p></td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="docutils align-left" id="xf05idd-ioc1-motors">
+<table class="docutils align-left" id="xf05idd-ioc1-motors">
 <caption><span class="caption-text">xf05idd-ioc1 motors</span><a class="headerlink" href="#xf05idd-ioc1-motors" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="30%" />
-<col width="22%" />
-<col width="17%" />
-<col width="6%" />
-<col width="26%" />
+<col style="width: 30%" />
+<col style="width: 22%" />
+<col style="width: 17%" />
+<col style="width: 6%" />
+<col style="width: 26%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Motor Controller</th>
-<th class="head">IOC</th>
-<th class="head">Motor</th>
-<th class="head">PV</th>
-<th class="head">Bluesky Object</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Motor Controller</p></th>
+<th class="head"><p>IOC</p></th>
+<th class="head"><p>Motor</p></th>
+<th class="head"><p>PV</p></th>
+<th class="head"><p>Bluesky Object</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>mc01</td>
-<td>softioc-mc01</td>
-<td>testmotor</td>
-<td>XF:</td>
-<td>bs.motor</td>
+<tbody>
+<tr class="row-even"><td><p>mc01</p></td>
+<td><p>softioc-mc01</p></td>
+<td><p>testmotor</p></td>
+<td><p>XF:</p></td>
+<td><p>bs.motor</p></td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="docutils align-left" id="xf05idd-ioc3-motors">
+<table class="docutils align-left" id="xf05idd-ioc3-motors">
 <caption><span class="caption-text">xf05idd-ioc3 motors</span><a class="headerlink" href="#xf05idd-ioc3-motors" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="19%" />
-<col width="16%" />
-<col width="16%" />
-<col width="17%" />
-<col width="33%" />
+<col style="width: 19%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 17%" />
+<col style="width: 33%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Motor</th>
-<th class="head">Bluesky Object</th>
-<th class="head">Motor Controller</th>
-<th class="head">IOC</th>
-<th class="head">PV</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Motor</p></th>
+<th class="head"><p>Bluesky Object</p></th>
+<th class="head"><p>Motor Controller</p></th>
+<th class="head"><p>IOC</p></th>
+<th class="head"><p>PV</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>nanoKBv angle calc</td>
-<td>bs.motor</td>
-<td>none</td>
-<td>softioc-anglecalc</td>
-<td>XF:05IDD-ES:1{nKB:vert-Ax:PC}Mtr</td>
+<tbody>
+<tr class="row-even"><td><p>nanoKBv angle calc</p></td>
+<td><p>bs.motor</p></td>
+<td><p>none</p></td>
+<td><p>softioc-anglecalc</p></td>
+<td><p>XF:05IDD-ES:1{nKB:vert-Ax:PC}Mtr</p></td>
 </tr>
-<tr class="row-odd"><td>nanoKBh angle calc</td>
-<td>bs.motor</td>
-<td>none</td>
-<td>softioc-anglecalc</td>
-<td>XF:05IDD-ES:1{nKB:horz-Ax:PC}Mtr</td>
+<tr class="row-odd"><td><p>nanoKBh angle calc</p></td>
+<td><p>bs.motor</p></td>
+<td><p>none</p></td>
+<td><p>softioc-anglecalc</p></td>
+<td><p>XF:05IDD-ES:1{nKB:horz-Ax:PC}Mtr</p></td>
 </tr>
-<tr class="row-even"><td>testmotor</td>
-<td>bs.motor</td>
-<td>fpsensor1</td>
-<td>softioc-fpsensor</td>
-<td>XF:05IDD-ES:1{FPS:1-Chan0}Pos-I</td>
+<tr class="row-even"><td><p>testmotor</p></td>
+<td><p>bs.motor</p></td>
+<td><p>fpsensor1</p></td>
+<td><p>softioc-fpsensor</p></td>
+<td><p>XF:05IDD-ES:1{FPS:1-Chan0}Pos-I</p></td>
 </tr>
-<tr class="row-odd"><td>testmotor</td>
-<td>bs.motor</td>
-<td>fpsensor1</td>
-<td>softioc-fpsensor</td>
-<td>XF:05IDD-ES:1{FPS:1-Chan1}Pos-I</td>
+<tr class="row-odd"><td><p>testmotor</p></td>
+<td><p>bs.motor</p></td>
+<td><p>fpsensor1</p></td>
+<td><p>softioc-fpsensor</p></td>
+<td><p>XF:05IDD-ES:1{FPS:1-Chan1}Pos-I</p></td>
 </tr>
-<tr class="row-even"><td>testmotor</td>
-<td>bs.motor</td>
-<td>fpsensor1</td>
-<td>softioc-fpsensor</td>
-<td>XF:05IDD-ES:1{FPS:1-Chan2}Pos-I</td>
+<tr class="row-even"><td><p>testmotor</p></td>
+<td><p>bs.motor</p></td>
+<td><p>fpsensor1</p></td>
+<td><p>softioc-fpsensor</p></td>
+<td><p>XF:05IDD-ES:1{FPS:1-Chan2}Pos-I</p></td>
 </tr>
-<tr class="row-odd"><td>nanoKBv Fine Pitch</td>
-<td>bs.motor</td>
-<td>PI E518</td>
-<td>softioc-mcd19</td>
-<td>XF:05IDD-ES:1{nKB:vert-Ax:PFPI}Mtr</td>
+<tr class="row-odd"><td><p>nanoKBv Fine Pitch</p></td>
+<td><p>bs.motor</p></td>
+<td><p>PI E518</p></td>
+<td><p>softioc-mcd19</p></td>
+<td><p>XF:05IDD-ES:1{nKB:vert-Ax:PFPI}Mtr</p></td>
 </tr>
-<tr class="row-even"><td>nanoKBh Fine Pitch</td>
-<td>bs.motor</td>
-<td>PI E518</td>
-<td>softioc-mcd19</td>
-<td>XF:05IDD-ES:1{nKB:horz-Ax:PFPI}Mtr</td>
+<tr class="row-even"><td><p>nanoKBh Fine Pitch</p></td>
+<td><p>bs.motor</p></td>
+<td><p>PI E518</p></td>
+<td><p>softioc-mcd19</p></td>
+<td><p>XF:05IDD-ES:1{nKB:horz-Ax:PFPI}Mtr</p></td>
 </tr>
-<tr class="row-odd"><td>nanoKBh Coarse Pitch</td>
-<td>bs.motor</td>
-<td>PI E712</td>
-<td>softioc-mcd20</td>
-<td>XF:05IDD-ES:1{nKB:horz-Ax:PC}Mtr</td>
+<tr class="row-odd"><td><p>nanoKBh Coarse Pitch</p></td>
+<td><p>bs.motor</p></td>
+<td><p>PI E712</p></td>
+<td><p>softioc-mcd20</p></td>
+<td><p>XF:05IDD-ES:1{nKB:horz-Ax:PC}Mtr</p></td>
 </tr>
-<tr class="row-even"><td>nanoKBv Coarse Pitch</td>
-<td>bs.motor</td>
-<td>PI E712</td>
-<td>softioc-mcd24</td>
-<td>XF:05IDD-ES:1{nKB:vert-Ax:PC}Mtr</td>
+<tr class="row-even"><td><p>nanoKBv Coarse Pitch</p></td>
+<td><p>bs.motor</p></td>
+<td><p>PI E712</p></td>
+<td><p>softioc-mcd24</p></td>
+<td><p>XF:05IDD-ES:1{nKB:vert-Ax:PC}Mtr</p></td>
 </tr>
-<tr class="row-odd"><td>Sample Coarse Z</td>
-<td>nano_stage.z</td>
-<td>Smaract</td>
-<td>softioc-mcd26</td>
-<td>XF:05IDD-ES:1{nKB:Smpl-Ax:sz}Mtr</td>
+<tr class="row-odd"><td><p>Sample Coarse Z</p></td>
+<td><p>nano_stage.z</p></td>
+<td><p>Smaract</p></td>
+<td><p>softioc-mcd26</p></td>
+<td><p>XF:05IDD-ES:1{nKB:Smpl-Ax:sz}Mtr</p></td>
 </tr>
-<tr class="row-even"><td>Sample Coarse X</td>
-<td>nano_stage.x</td>
-<td>Smaract</td>
-<td>softioc-mcd26</td>
-<td>XF:05IDD-ES:1{nKB:Smpl-Ax:sx}Mtr</td>
+<tr class="row-even"><td><p>Sample Coarse X</p></td>
+<td><p>nano_stage.x</p></td>
+<td><p>Smaract</p></td>
+<td><p>softioc-mcd26</p></td>
+<td><p>XF:05IDD-ES:1{nKB:Smpl-Ax:sx}Mtr</p></td>
 </tr>
-<tr class="row-odd"><td>Sample Coarse Y</td>
-<td>nano_stage.y</td>
-<td>Smaract</td>
-<td>softioc-mcd26</td>
-<td>XF:05IDD-ES:1{nKB:Smpl-Ax:sy}Mtr</td>
+<tr class="row-odd"><td><p>Sample Coarse Y</p></td>
+<td><p>nano_stage.y</p></td>
+<td><p>Smaract</p></td>
+<td><p>softioc-mcd26</p></td>
+<td><p>XF:05IDD-ES:1{nKB:Smpl-Ax:sy}Mtr</p></td>
 </tr>
-<tr class="row-even"><td>Sample Theta</td>
-<td>nano_stage.th</td>
-<td>Smaract</td>
-<td>softioc-mcd26</td>
-<td>XF:05IDD-ES:1{nKB:Smpl-Ax:th}Mtr</td>
+<tr class="row-even"><td><p>Sample Theta</p></td>
+<td><p>nano_stage.th</p></td>
+<td><p>Smaract</p></td>
+<td><p>softioc-mcd26</p></td>
+<td><p>XF:05IDD-ES:1{nKB:Smpl-Ax:th}Mtr</p></td>
 </tr>
-<tr class="row-odd"><td>Sample Top Z</td>
-<td>nano_stage.topx</td>
-<td>Smaract</td>
-<td>softioc-mcd26</td>
-<td>XF:05IDD-ES:1{nKB:Smpl-Ax:zth}Mtr</td>
+<tr class="row-odd"><td><p>Sample Top Z</p></td>
+<td><p>nano_stage.topx</p></td>
+<td><p>Smaract</p></td>
+<td><p>softioc-mcd26</p></td>
+<td><p>XF:05IDD-ES:1{nKB:Smpl-Ax:zth}Mtr</p></td>
 </tr>
-<tr class="row-even"><td>Sample Top X</td>
-<td>nano_stage.topz</td>
-<td>Smaract</td>
-<td>softioc-mcd26</td>
-<td>XF:05IDD-ES:1{nKB:Smpl-Ax:xth}Mtr</td>
+<tr class="row-even"><td><p>Sample Top X</p></td>
+<td><p>nano_stage.topz</p></td>
+<td><p>Smaract</p></td>
+<td><p>softioc-mcd26</p></td>
+<td><p>XF:05IDD-ES:1{nKB:Smpl-Ax:xth}Mtr</p></td>
 </tr>
-<tr class="row-odd"><td>Sample Scanner X</td>
-<td>nano_stage.sx</td>
-<td>nPoint</td>
-<td>softioc-nPoint</td>
-<td>XF:05IDD-ES:1{nKB:Smpl-Ax:ssx}Mtr</td>
+<tr class="row-odd"><td><p>Sample Scanner X</p></td>
+<td><p>nano_stage.sx</p></td>
+<td><p>nPoint</p></td>
+<td><p>softioc-nPoint</p></td>
+<td><p>XF:05IDD-ES:1{nKB:Smpl-Ax:ssx}Mtr</p></td>
 </tr>
-<tr class="row-even"><td>Sample Scanner Y</td>
-<td>nano_stage.sy</td>
-<td>nPoint</td>
-<td>softioc-nPoint</td>
-<td>XF:05IDD-ES:1{nKB:Smpl-Ax:ssy}Mtr</td>
+<tr class="row-even"><td><p>Sample Scanner Y</p></td>
+<td><p>nano_stage.sy</p></td>
+<td><p>nPoint</p></td>
+<td><p>softioc-nPoint</p></td>
+<td><p>XF:05IDD-ES:1{nKB:Smpl-Ax:ssy}Mtr</p></td>
 </tr>
-<tr class="row-odd"><td>Sample Scanner Z</td>
-<td>nano_stage.sz</td>
-<td>nPoint</td>
-<td>softioc-nPoint</td>
-<td>XF:05IDD-ES:1{nKB:Smpl-Ax:ssz}Mtr</td>
+<tr class="row-odd"><td><p>Sample Scanner Z</p></td>
+<td><p>nano_stage.sz</p></td>
+<td><p>nPoint</p></td>
+<td><p>softioc-nPoint</p></td>
+<td><p>XF:05IDD-ES:1{nKB:Smpl-Ax:ssz}Mtr</p></td>
 </tr>
-<tr class="row-even"><td>testmotor</td>
-<td>bs.motor</td>
-<td>picoscale</td>
-<td>softioc-picoscale</td>
-<td>XF:</td>
+<tr class="row-even"><td><p>testmotor</p></td>
+<td><p>bs.motor</p></td>
+<td><p>picoscale</p></td>
+<td><p>softioc-picoscale</p></td>
+<td><p>XF:</p></td>
 </tr>
-<tr class="row-odd"><td>nanoZebra</td>
-<td>nanoZebra</td>
-<td>none</td>
-<td>softioc-zebra</td>
-<td>XF:05IDD-ES:1{Dev:Zebra2}</td>
+<tr class="row-odd"><td><p>nanoZebra</p></td>
+<td><p>nanoZebra</p></td>
+<td><p>none</p></td>
+<td><p>softioc-zebra</p></td>
+<td><p>XF:05IDD-ES:1{Dev:Zebra2}</p></td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="docutils align-left" id="xf05idd-det1">
+<table class="docutils align-left" id="xf05idd-det1">
 <caption><span class="caption-text">xf05idd-det1</span><a class="headerlink" href="#xf05idd-det1" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="30%" />
-<col width="22%" />
-<col width="17%" />
-<col width="6%" />
-<col width="26%" />
+<col style="width: 30%" />
+<col style="width: 22%" />
+<col style="width: 17%" />
+<col style="width: 6%" />
+<col style="width: 26%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Motor Controller</th>
-<th class="head">IOC</th>
-<th class="head">Motor</th>
-<th class="head">PV</th>
-<th class="head">Bluesky Object</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Motor Controller</p></th>
+<th class="head"><p>IOC</p></th>
+<th class="head"><p>Motor</p></th>
+<th class="head"><p>PV</p></th>
+<th class="head"><p>Bluesky Object</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>mc01</td>
-<td>softioc-mc01</td>
-<td>testmotor</td>
-<td>XF:</td>
-<td>bs.motor</td>
+<tbody>
+<tr class="row-even"><td><p>mc01</p></td>
+<td><p>softioc-mc01</p></td>
+<td><p>testmotor</p></td>
+<td><p>XF:</p></td>
+<td><p>bs.motor</p></td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="docutils align-left" id="xf05idd-det2">
+<table class="docutils align-left" id="xf05idd-det2">
 <caption><span class="caption-text">xf05idd-det2</span><a class="headerlink" href="#xf05idd-det2" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="30%" />
-<col width="22%" />
-<col width="17%" />
-<col width="6%" />
-<col width="26%" />
+<col style="width: 30%" />
+<col style="width: 22%" />
+<col style="width: 17%" />
+<col style="width: 6%" />
+<col style="width: 26%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Motor Controller</th>
-<th class="head">IOC</th>
-<th class="head">Motor</th>
-<th class="head">PV</th>
-<th class="head">Bluesky Object</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Motor Controller</p></th>
+<th class="head"><p>IOC</p></th>
+<th class="head"><p>Motor</p></th>
+<th class="head"><p>PV</p></th>
+<th class="head"><p>Bluesky Object</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>mc01</td>
-<td>softioc-mc01</td>
-<td>testmotor</td>
-<td>XF:</td>
-<td>bs.motor</td>
+<tbody>
+<tr class="row-even"><td><p>mc01</p></td>
+<td><p>softioc-mc01</p></td>
+<td><p>testmotor</p></td>
+<td><p>XF:</p></td>
+<td><p>bs.motor</p></td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="docutils align-left" id="xf05idd-ioc2">
+<table class="docutils align-left" id="xf05idd-ioc2">
 <caption><span class="caption-text">xf05idd-ioc2</span><a class="headerlink" href="#xf05idd-ioc2" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="30%" />
-<col width="22%" />
-<col width="17%" />
-<col width="6%" />
-<col width="26%" />
+<col style="width: 30%" />
+<col style="width: 22%" />
+<col style="width: 17%" />
+<col style="width: 6%" />
+<col style="width: 26%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Motor Controller</th>
-<th class="head">IOC</th>
-<th class="head">Motor</th>
-<th class="head">PV</th>
-<th class="head">Bluesky Object</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Motor Controller</p></th>
+<th class="head"><p>IOC</p></th>
+<th class="head"><p>Motor</p></th>
+<th class="head"><p>PV</p></th>
+<th class="head"><p>Bluesky Object</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>mc01</td>
-<td>softioc-mc01</td>
-<td>testmotor</td>
-<td>XF:</td>
-<td>bs.motor</td>
+<tbody>
+<tr class="row-even"><td><p>mc01</p></td>
+<td><p>softioc-mc01</p></td>
+<td><p>testmotor</p></td>
+<td><p>XF:</p></td>
+<td><p>bs.motor</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="eps">
 <h3>EPS<a class="headerlink" href="#eps" title="Permalink to this headline">¶</a></h3>
-<div class="admonition-todo admonition" id="index-5">
-<p class="first admonition-title">Todo</p>
-<ul class="last simple">
-<li>Upload wiring diagrams</li>
+<div class="admonition-todo admonition" id="id6">
+<p class="admonition-title">Todo</p>
+<ul class="simple">
+<li><p>Upload wiring diagrams</p></li>
 </ul>
 </div>
 </div>
