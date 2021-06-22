@@ -33,31 +33,33 @@ Setting up Users
 
 Beamline Setup
 --------------
-*These tasks are typically done once a cycle*
+These tasks are typically done once a cycle.
 
 .. todo::
 
-    * Beamline alignment
-    * Setting up the Merlin
-    * Setting up the Dexela
-    * Setting up the Xspress3
+   * Beamline alignment
+   * Setting up the Merlin
+   * Setting up the Dexela
+   * Setting up the Xspress3
 
 Preparing for a new cycle
 *************************
-*This is a comprehensive list of things to consider before the start of a cycle.*
-    * Close all system safety work permits.
-    * Check cryocooler pressure and load.
-    * Check all vacuum, temperature, water systems.
-    * Check and top-off the PPS burn-through.
-    * Confirm the RGA in the A-hutch is connected and scanning.
-    * Perform a Radiation Safety Component Checklist.
-    * Post a valid SAF and ESR.
-    * Test and deploy the latest bluesky environment.
-    * Setup lsyncd.
+This is a comprehensive list of things to consider before the start of a cycle.
+
+    - Close all system safety work permits.
+    - Check cryocooler pressure and load.
+    - Check all vacuum, temperature, water systems.
+    - Check and top-off the PPS burn-through.
+    - Confirm the RGA in the A-hutch is connected and scanning.
+    - Perform a Radiation Safety Component Checklist.
+    - Post a valid SAF and ESR.
+    - Test and deploy the latest bluesky environment.
+    - Setup lsyncd.
+
 
 Aligning the Beamline
 *********************
-*Historically, the beamline and storage ring take about a day to stabilize. Therefore, on day 1 of operations, it makes sense to open the front-end shutter and get light through the monochromator. Since components will drift, optimization should take place on day 2 and after a local bump is performed.*
+Historically, the beamline and storage ring take about a day to stabilize. Therefore, on day 1 of operations, it makes sense to open the front-end shutter and get light through the monochromator. Since components will drift, optimization should take place on day 2 and after a local bump is performed.
     #. Previous motor positions should be captured at the end of each cycle. As a precaution, capture the current motor positions.
     #. Check front-end (FE) slits, white-beam (WB) slits, and mirror (HFM) position.
         * Open the gap of the undulator to 18 000 μm. Insert the camera in the HFM tank.
@@ -76,6 +78,48 @@ Aligning the Beamline
         * Once the light is through the monochromator, the FE shutter can be closed, the camera removed, and alignment downstream can continue.
     #. Tweak monochromator and mirror alignment to center secondary source aperture (SSA).
 
+
+Focusing the K-B Mirrors
+************************
+These are the complete instructions for focusing the K-B mirrors. Some steps can be skipped if the optics are already aligned and the goal is to tweak the optics.
+    #. Check that the local bump is at the nominal values.
+    #. Open the slits: JJ Slits (2.0 x 2.0 mm), SSA (1.0 x 0.05 mm).
+    #. Move the K-B mirrors out of the beam. They should return to 0 pitch and translate out of the beam path.
+    #. Make sure the X-ray beam goes through the system. Check the X-ray eye. The ion chambers should see X-rays. The X-rays should pass through the nanoKB chamber. The X-ray beam should be about 1.5 x 1.2 mm (HxV) on the Merlin detector. Be sure to keep the total counts below 100k.
+    #. Check that the JJ slits are centered on the X-ray beam. Close down the JJ slits to 0.3 x 0.6 mm (HxV).
+    #. Move in and roughly align the K-B mirrors:
+        * Start with the fine pitch motors for both K-B mirrors at 15 μm (the middle of their range).
+        * Move in the vertical mirror. Check that the mirror is flat and set to zero. Move to the middle of the X-ray beam.
+        * Move in the horizontal mirror. Check that the mirror is flat and set to zero. Move to middle of the X-ray beam.
+        * Pitch the vertical mirror to 3 mrad. Translate the mirror down by 0.63 mm.
+        * Pitch the horizontal mirror to 3 mrad. Translate the mirror outboard by 0.15 mm.
+        * Check that the focused beam can be seen by the Merlin and the VLM is not blocking the focused beam. VLM positions June 2021 (X, Y, Z) = (-0.090, -0.380, -1.357)
+    #. Put in the diving board. Look for the fiducial marker patterns (Pt/Cr, 50 nm) with 5 μm wide horizontal and vertical features on the very edge.
+    #. Use the VLM and fluorescence signal to roughly align the X-ray position cross-hair.
+    #. Start with the vertical focus alignment:
+        * Run a knife-edge scan across a line to get an initial beam size. ``RE(nano_knife_edge(nano_stage.sy, -10, 10, 0.2, 0.1))``
+        * If the beam size is greater than 1 μm, move the coarse Z by 500 μm and look for a smaller beam size. Be aware line features will move horizontally when changing coarse Z.
+        * Repeat until the beam size is smaller than 1 μm.
+        * Run the slit-scan script. Here we as scanning the sample from -8 to 8 μm to move across the Pt line. The JJ slits are set to a gap of 0.1 mm and scanned a total of 1 mm centered around the beam center. Some of the knife-edge scans will not hit the mirror, so these scans will need to be excluded from the final analysis. ``RE(slit_nanoflyscan(nano_stage.sy, -8, 8, 0.1, 0.05, jjslits.v_trans, 3.01, 4.01, 0.1, jjslits.v_gap, 0.1))``
+        * Run the calculation for alignment. ``slit_nanoflyscan(scan_id_list=np.linspace(startid, stopid, numscans), slit_range=np.linspace(jjslit_start, jjslit_stop, numscans), interp_range=[2, 3, 4, 5, 6, 7, 8, 9, 10], orthogonality=False)``
+        * The script will show a plot of the Pt line center and report some values. In particular, pay attention to the defocus amount. Move the sample by the defocus amount using the coarse Z stage.
+        * Run another knife-edge scan to make sure the focus improved.
+        * Run the slit-scan script and calculation again. Hopefully upon calculation, the defocus amount is small (< 100 μm) and the curve is relatively flat. In that case, change the orthogonality flag to True and run the calculation again. Otherwise, repeat until the defocus amount is small.
+        * With orthogonality True, the fine vertical pitch is adjusted. Move the fine pitch actuator for the vertical pitch. Move the coarse Z stage as well.
+        * Run a knife-edge scan to check the focus improved.
+        * Repeat the slit-scan and knife-edge scans with orthogonality True until the focus is acceptable.
+    #. Focus the horizontal K-B mirror
+
+        .. warning::
+           For horizontal mirror alignment, only horizontal mirror pitch should be moved to prevent astigmatism in the two focal planes.
+
+        * Find a line for scanning and run a knife-edge scan to get the initial beam size.
+        * Run the slit-scan to scan the JJ slits across the mirror.
+        * Perform the slit-scan calculations with orthogonality False.
+        * The calculation will output an amount to move the horizontal K-B mirror in mrad. To translate this to a linear distance for the fine actuator, multiply by 100 mm. Move the horizontal fine pitch actuator by this amount.
+        * Similar to the vertical mirror, run a knife-edge scan to make sure the actuator was moved the correct direction and measure the new focus.
+        * Repeat the slit-scans until the focus is acceptable.
+        * Check the horizontal focus as a function of SSA width.
 
 Calibrating the monochromator
 *****************************

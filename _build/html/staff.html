@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Beamline Staff Pages [staff only] &mdash; NSLS-II SRX  documentation</title>
@@ -96,6 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#beamline-setup">Beamline Setup</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#preparing-for-a-new-cycle">Preparing for a new cycle</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#aligning-the-beamline">Aligning the Beamline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#focusing-the-k-b-mirrors">Focusing the K-B Mirrors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#calibrating-the-monochromator">Calibrating the monochromator</a></li>
 </ul>
 </li>
@@ -182,10 +184,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="beamline-staff-pages-staff-only">
+  <section id="beamline-staff-pages-staff-only">
 <h1>Beamline Staff Pages [staff only]<a class="headerlink" href="#beamline-staff-pages-staff-only" title="Permalink to this headline">¶</a></h1>
 <p>The information provided on this page is directed towards helping beamline staff.</p>
-<div class="section" id="quick-links">
+<section id="quick-links">
 <h2>Quick Links<a class="headerlink" href="#quick-links" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="http://xf05idd-webcam1.nsls2.bnl.local">Analog camera web server</a></p></li>
@@ -206,8 +208,8 @@
 <li><p>Fix IOCs reference</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="setting-up-users">
+</section>
+<section id="setting-up-users">
 <h2>Setting up Users<a class="headerlink" href="#setting-up-users" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Post SAF to <a class="reference external" href="http://passadmin.bnl.gov">PASS</a></p></li>
@@ -222,10 +224,10 @@
 </li>
 <li><p>Perform beamline specific training. <a class="reference external" href="https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf">5-ID BST Form</a></p></li>
 </ol>
-</div>
-<div class="section" id="beamline-setup">
+</section>
+<section id="beamline-setup">
 <h2>Beamline Setup<a class="headerlink" href="#beamline-setup" title="Permalink to this headline">¶</a></h2>
-<p><em>These tasks are typically done once a cycle</em></p>
+<p>These tasks are typically done once a cycle.</p>
 <div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
 <ul class="simple">
@@ -235,10 +237,11 @@
 <li><p>Setting up the Xspress3</p></li>
 </ul>
 </div>
-<div class="section" id="preparing-for-a-new-cycle">
+<section id="preparing-for-a-new-cycle">
 <h3>Preparing for a new cycle<a class="headerlink" href="#preparing-for-a-new-cycle" title="Permalink to this headline">¶</a></h3>
-<dl class="simple">
-<dt><em>This is a comprehensive list of things to consider before the start of a cycle.</em></dt><dd><ul class="simple">
+<p>This is a comprehensive list of things to consider before the start of a cycle.</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>Close all system safety work permits.</p></li>
 <li><p>Check cryocooler pressure and load.</p></li>
 <li><p>Check all vacuum, temperature, water systems.</p></li>
@@ -249,13 +252,12 @@
 <li><p>Test and deploy the latest bluesky environment.</p></li>
 <li><p>Setup lsyncd.</p></li>
 </ul>
-</dd>
-</dl>
-</div>
-<div class="section" id="aligning-the-beamline">
+</div></blockquote>
+</section>
+<section id="aligning-the-beamline">
 <h3>Aligning the Beamline<a class="headerlink" href="#aligning-the-beamline" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
-<dt><em>Historically, the beamline and storage ring take about a day to stabilize. Therefore, on day 1 of operations, it makes sense to open the front-end shutter and get light through the monochromator. Since components will drift, optimization should take place on day 2 and after a local bump is performed.</em></dt><dd><ol class="arabic simple">
+<dt>Historically, the beamline and storage ring take about a day to stabilize. Therefore, on day 1 of operations, it makes sense to open the front-end shutter and get light through the monochromator. Since components will drift, optimization should take place on day 2 and after a local bump is performed.</dt><dd><ol class="arabic simple">
 <li><p>Previous motor positions should be captured at the end of each cycle. As a precaution, capture the current motor positions.</p></li>
 <li><dl class="simple">
 <dt>Check front-end (FE) slits, white-beam (WB) slits, and mirror (HFM) position.</dt><dd><ul class="simple">
@@ -286,8 +288,69 @@
 </ol>
 </dd>
 </dl>
+</section>
+<section id="focusing-the-k-b-mirrors">
+<h3>Focusing the K-B Mirrors<a class="headerlink" href="#focusing-the-k-b-mirrors" title="Permalink to this headline">¶</a></h3>
+<dl>
+<dt>These are the complete instructions for focusing the K-B mirrors. Some steps can be skipped if the optics are already aligned and the goal is to tweak the optics.</dt><dd><ol class="arabic">
+<li><p>Check that the local bump is at the nominal values.</p></li>
+<li><p>Open the slits: JJ Slits (2.0 x 2.0 mm), SSA (1.0 x 0.05 mm).</p></li>
+<li><p>Move the K-B mirrors out of the beam. They should return to 0 pitch and translate out of the beam path.</p></li>
+<li><p>Make sure the X-ray beam goes through the system. Check the X-ray eye. The ion chambers should see X-rays. The X-rays should pass through the nanoKB chamber. The X-ray beam should be about 1.5 x 1.2 mm (HxV) on the Merlin detector. Be sure to keep the total counts below 100k.</p></li>
+<li><p>Check that the JJ slits are centered on the X-ray beam. Close down the JJ slits to 0.3 x 0.6 mm (HxV).</p></li>
+<li><dl class="simple">
+<dt>Move in and roughly align the K-B mirrors:</dt><dd><ul class="simple">
+<li><p>Start with the fine pitch motors for both K-B mirrors at 15 μm (the middle of their range).</p></li>
+<li><p>Move in the vertical mirror. Check that the mirror is flat and set to zero. Move to the middle of the X-ray beam.</p></li>
+<li><p>Move in the horizontal mirror. Check that the mirror is flat and set to zero. Move to middle of the X-ray beam.</p></li>
+<li><p>Pitch the vertical mirror to 3 mrad. Translate the mirror down by 0.63 mm.</p></li>
+<li><p>Pitch the horizontal mirror to 3 mrad. Translate the mirror outboard by 0.15 mm.</p></li>
+<li><p>Check that the focused beam can be seen by the Merlin and the VLM is not blocking the focused beam. VLM positions June 2021 (X, Y, Z) = (-0.090, -0.380, -1.357)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Put in the diving board. Look for the fiducial marker patterns (Pt/Cr, 50 nm) with 5 μm wide horizontal and vertical features on the very edge.</p></li>
+<li><p>Use the VLM and fluorescence signal to roughly align the X-ray position cross-hair.</p></li>
+<li><dl class="simple">
+<dt>Start with the vertical focus alignment:</dt><dd><ul class="simple">
+<li><p>Run a knife-edge scan across a line to get an initial beam size. <code class="docutils literal notranslate"><span class="pre">RE(nano_knife_edge(nano_stage.sy,</span> <span class="pre">-10,</span> <span class="pre">10,</span> <span class="pre">0.2,</span> <span class="pre">0.1))</span></code></p></li>
+<li><p>If the beam size is greater than 1 μm, move the coarse Z by 500 μm and look for a smaller beam size. Be aware line features will move horizontally when changing coarse Z.</p></li>
+<li><p>Repeat until the beam size is smaller than 1 μm.</p></li>
+<li><p>Run the slit-scan script. Here we as scanning the sample from -8 to 8 μm to move across the Pt line. The JJ slits are set to a gap of 0.1 mm and scanned a total of 1 mm centered around the beam center. Some of the knife-edge scans will not hit the mirror, so these scans will need to be excluded from the final analysis. <code class="docutils literal notranslate"><span class="pre">RE(slit_nanoflyscan(nano_stage.sy,</span> <span class="pre">-8,</span> <span class="pre">8,</span> <span class="pre">0.1,</span> <span class="pre">0.05,</span> <span class="pre">jjslits.v_trans,</span> <span class="pre">3.01,</span> <span class="pre">4.01,</span> <span class="pre">0.1,</span> <span class="pre">jjslits.v_gap,</span> <span class="pre">0.1))</span></code></p></li>
+<li><p>Run the calculation for alignment. <code class="docutils literal notranslate"><span class="pre">slit_nanoflyscan(scan_id_list=np.linspace(startid,</span> <span class="pre">stopid,</span> <span class="pre">numscans),</span> <span class="pre">slit_range=np.linspace(jjslit_start,</span> <span class="pre">jjslit_stop,</span> <span class="pre">numscans),</span> <span class="pre">interp_range=[2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8,</span> <span class="pre">9,</span> <span class="pre">10],</span> <span class="pre">orthogonality=False)</span></code></p></li>
+<li><p>The script will show a plot of the Pt line center and report some values. In particular, pay attention to the defocus amount. Move the sample by the defocus amount using the coarse Z stage.</p></li>
+<li><p>Run another knife-edge scan to make sure the focus improved.</p></li>
+<li><p>Run the slit-scan script and calculation again. Hopefully upon calculation, the defocus amount is small (&lt; 100 μm) and the curve is relatively flat. In that case, change the orthogonality flag to True and run the calculation again. Otherwise, repeat until the defocus amount is small.</p></li>
+<li><p>With orthogonality True, the fine vertical pitch is adjusted. Move the fine pitch actuator for the vertical pitch. Move the coarse Z stage as well.</p></li>
+<li><p>Run a knife-edge scan to check the focus improved.</p></li>
+<li><p>Repeat the slit-scan and knife-edge scans with orthogonality True until the focus is acceptable.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Focus the horizontal K-B mirror</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For horizontal mirror alignment, only horizontal mirror pitch should be moved to prevent astigmatism in the two focal planes.</p>
 </div>
-<div class="section" id="calibrating-the-monochromator">
+<ul class="simple">
+<li><p>Find a line for scanning and run a knife-edge scan to get the initial beam size.</p></li>
+<li><p>Run the slit-scan to scan the JJ slits across the mirror.</p></li>
+<li><p>Perform the slit-scan calculations with orthogonality False.</p></li>
+<li><p>The calculation will output an amount to move the horizontal K-B mirror in mrad. To translate this to a linear distance for the fine actuator, multiply by 100 mm. Move the horizontal fine pitch actuator by this amount.</p></li>
+<li><p>Similar to the vertical mirror, run a knife-edge scan to make sure the actuator was moved the correct direction and measure the new focus.</p></li>
+<li><p>Repeat the slit-scans until the focus is acceptable.</p></li>
+<li><p>Check the horizontal focus as a function of SSA width.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</dd>
+</dl>
+</section>
+<section id="calibrating-the-monochromator">
 <h3>Calibrating the monochromator<a class="headerlink" href="#calibrating-the-monochromator" title="Permalink to this headline">¶</a></h3>
 <dl>
 <dt><em>Calibrating the monochromator is done by collecting XANES spectra across several element absorption edges. A least-squares fitting routine will then calculate the HDCM parameters for the calibration</em></dt><dd><ol class="arabic">
@@ -318,9 +381,9 @@
 </ol>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="beamline-maintenance">
+</section>
+</section>
+<section id="beamline-maintenance">
 <h2>Beamline Maintenance<a class="headerlink" href="#beamline-maintenance" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="id3">
 <p class="admonition-title">Todo</p>
@@ -329,7 +392,7 @@
 <li><p>Power loss preparation and recovery</p></li>
 </ul>
 </div>
-<div class="section" id="cryocooler">
+<section id="cryocooler">
 <h3>Cryocooler<a class="headerlink" href="#cryocooler" title="Permalink to this headline">¶</a></h3>
 <p><em>The manual for the cryocooler can be found here.</em></p>
 <div class="admonition-todo admonition" id="id4">
@@ -338,7 +401,7 @@
 <li><p>Upload cryocooler manual</p></li>
 </ul>
 </div>
-<div class="section" id="warming-the-cryocooler">
+<section id="warming-the-cryocooler">
 <h4>Warming the cryocooler<a class="headerlink" href="#warming-the-cryocooler" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ol class="arabic simple">
@@ -349,8 +412,8 @@
 <li><p>The cryocooler will warm up over several days.</p></li>
 </ol>
 </div></blockquote>
-</div>
-<div class="section" id="cooling-the-cryocooler">
+</section>
+<section id="cooling-the-cryocooler">
 <h4>Cooling the cryocooler<a class="headerlink" href="#cooling-the-cryocooler" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ol class="arabic simple">
@@ -390,12 +453,12 @@
 </li>
 </ol>
 </div></blockquote>
-</div>
-</div>
-</div>
-<div class="section" id="controls">
+</section>
+</section>
+</section>
+<section id="controls">
 <h2>Controls<a class="headerlink" href="#controls" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="ioc-monitoring">
+<section id="ioc-monitoring">
 <h3>IOC Monitoring<a class="headerlink" href="#ioc-monitoring" title="Permalink to this headline">¶</a></h3>
 <dl>
 <dt>On a Debian server, the manage-iocs tool can be used to monitor the IOC status. SSH into the server that hosts the IOC (<em>e.g.</em> xf05idd-ioc1) and run:</dt><dd><ul>
@@ -441,8 +504,8 @@ $ sudo kill -9 820
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="motion-controls">
+</section>
+<section id="motion-controls">
 <h3>Motion Controls<a class="headerlink" href="#motion-controls" title="Permalink to this headline">¶</a></h3>
 <div class="admonition-todo admonition" id="id5">
 <p class="admonition-title">Todo</p>
@@ -722,8 +785,8 @@ $ sudo kill -9 820
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="eps">
+</section>
+<section id="eps">
 <h3>EPS<a class="headerlink" href="#eps" title="Permalink to this headline">¶</a></h3>
 <div class="admonition-todo admonition" id="id6">
 <p class="admonition-title">Todo</p>
@@ -731,9 +794,9 @@ $ sudo kill -9 820
 <li><p>Upload wiring diagrams</p></li>
 </ul>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>

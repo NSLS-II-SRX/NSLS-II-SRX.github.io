@@ -1,10 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Useful Commands &mdash; NSLS-II SRX  documentation</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,10 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -164,17 +167,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="useful-commands">
+  <section id="useful-commands">
 <h1>Useful Commands<a class="headerlink" href="#useful-commands" title="Permalink to this headline">¶</a></h1>
 <p>Below is a list of useful commands for running the SRX beamline. Previous commands can be seen by hitting the up arrow in Bluesky. To search through them, you can start typing a command before hitting the up arrow to filter your history.</p>
-<div class="section" id="starting-bluesky">
+<section id="starting-bluesky">
 <h2>Starting Bluesky<a class="headerlink" href="#starting-bluesky" title="Permalink to this headline">¶</a></h2>
 <p>Start Bluesky - <em>Start Bluesky from the terminal.</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bsui
 </pre></div>
 </div>
-</div>
-<div class="section" id="general-functions">
+</section>
+<section id="general-functions">
 <h2>General Functions<a class="headerlink" href="#general-functions" title="Permalink to this headline">¶</a></h2>
 <p>Change X-ray energy - <em>Either command can be used below. The energy can be entered in units of eV or keV.</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">energy</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mf">7.2</span><span class="p">)</span>
@@ -190,8 +193,8 @@
 <span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">setroi</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Fe&#39;</span><span class="p">,</span> <span class="s1">&#39;ka1&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="xrf-imaging">
+</section>
+<section id="xrf-imaging">
 <h2>XRF Imaging<a class="headerlink" href="#xrf-imaging" title="Permalink to this headline">¶</a></h2>
 <p>Fly scan - <em>Perform a fly scan. Return an image with dimensions (numX, numY)</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">nano_scan_and_fly</span><span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span>
@@ -205,8 +208,8 @@
                             <span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">stepY</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="xas-spectroscopy">
+</section>
+<section id="xas-spectroscopy">
 <h2>XAS Spectroscopy<a class="headerlink" href="#xas-spectroscopy" title="Permalink to this headline">¶</a></h2>
 <p>Print element binding energies - <em>Print the binding energies for the element of interest. The “best” edge can be returned as available.</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">Fe_k</span> <span class="o">=</span> <span class="n">getbindingE</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">)</span>
@@ -224,8 +227,8 @@
                               <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;Fe_foil&#39;</span><span class="p">]))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="troubleshooting">
+</section>
+<section id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
 <p>Pause a scan - <em>The scan will pause at the next checkpoint.</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CTRL</span><span class="o">+</span><span class="n">C</span>
@@ -244,8 +247,8 @@
 <span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">RE</span><span class="o">.</span><span class="n">abort</span><span class="p">()</span>  <span class="c1"># Label scan as failure</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
