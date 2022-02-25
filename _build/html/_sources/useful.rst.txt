@@ -12,8 +12,8 @@ General Functions
 *****************
 Change X-ray energy - *Either command can be used below. The energy can be entered in units of eV or keV.* ::
 
-    Bluesky@SRX [1] energy.move(7.2)
-    Bluesky@SRX [2] %mov energy 7.2
+    Bluesky@SRX [1] %mov energy 7.2
+    Bluesky@SRX [2] energy.move(7.2)
 
 Optimize the beam - *Maximize the X-ray flux.* ::
 
