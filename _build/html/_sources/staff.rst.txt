@@ -6,17 +6,19 @@ The information provided on this page is directed towards helping beamline staff
 
 Quick Links
 -----------
+#. `Digital camera web server <http://xf05idd-webcam4.nsls2.bnl.local>`_
 #. `Analog camera web server <http://xf05idd-webcam1.nsls2.bnl.local>`_
 #. `Ceiling camera web server <http://xf05idd-webcam2.nsls2.bnl.local>`_
-#. `Trac ticket system <https://controlsweb.nsls2.bnl.gov/trac/>`_
 #. `Jira ticket system <http://jira.nsls2.bnl.gov>`_
 #. `SRX Posted SAFs <https://nsls2bid.bnl.gov/SAF/Index/5-ID>`_
-#. `SRX Olog <http://xf05id2-ca1.nsls2.bnl.local/logbook/index.html>`_
+#. `SRX Olog <https://epics-services.nsls2.bnl.gov/srx_logbook/index.html>`_
 #. `SRX Radiation Safety Component Checklist <https://ps.bnl.gov/docs/Reference/NSLS-II%20Beamline%205-ID%20Radiation%20Safety%20Component%20Checklist%20TEMPLATE.pdf>`_
 #. `NSLS-II Controls Documentation <http://nsls-ii.github.io/>`_
-#. `NSLS-II IP Address Management <https://controlsweb01.nsls2.bnl.gov/IP/?page=login&section=timeout>`_
 #. `NSLS-II Sharepoint Documentation <https://ps.bnl.gov/phot/ros/Shared%20Documents/MAXIMO%20Development/Beamlines/LT-R-XFD-CO-DR-SRX-002_Rev1.xlsx>`_
 #. `Former SRX Wiki Staff Page <https://beamline5id.bnl.gov/index.php/Main_Page>`_
+#. `Trac ticket system <https://controlsweb.nsls2.bnl.gov/trac/>`_ (deprecated)
+#. `Old SRX Olog <http://xf05id2-ca1.nsls2.bnl.local/logbook/index.html>`_ (deprecated)
+#. `NSLS-II IP Address Management <https://controlsweb01.nsls2.bnl.gov/IP/?page=login&section=timeout>`_ (deprecated)
 
 .. todo::
     * Fix IOCs reference
@@ -25,7 +27,7 @@ Setting up Users
 ----------------
 #. Post SAF to `PASS <http://passadmin.bnl.gov>`_
 #. Update user-specific metadata
-    * Open /nsls2/users/xf05id1/.ipython/profile_collection/startup/90-userdata.py
+    * Open ``/home/xf05id1/ipython_ophyd/90-userdata.py``
     * Update proposal dictionary with information from posted SAF. Save.
     * Restart bluesky.
 #. Perform beamline specific training. `5-ID BST Form <https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf>`_
@@ -54,7 +56,6 @@ This is a comprehensive list of things to consider before the start of a cycle.
     - Perform a Radiation Safety Component Checklist.
     - Post a valid SAF and ESR.
     - Test and deploy the latest bluesky environment.
-    - Setup lsyncd.
 
 
 Aligning the Beamline
@@ -93,15 +94,15 @@ These are the complete instructions for focusing the K-B mirrors. Some steps can
         * Move in the horizontal mirror. Check that the mirror is flat and set to zero. Move to middle of the X-ray beam.
         * Pitch the vertical mirror to 3 mrad. Translate the mirror down by 0.63 mm.
         * Pitch the horizontal mirror to 3 mrad. Translate the mirror outboard by 0.15 mm.
-        * Check that the focused beam can be seen by the Merlin and the VLM is not blocking the focused beam. VLM positions June 2021 (X, Y, Z) = (-0.090, -0.380, -1.357)
+        * Check that the focused beam can be seen by the Merlin and the VLM is not blocking the focused beam. VLM positions January 2022 (X, Y, Z) = (0.332, -3.730, 0.196)
     #. Put in the diving board. Look for the fiducial marker patterns (Pt/Cr, 50 nm) with 5 μm wide horizontal and vertical features on the very edge.
     #. Use the VLM and fluorescence signal to roughly align the X-ray position cross-hair.
     #. Start with the vertical focus alignment:
         * Run a knife-edge scan across a line to get an initial beam size. ``RE(nano_knife_edge(nano_stage.sy, -10, 10, 0.2, 0.1))``
         * If the beam size is greater than 1 μm, move the coarse Z by 500 μm and look for a smaller beam size. Be aware line features will move horizontally when changing coarse Z.
         * Repeat until the beam size is smaller than 1 μm.
-        * Run the slit-scan script. Here we as scanning the sample from -8 to 8 μm to move across the Pt line. The JJ slits are set to a gap of 0.1 mm and scanned a total of 1 mm centered around the beam center. Some of the knife-edge scans will not hit the mirror, so these scans will need to be excluded from the final analysis. ``RE(slit_nanoflyscan(nano_stage.sy, -8, 8, 0.1, 0.05, jjslits.v_trans, 3.01, 4.01, 0.1, jjslits.v_gap, 0.1))``
-        * Run the calculation for alignment. ``slit_nanoflyscan(scan_id_list=np.linspace(startid, stopid, numscans), slit_range=np.linspace(jjslit_start, jjslit_stop, numscans), interp_range=[2, 3, 4, 5, 6, 7, 8, 9, 10], orthogonality=False)``
+        * Run the slit-scan script. Here we as scanning the sample from -8 to 8 μm to move across the Pt line. The JJ slits are set to a gap of 0.1 mm and scanned a total of 1 mm centered around the beam center. Some of the knife-edge scans will not hit the mirror, so these scans will need to be excluded from the final analysis. ``RE(focusKB('ver'))``
+        * The slit-scan script will perform a calculation with ``orthogonality=False`` and ignoring the first and last scans. If further adjustment is needed, you can manually run the ``slit_nanoflyscan_cal`` function.
         * The script will show a plot of the Pt line center and report some values. In particular, pay attention to the defocus amount. Move the sample by the defocus amount using the coarse Z stage.
         * Run another knife-edge scan to make sure the focus improved.
         * Run the slit-scan script and calculation again. Hopefully upon calculation, the defocus amount is small (< 100 μm) and the curve is relatively flat. In that case, change the orthogonality flag to True and run the calculation again. Otherwise, repeat until the defocus amount is small.
@@ -114,8 +115,8 @@ These are the complete instructions for focusing the K-B mirrors. Some steps can
            For horizontal mirror alignment, only horizontal mirror pitch should be moved to prevent astigmatism in the two focal planes.
 
         * Find a line for scanning and run a knife-edge scan to get the initial beam size.
-        * Run the slit-scan to scan the JJ slits across the mirror.
-        * Perform the slit-scan calculations with orthogonality False.
+        * Run the slit-scan to scan the JJ slits across the mirror. ``RE(focusKB('hor'))``
+        * Perform the slit-scan calculations with ``orthogonality=False``
         * The calculation will output an amount to move the horizontal K-B mirror in mrad. To translate this to a linear distance for the fine actuator, multiply by 100 mm. Move the horizontal fine pitch actuator by this amount.
         * Similar to the vertical mirror, run a knife-edge scan to make sure the actuator was moved the correct direction and measure the new focus.
         * Repeat the slit-scans until the focus is acceptable.
@@ -129,7 +130,7 @@ Calibrating the monochromator
         Bluesky@SRX [1] X = getbindingE('Fe')
         Bluesky@SRX [2] %mov energy X
         Bluesky@SRX [3] RE(peakup_fine())
-        Bluesky@SRX [4] RE(xanes_plan([X-50, X+50], [1], 0.1))
+        Bluesky@SRX [4] RE(xanes_plan([X-50, X+50], [1], 1.0))
 
     #. Define a dictionary in bluesky with element symbols mapped to scan IDs.::
 
@@ -195,7 +196,7 @@ Controls
 
 IOC Monitoring
 **************
-On a Debian server, the manage-iocs tool can be used to monitor the IOC status. SSH into the server that hosts the IOC (*e.g.* xf05idd-ioc1) and run:
+The ``manage-iocs`` tool can be used to monitor the IOC status. SSH into the server that hosts the IOC (*e.g.* xf05idd-ioc1) and run:
     * List all IOCs ::
 
         $ manage-iocs report
@@ -204,29 +205,19 @@ On a Debian server, the manage-iocs tool can be used to monitor the IOC status. 
 
         $ manage-iocs status
 
-    * Start IOC, *softioc-example*. The path to the IOC can be found using ``manage-iocs``. ::
+    * Start IOC, *softioc-example*. The name of the IOC can be found using ``manage-iocs``. Do not include the "softioc-" in the name. ::
 
-        $ sudo /etc/init.d/softioc-example start
+        $ dzdo manage-iocs start exampleIOC
 
-    * Stop IOC, *softioc-example*. The path to the IOC can be found using ``manage-iocs``. ::
+    * Stop IOC, *softioc-example*. The name of the IOC can be found using ``manage-iocs``. Do not include the "softioc-" in the name. ::
 
-        $ sudo /etc/init.d/softioc-example stop
+        $ dzdo manage-iocs stop exampleIOC
 
-On a CentOS server, the IOCs are managed using procServ. This is typically a simple executable script that will start them.
-    * SSH into the camera server, xf05idd-ioc2.
-    * To start the IOC for the Blackfly camera ::
+    * You can also ``telnet`` into the IOC using ::
 
-        $ cd /epics/iocs/cam-bfly1
-        $ ./start_cam_bfly1
+        $ telnet localhost port
 
-    * Using these commands, the IOC will start and you will be in a telnet of the IOC.
     * To exit the telnet, type ``Ctrl+]`` and then ``q``.
-
-    * To stop the IOC, the process for procServ must be stopped. The process ID is the second column. ::
-
-        $ ps aux | grep procServ
-        akiss      820  0.0  0.0  27448   976 ?        Ss    2020  29:07 procServ --logstamp -n cam-bfly1 -i ^D -L /epics/iocs/cam-bfly1/log/cam-bfly1.log 20001 ./st.cmd
-        $ sudo kill -9 820
 
  
 Motion Controls
