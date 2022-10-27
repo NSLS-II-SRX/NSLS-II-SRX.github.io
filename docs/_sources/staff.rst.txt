@@ -33,6 +33,89 @@ Setting up Users
 #. Perform beamline specific training. `5-ID BST Form <https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf>`_
 
 
+Fly-scanning spectroscopy
+-------------------------
+Fly-scanning spectroscopy is still in beta. Below is some information on how to use this capability.
+
+In order to have coordinated motion, the IVU Delta Tau will take complete control over the motion for the IVU, HDCM Bragg, and HDCM C2X. When a scan is started, the IVU will request control, and when the scan is complete, the IVU will disable control. If the scan is stopped or aborted, this may not clean up properly so it is important to check that control is disabled before moving components in bluesky or CSS.
+
+Check git branch
+****************
+Check the git branch. Currently (2022-10-26), the fly-scanning spectroscopy is only in the fly-scans branch. You can check the current branch using::
+
+        $ git branch
+        * fly-scans
+          master
+
+You can change to the fly-scans branch using::
+
+        git checkout fly-scans
+
+
+CSS-Pages
+*********
+To get to the IVU Scan Mode page, please navigate from |br| 
+5ID Main -> Insertion Device -> 5 SRX -> IVU 21 Operator Page -> Scan Mode
+
+.. _fig-ivu:
+.. figure::  _images/ivu_scan_mode.png
+   :target: _images/ivu_scan_mode.png
+   :width: 100%
+   :align: center
+
+   SRX IVU 21 scan mode CSS page.
+
+
+Bluesky Commands
+****************
+Run a fly spectroscopy scan. ``num_scans`` is optional. ``scan_type`` can be set to ``uni`` or ``bi`` to determine if the scan will only in one direction or both.::
+
+        RE(fly_multiple_passes(e_start, e_stop, e_width, dwell, num_pts,
+                               num_scans=1, scan_type='uni'))
+
+Export scan data.::
+
+        export_flyer_id_mono_data(uid_or_scanid)
+
+Recover the bluesky environment from an aborted scan.::
+
+        RE(flying_xas_reset())
+        
+Debugging
+*********
+If there is a problem with the scan and it is stopped or aborted, bluesky might not recover properly. A function has been put together to try to recover nicely, where it aborts any scans, disables the IVU control, unstages the flyer, and resets the scaler. If this does not recover the bluesky environment, then bluesky will need to be quit and restarted. The function to recover the environment is ::
+
+    RE(flying_xas_reset())
+
+If the HDCM Bragg or C2X motors are not moving, it is good to check if the IVU scan mode is enabled. If the scan mode is enabled and a move is tried from CSS or bluesky, the motor can be put into an alarm state with a following error. On one of the motor pages, such as the SRX Align page, you can see a red box around the motor in alarm. To confirm a following error, you can go from |br|
+5ID Main -> HDCM -> <motor> More -> PMAC Axis Status
+
+.. _fig-axis:
+.. figure:: _images/axis_status.png
+   :target: _images/axis_status.png
+   :width: 70%
+   :align: center
+
+   SRX HDCM Bragg axis page.
+
+To reset the amplifier fault, go to the asyn page to send commands to the motor controller. |br|
+5ID Main -> HDCM -> <motor> More -> Asyn -> More -> Asyn Octet Interface I/O
+
+.. _fig-asyn:
+.. figure:: _images/asyn.png
+   :target: _images/asyn.png
+   :width: 70%
+   :align: center
+
+   SRX HDCM Bragg asyn page.
+
+Check that the IVU control is disabled. Type the following command on the motor's asyn page and hit Enter::
+
+        ena plc 6
+
+After executing the command, the alarm will clear after moving the motor.
+
+
 Beamline Setup
 --------------
 These tasks are typically done once a cycle.
@@ -315,3 +398,7 @@ EPS
 .. todo::
     * Upload wiring diagrams
 
+
+.. |br| raw:: html
+
+   <br>
