@@ -200,9 +200,6 @@
 <li><p><a class="reference external" href="http://nsls-ii.github.io/">NSLS-II Controls Documentation</a></p></li>
 <li><p><a class="reference external" href="https://ps.bnl.gov/phot/ros/Shared%20Documents/MAXIMO%20Development/Beamlines/LT-R-XFD-CO-DR-SRX-002_Rev1.xlsx">NSLS-II Sharepoint Documentation</a></p></li>
 <li><p><a class="reference external" href="https://beamline5id.bnl.gov/index.php/Main_Page">Former SRX Wiki Staff Page</a></p></li>
-<li><p><a class="reference external" href="https://controlsweb.nsls2.bnl.gov/trac/">Trac ticket system</a> (deprecated)</p></li>
-<li><p><a class="reference external" href="http://xf05id2-ca1.nsls2.bnl.local/logbook/index.html">Old SRX Olog</a> (deprecated)</p></li>
-<li><p><a class="reference external" href="https://controlsweb01.nsls2.bnl.gov/IP/?page=login&amp;section=timeout">NSLS-II IP Address Management</a> (deprecated)</p></li>
 </ol>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
@@ -213,16 +210,16 @@
 </section>
 <section id="setting-up-users">
 <h2>Setting up Users<a class="headerlink" href="#setting-up-users" title="Permalink to this heading">¶</a></h2>
-<ol class="arabic simple">
-<li><p>Post SAF to <a class="reference external" href="http://passadmin.bnl.gov">PASS</a></p></li>
-<li><dl class="simple">
-<dt>Update user-specific metadata</dt><dd><ul class="simple">
+<ol class="arabic">
+<li><p>Post SAF to <a class="reference external" href="http://passadmin.bnl.gov">PASS Admin</a></p></li>
+<li><p>Update user-specific metadata</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>Open <code class="docutils literal notranslate"><span class="pre">/home/xf05id1/ipython_ophyd/90-userdata.py</span></code></p></li>
 <li><p>Update proposal dictionary with information from posted SAF. Save.</p></li>
 <li><p>Restart bluesky.</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </li>
 <li><p>Perform beamline specific training. <a class="reference external" href="https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf">5-ID BST Form</a></p></li>
 </ol>

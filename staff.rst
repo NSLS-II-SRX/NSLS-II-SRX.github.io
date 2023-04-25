@@ -16,20 +16,22 @@ Quick Links
 #. `NSLS-II Controls Documentation <http://nsls-ii.github.io/>`_
 #. `NSLS-II Sharepoint Documentation <https://ps.bnl.gov/phot/ros/Shared%20Documents/MAXIMO%20Development/Beamlines/LT-R-XFD-CO-DR-SRX-002_Rev1.xlsx>`_
 #. `Former SRX Wiki Staff Page <https://beamline5id.bnl.gov/index.php/Main_Page>`_
-#. `Trac ticket system <https://controlsweb.nsls2.bnl.gov/trac/>`_ (deprecated)
-#. `Old SRX Olog <http://xf05id2-ca1.nsls2.bnl.local/logbook/index.html>`_ (deprecated)
-#. `NSLS-II IP Address Management <https://controlsweb01.nsls2.bnl.gov/IP/?page=login&section=timeout>`_ (deprecated)
 
 .. todo::
-    * Fix IOCs reference
+
+  - Fix IOCs reference 
+
 
 Setting up Users
 ----------------
-#. Post SAF to `PASS <http://passadmin.bnl.gov>`_
+
+#. Post SAF to `PASS Admin <http://passadmin.bnl.gov>`_ 
 #. Update user-specific metadata
-    * Open ``/home/xf05id1/ipython_ophyd/90-userdata.py``
-    * Update proposal dictionary with information from posted SAF. Save.
-    * Restart bluesky.
+
+    - Open ``/home/xf05id1/ipython_ophyd/90-userdata.py``
+    - Update proposal dictionary with information from posted SAF. Save.
+    - Restart bluesky.
+
 #. Perform beamline specific training. `5-ID BST Form <https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf>`_
 
 
@@ -127,8 +129,10 @@ These tasks are typically done once a cycle.
    * Setting up the Dexela
    * Setting up the Xspress3
 
+
 Preparing for a new cycle
 *************************
+
 This is a comprehensive list of things to consider before the start of a cycle.
 
     - Close all system safety work permits.
