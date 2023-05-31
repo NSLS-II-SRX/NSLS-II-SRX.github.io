@@ -41,18 +41,6 @@ Fly-scanning spectroscopy is still in beta. Below is some information on how to 
 
 In order to have coordinated motion, the IVU Delta Tau will take complete control over the motion for the IVU, HDCM Bragg, and HDCM C2X. When a scan is started, the IVU will request control, and when the scan is complete, the IVU will disable control. If the scan is stopped or aborted, this may not clean up properly so it is important to check that control is disabled before moving components in bluesky or CSS.
 
-Check git branch
-****************
-Check the git branch. Currently (2022-10-26), the fly-scanning spectroscopy is only in the fly-scans branch. You can check the current branch using::
-
-        $ git branch
-        * fly-scans
-          master
-
-You can change to the fly-scans branch using::
-
-        git checkout fly-scans
-
 
 CSS-Pages
 *********
@@ -302,6 +290,7 @@ The ``manage-iocs`` tool can be used to monitor the IOC status. SSH into the ser
 
     * You can also ``telnet`` into the IOC using ::
 
+        $ manage-iocs attach exampleIOC
         $ telnet localhost port
 
     * To exit the telnet, type ``Ctrl+]`` and then ``q``.

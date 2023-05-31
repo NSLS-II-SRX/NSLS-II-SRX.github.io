@@ -17,7 +17,7 @@ Change X-ray energy - *Either command can be used below. The energy can be enter
 
 Optimize the beam - *Maximize the X-ray flux.* ::
 
-    RE(peakup_fine())
+    RE(peakup())
 
 Setting a region of interest - *Set the ROI on the detector. The specific edge is optional.* ::
 
@@ -26,12 +26,19 @@ Setting a region of interest - *Set the ROI on the detector. The specific edge i
 
 XRF Imaging
 ***********
-Fly scan - *Perform a fly scan. Return an image with dimensions (numX, numY)* ::
+Fly scan - *Perform a high-resolution, position-based fly scan. Return an image with dimensions (numX, numY)* ::
 
     Bluesky@SRX [1] RE(nano_scan_and_fly(startX, stopX, numX,
                                          startY, stopY, numY, dwell))
     Bluesky@SRX [2] RE(nano_y_scan_and_fly(startY, stopY, numY,
                                            startX, stopX, numX, dwell))
+
+Fly scan - *Perform a coarse, time-based fly scan. Return an image with dimensions (numX, numY)* ::
+
+    Bluesky@SRX [1] RE(coarse_scan_and_fly(startX, stopX, numX,
+                                           startY, stopY, numY, dwell))
+    Bluesky@SRX [2] RE(coarse_y_scan_and_fly(startY, stopY, numY,
+                                             startX, stopX, numX, dwell))
 
 Step scan - *Perform a step scan. Note: these arguments take a step size, not the number of points.* ::
 
