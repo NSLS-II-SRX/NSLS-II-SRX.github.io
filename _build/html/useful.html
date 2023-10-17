@@ -11,11 +11,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -50,6 +50,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#general-functions">General Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#xrf-imaging">XRF Imaging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#xas-spectroscopy">XAS Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#metadata">Metadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
@@ -81,17 +82,17 @@
            <div itemprop="articleBody">
              
   <section id="useful-commands">
-<h1>Useful Commands<a class="headerlink" href="#useful-commands" title="Permalink to this heading"></a></h1>
+<h1>Useful Commands<a class="headerlink" href="#useful-commands" title="Link to this heading"></a></h1>
 <p>Below is a list of useful commands for running the SRX beamline. Previous commands can be seen by hitting the up arrow in Bluesky. To search through them, you can start typing a command before hitting the up arrow to filter your history.</p>
 <section id="starting-bluesky">
-<h2>Starting Bluesky<a class="headerlink" href="#starting-bluesky" title="Permalink to this heading"></a></h2>
+<h2>Starting Bluesky<a class="headerlink" href="#starting-bluesky" title="Link to this heading"></a></h2>
 <p>Start Bluesky - <em>Start Bluesky from the terminal.</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bsui
 </pre></div>
 </div>
 </section>
 <section id="general-functions">
-<h2>General Functions<a class="headerlink" href="#general-functions" title="Permalink to this heading"></a></h2>
+<h2>General Functions<a class="headerlink" href="#general-functions" title="Link to this heading"></a></h2>
 <p>Change X-ray energy - <em>Either command can be used below. The energy can be entered in units of eV or keV.</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">%</span><span class="n">mov</span> <span class="n">energy</span> <span class="mf">7.2</span>
 <span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">energy</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mf">7.2</span><span class="p">)</span>
@@ -108,7 +109,7 @@
 </div>
 </section>
 <section id="xrf-imaging">
-<h2>XRF Imaging<a class="headerlink" href="#xrf-imaging" title="Permalink to this heading"></a></h2>
+<h2>XRF Imaging<a class="headerlink" href="#xrf-imaging" title="Link to this heading"></a></h2>
 <p>Fly scan - <em>Perform a high-resolution, position-based fly scan. Return an image with dimensions (numX, numY)</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">nano_scan_and_fly</span><span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span>
                                      <span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">numY</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
@@ -130,7 +131,7 @@
 </div>
 </section>
 <section id="xas-spectroscopy">
-<h2>XAS Spectroscopy<a class="headerlink" href="#xas-spectroscopy" title="Permalink to this heading"></a></h2>
+<h2>XAS Spectroscopy<a class="headerlink" href="#xas-spectroscopy" title="Link to this heading"></a></h2>
 <p>Print element binding energies - <em>Print the binding energies for the element of interest. The “best” edge can be returned as available.</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">Fe_k</span> <span class="o">=</span> <span class="n">getbindingE</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">)</span>
 </pre></div>
@@ -148,8 +149,21 @@
 </pre></div>
 </div>
 </section>
+<section id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Link to this heading"></a></h2>
+<p>Print the <code class="docutils literal notranslate"><span class="pre">start</span></code> or <code class="docutils literal notranslate"><span class="pre">stop</span></code> document for a scan - <em>A scan ID of 12345 is assumed. A value of -1 can be used to see the previous scan.</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">db</span><span class="p">[</span><span class="mi">12345</span><span class="p">]</span><span class="o">.</span><span class="n">start</span>
+<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">db</span><span class="p">[</span><span class="mi">12345</span><span class="p">]</span><span class="o">.</span><span class="n">stop</span>
+</pre></div>
+</div>
+<p>Print the <code class="docutils literal notranslate"><span class="pre">baseline</span></code> information for a scan - <em>baseline will collect the motor positions at the start (column 1) and completion (column 2) of a scan. There are many motors positions captured so it is helpful to filter the list of values. A scan ID of 12345 is assumed.</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">print_baseline</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">print_baseline</span><span class="p">(</span><span class="mi">12345</span><span class="p">,</span> <span class="n">key_filter</span><span class="o">=</span><span class="s2">&quot;nano_stage&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 <section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading"></a></h2>
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
 <p>Pause a scan - <em>The scan will pause at the next checkpoint.</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CTRL</span><span class="o">+</span><span class="n">C</span>
 </pre></div>

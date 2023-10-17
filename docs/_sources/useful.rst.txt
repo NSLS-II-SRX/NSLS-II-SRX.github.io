@@ -63,6 +63,19 @@ XANES scan - *Run a XANES scan. This scan has 3 regions with different steps spa
                                   samplename='Fe foil',
                                   filename='Fe_foil']))
 
+Metadata
+********
+Print the ``start`` or ``stop`` document for a scan - *A scan ID of 12345 is assumed. A value of -1 can be used to see the previous scan.* ::
+
+    Bluesky@SRX [1] db[12345].start
+    Bluesky@SRX [2] db[12345].stop
+
+Print the ``baseline`` information for a scan - *baseline will collect the motor positions at the start (column 1) and completion (column 2) of a scan. There are many motors positions captured so it is helpful to filter the list of values. A scan ID of 12345 is assumed.* ::
+
+    Bluesky@SRX [3] print_baseline(12345)
+    Bluesky@SRX [4] print_baseline(12345, key_filter="nano_stage")
+
+
 Troubleshooting
 ***************
 Pause a scan - *The scan will pause at the next checkpoint.* ::
