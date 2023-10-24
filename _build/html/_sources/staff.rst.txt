@@ -35,6 +35,15 @@ Setting up Users
 #. Perform beamline specific training. `5-ID BST Form <https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf>`_
 
 
+Virtual Machine Information
+---------------------------
+A properly managed, Windows-based virtual machine is setup at the beamline. The purpose of this machine is to run Windows, vendor-provided software at the beamline. The virtual machine can be pinged in the command line and accessed with `Guacamole <https://remote.nsls2.bnl.gov>`_.
+
+Hostname: ``xf05id2-win1`` |br|
+Guacamole Title: "Windows VM 1" |br|
+Password: See shared vault in Bitwarden
+
+
 Fly-scanning spectroscopy
 -------------------------
 Fly-scanning spectroscopy is still in beta. Below is some information on how to use this capability.
