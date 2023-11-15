@@ -61,7 +61,7 @@ XANES scan - *Run a XANES scan. This scan has 3 regions with different steps spa
                                   estep=[2.0, 1.0, 2.0],
                                   acqtime=1.0,
                                   samplename='Fe foil',
-                                  filename='Fe_foil']))
+                                  filename='Fe_foil'))
 
 Metadata
 ********
