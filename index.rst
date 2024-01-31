@@ -12,6 +12,7 @@ Welcome to NSLS-II SRX's documentation!
 
    intro.rst
    useful.rst
+   acceptance_tests.rst
    staff.rst
 
 Indices and tables
