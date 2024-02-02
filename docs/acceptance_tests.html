@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Acceptance Tests &mdash; NSLS-II SRX  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -87,45 +89,47 @@
 <p>Prior to user operations or after upgrades, the beamline should be able to perform the following tests</p>
 <section id="starting-bluesky">
 <h2>Starting bluesky<a class="headerlink" href="#starting-bluesky" title="Link to this heading"></a></h2>
-<p>[ ] Start bluesky. For testing, you may need to set the correct conda environemnt</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bsui
-$ BS_ENV=2024-1.0-py310-tiled bsui
+<p>◻ Start bluesky. For testing, you may need to set the correct conda environment</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>bsui
+$<span class="w"> </span><span class="nv">BS_ENV</span><span class="o">=</span><span class="m">2024</span>-1.0-py310-tiled<span class="w"> </span>bsui
 </pre></div>
 </div>
+</div></blockquote>
 </section>
 <section id="general-functions">
 <h2>General Functions<a class="headerlink" href="#general-functions" title="Link to this heading"></a></h2>
-<p>[ ] Change energy</p>
+<p>◻ Change energy</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">%</span><span class="n">mov</span> <span class="n">energy</span> <span class="mi">12</span>
 <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">energy</span><span class="o">.</span><span class="n">mov</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>[ ] Optimize the beam</p>
+<p>◻ Optimize the beam</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">peakup</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>[ ] Set an ROI on the detector</p>
+<p>◻ Set an ROI on the detector</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">setroi</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Fe&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>[ ] Clear the ROIs on the detector</p>
+<p>◻ Clear the ROIs on the detector</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="n">clearroi</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="spectroscopy">
 <h2>Spectroscopy<a class="headerlink" href="#spectroscopy" title="Link to this heading"></a></h2>
-<p>[ ] Get the binding/absorption energy of an element</p>
+<p>◻ Get the binding/absorption energy of an element</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="n">getbindingE</span><span class="p">(</span><span class="s2">&quot;Fe&quot;</span><span class="p">)</span>
 <span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="n">getbindingE</span><span class="p">(</span><span class="s2">&quot;Au&quot;</span><span class="p">,</span> <span class="s2">&quot;l3&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>[ ] Get the emission energy of an element</p>
+<p>◻ Get the emission energy of an element</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="n">getemissionE</span><span class="p">(</span><span class="s2">&quot;Fe&quot;</span><span class="p">)</span>
 <span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="n">getemissionE</span><span class="p">(</span><span class="s2">&quot;Au&quot;</span><span class="p">,</span> <span class="s2">&quot;la1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>[ ] Run a XANES plan</p>
+<p>◻ Run a XANES plan</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="n">Fe_K</span> <span class="o">=</span> <span class="n">getbindingE</span><span class="p">(</span><span class="s2">&quot;Fe&quot;</span><span class="p">)</span>
 <span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">xanes_plan</span><span class="p">([</span><span class="n">Fe_K</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="n">Fe_K</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="n">Fe_K</span><span class="o">+</span><span class="mi">50</span><span class="p">,</span> <span class="n">Fe_K</span><span class="o">+</span><span class="mi">150</span><span class="p">],</span>
                    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
@@ -136,14 +140,14 @@ $ BS_ENV=2024-1.0-py310-tiled bsui
 </section>
 <section id="imaging">
 <h2>Imaging<a class="headerlink" href="#imaging" title="Link to this heading"></a></h2>
-<p>[ ] Fly-scan Imaging</p>
+<p>◻ Fly-scan Imaging</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">nano_scan_and_fly</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mf">0.050</span><span class="p">))</span>  <span class="c1"># May need to change coordinates</span>
 <span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">nano_y_scan_and_fly</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mf">0.050</span><span class="p">))</span>
 <span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">coarse_scan_and_fly</span><span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mf">0.250</span><span class="p">))</span>
 <span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">coarse_y_scan_and_fly</span><span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mf">0.250</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>[ ] Step-scan Imaging. Note that this function uses step size instead of number of points</p>
+<p>◻ Step-scan Imaging. Note that this function uses step size instead of number of points</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">nano_xrf</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">snake</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 <span class="p">[</span><span class="mi">17</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">nano_xrf</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">snake</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 </pre></div>
@@ -152,20 +156,20 @@ $ BS_ENV=2024-1.0-py310-tiled bsui
 <section id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
 <div class="line-block">
-<div class="line">[ ] Try using <code class="docutils literal notranslate"><span class="pre">CTRL-C</span></code> to pause and resume a scan</div>
-<div class="line">[ ] Try tripping one of the suspenders, such as one of the photon shutters, to see if the scan will automatically pause and resume</div>
+<div class="line">◻ Try using <code class="docutils literal notranslate"><span class="pre">CTRL-C</span></code> to pause and resume a scan</div>
+<div class="line">◻ Try tripping one of the suspenders, such as one of the photon shutters, to see if the scan will automatically pause and resume</div>
 </div>
 </section>
 <section id="data-analysis">
 <h2>Data analysis<a class="headerlink" href="#data-analysis" title="Link to this heading"></a></h2>
 <div class="line-block">
-<div class="line">[ ] XANES data automatically exports to the user folder</div>
-<div class="line">[ ] Athena starts using <code class="docutils literal notranslate"><span class="pre">dathena</span></code></div>
-<div class="line">[ ] Athena can access and open the collected XANES data</div>
-<div class="line">[ ] <code class="docutils literal notranslate"><span class="pre">run-pyxrftools</span></code> will load and can access scan data</div>
-<div class="line">[ ] Imaging data is automatically exported, or can be made using <code class="docutils literal notranslate"><span class="pre">make_hdf</span></code></div>
-<div class="line">[ ] PyXRF starts using <code class="docutils literal notranslate"><span class="pre">run-pyxrf</span></code></div>
-<div class="line">[ ] PyXRF can load the imaging data and save the data to the file</div>
+<div class="line">◻ XANES data automatically exports to the user folder</div>
+<div class="line">◻ Athena starts using <code class="docutils literal notranslate"><span class="pre">dathena</span></code></div>
+<div class="line">◻ Athena can access and open the collected XANES data</div>
+<div class="line">◻ <code class="docutils literal notranslate"><span class="pre">run-pyxrftools</span></code> will load and can access scan data</div>
+<div class="line">◻ Imaging data is automatically exported, or can be made using <code class="docutils literal notranslate"><span class="pre">make_hdf</span></code></div>
+<div class="line">◻ PyXRF starts using <code class="docutils literal notranslate"><span class="pre">run-pyxrf</span></code></div>
+<div class="line">◻ PyXRF can load the imaging data and save the data to the file</div>
 </div>
 </section>
 </section>
