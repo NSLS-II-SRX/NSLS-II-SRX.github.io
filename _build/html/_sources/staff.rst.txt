@@ -26,11 +26,9 @@ Setting up Users
 ----------------
 
 #. Post SAF to `PASS Admin <http://passadmin.bnl.gov>`_ 
-#. Update user-specific metadata
+#. Start the experiment using the proposal ID by running the command: ::
 
-    - Open ``/home/xf05id1/ipython_ophyd/90-userdata.py``
-    - Update proposal dictionary with information from posted SAF. Save.
-    - Restart bluesky.
+    $ start-experiment -b SRX -p {proposal_id}
 
 #. Perform beamline specific training. `5-ID BST Form <https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf>`_
 
@@ -65,8 +63,39 @@ To get to the IVU Scan Mode page, please navigate from |br|
    SRX IVU 21 scan mode CSS page.
 
 
-Bluesky Commands
-****************
+Tiled Notes
+***********
+While in a bluesky session, it is possible to continue using `db` and it's associated commands. This will still use `tiled` as the backend and allow for a familiar interface using `db`. For `tiled` specific usage, the bluesky startup scripts define `c` as a catalog of scans. This can be accessed from the bluesky session.
+
+If logging in from a separate session, the catalog will need to be initialized. For completeness, all steps are shown here. ::
+
+    [akiss@xf05id2-ws2 ~]$ conda activate 2024-1.0-py310-tiled
+    (2024-1.0-py310-tiled) [akiss@xf05id2-ws2 ~]$ ipython
+    In [1]: from tiled.client import from_profile
+    In [2]: c = from_profile("srx")["raw"]
+
+Similar to databroker API, a scan can be accessed using a scan ID ::
+
+    bs_run = c[12345]
+    bs_run
+    <BlueskyRun {'primary'} scan_id=12345 uid='e8b02669' 2018-03-04 15:15>
+
+The start/stop documents can be displayed using ::
+
+    bs_run.start
+    bs_run.stop
+
+This `BlueskyRun` object behaves like a dictionary. To access the data, start adding keys. This display all keys, use ::
+
+    bs_run["primary"]["data"].keys()[:]
+
+The data can then be extracted using ::
+
+    d = bs_run["primary"]["data"]["fluor"][:]
+
+
+Fly-scanning XAS Commands
+*************************
 Run a fly spectroscopy scan. ``num_scans`` is optional. ``scan_type`` can be set to ``uni`` or ``bi`` to determine if the scan will only in one direction or both.::
 
         RE(fly_multiple_passes(e_start, e_stop, e_width, dwell, num_pts,

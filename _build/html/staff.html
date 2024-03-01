@@ -54,7 +54,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#virtual-machine-information">Virtual Machine Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fly-scanning-spectroscopy">Fly-scanning spectroscopy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#css-pages">CSS-Pages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#bluesky-commands">Bluesky Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tiled-notes">Tiled Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fly-scanning-xas-commands">Fly-scanning XAS Commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#debugging">Debugging</a></li>
 </ul>
 </li>
@@ -135,14 +136,10 @@
 <h2>Setting up Users<a class="headerlink" href="#setting-up-users" title="Link to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Post SAF to <a class="reference external" href="http://passadmin.bnl.gov">PASS Admin</a></p></li>
-<li><p>Update user-specific metadata</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Open <code class="docutils literal notranslate"><span class="pre">/home/xf05id1/ipython_ophyd/90-userdata.py</span></code></p></li>
-<li><p>Update proposal dictionary with information from posted SAF. Save.</p></li>
-<li><p>Restart bluesky.</p></li>
-</ul>
-</div></blockquote>
+<li><p>Start the experiment using the proposal ID by running the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ start-experiment -b SRX -p {proposal_id}
+</pre></div>
+</div>
 </li>
 <li><p>Perform beamline specific training. <a class="reference external" href="https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf">5-ID BST Form</a></p></li>
 </ol>
@@ -169,8 +166,38 @@ Password: See shared vault in Bitwarden</p>
 </figcaption>
 </figure>
 </section>
-<section id="bluesky-commands">
-<h3>Bluesky Commands<a class="headerlink" href="#bluesky-commands" title="Link to this heading"></a></h3>
+<section id="tiled-notes">
+<h3>Tiled Notes<a class="headerlink" href="#tiled-notes" title="Link to this heading"></a></h3>
+<p>While in a bluesky session, it is possible to continue using <cite>db</cite> and it’s associated commands. This will still use <cite>tiled</cite> as the backend and allow for a familiar interface using <cite>db</cite>. For <cite>tiled</cite> specific usage, the bluesky startup scripts define <cite>c</cite> as a catalog of scans. This can be accessed from the bluesky session.</p>
+<p>If logging in from a separate session, the catalog will need to be initialized. For completeness, all steps are shown here.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[akiss@xf05id2-ws2 ~]$ conda activate 2024-1.0-py310-tiled
+(2024-1.0-py310-tiled) [akiss@xf05id2-ws2 ~]$ ipython
+In [1]: from tiled.client import from_profile
+In [2]: c = from_profile(&quot;srx&quot;)[&quot;raw&quot;]
+</pre></div>
+</div>
+<p>Similar to databroker API, a scan can be accessed using a scan ID</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bs_run</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">12345</span><span class="p">]</span>
+<span class="n">bs_run</span>
+<span class="o">&lt;</span><span class="n">BlueskyRun</span> <span class="p">{</span><span class="s1">&#39;primary&#39;</span><span class="p">}</span> <span class="n">scan_id</span><span class="o">=</span><span class="mi">12345</span> <span class="n">uid</span><span class="o">=</span><span class="s1">&#39;e8b02669&#39;</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">04</span> <span class="mi">15</span><span class="p">:</span><span class="mi">15</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The start/stop documents can be displayed using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bs_run</span><span class="o">.</span><span class="n">start</span>
+<span class="n">bs_run</span><span class="o">.</span><span class="n">stop</span>
+</pre></div>
+</div>
+<p>This <cite>BlueskyRun</cite> object behaves like a dictionary. To access the data, start adding keys. This display all keys, use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bs_run</span><span class="p">[</span><span class="s2">&quot;primary&quot;</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()[:]</span>
+</pre></div>
+</div>
+<p>The data can then be extracted using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">bs_run</span><span class="p">[</span><span class="s2">&quot;primary&quot;</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;fluor&quot;</span><span class="p">][:]</span>
+</pre></div>
+</div>
+</section>
+<section id="fly-scanning-xas-commands">
+<h3>Fly-scanning XAS Commands<a class="headerlink" href="#fly-scanning-xas-commands" title="Link to this heading"></a></h3>
 <p>Run a fly spectroscopy scan. <code class="docutils literal notranslate"><span class="pre">num_scans</span></code> is optional. <code class="docutils literal notranslate"><span class="pre">scan_type</span></code> can be set to <code class="docutils literal notranslate"><span class="pre">uni</span></code> or <code class="docutils literal notranslate"><span class="pre">bi</span></code> to determine if the scan will only in one direction or both.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">fly_multiple_passes</span><span class="p">(</span><span class="n">e_start</span><span class="p">,</span> <span class="n">e_stop</span><span class="p">,</span> <span class="n">e_width</span><span class="p">,</span> <span class="n">dwell</span><span class="p">,</span> <span class="n">num_pts</span><span class="p">,</span>
                        <span class="n">num_scans</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scan_type</span><span class="o">=</span><span class="s1">&#39;uni&#39;</span><span class="p">))</span>
