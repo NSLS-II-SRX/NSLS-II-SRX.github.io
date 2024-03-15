@@ -32,6 +32,81 @@ Setting up Users
 
 #. Perform beamline specific training. `5-ID BST Form <https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf>`_
 
+Setting up the analysis environment
+-----------------------------------
+#. Setting up SRX Autosave for XRF maps
+
+   - Open a terminal and login as the user: ::
+     
+       su - username
+
+   - Change directory to the scripts folder: ::
+
+       cd /nsls2/data/srx/shared/config/bluesky/profile_analysis/scripts
+
+   - Start SRX Autosave ::
+
+       ./run-srxautosave-new
+
+   - Confirm the input parameters including output directory and run.
+
+#. Setting up the XAS exporter
+
+   - Open a terminal and login as the user: ::
+     
+       su - username
+
+   - Change directory to the proposal folder: ::
+
+       cd /nsls2/data/srx/proposals/2024-1/pass-{proposal_id}
+
+   - Open the conda environment. ::
+
+       conda activate $BS_ENV
+    
+   - Open iPython and load the exporter. If the export file is not there, please ask a beamline scientist to copy it from another proposal directory. ::
+
+       ipython
+       %run -i export_xanes.py
+
+   - Now a scan can be exported into the proposal directory using the `exporter` function. ::
+
+       exporter(scanid)
+
+#. Setting up a file browser
+
+   - Open a terminal and login as the user: ::
+     
+       su - username
+
+   - Launch the file browser ::
+
+       nautilus
+
+#. Setting up a Athena
+
+   - Open a terminal and login as the user: ::
+     
+       su - username
+
+   - Launch Athena ::
+
+       dathena
+
+#. Setting up pyXRF
+
+   - Open a terminal and login as the user: ::
+     
+       su - username
+
+   - Change directory to the scripts folder: ::
+
+       cd /nsls2/data/srx/shared/config/bluesky/profile_analysis/scripts
+
+   - Start pyXRF ::
+
+       ./run-pyxrf
+
 
 Virtual Machine Information
 ---------------------------
