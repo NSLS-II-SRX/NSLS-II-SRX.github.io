@@ -12,6 +12,7 @@ Welcome to NSLS-II SRX's documentation!
 
    intro.rst
    useful_ops.rst
+   data_transfer.rst
    acceptance_tests.rst
    staff.rst
 
