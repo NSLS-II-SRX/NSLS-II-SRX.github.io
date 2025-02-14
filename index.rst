@@ -11,7 +11,7 @@ Welcome to NSLS-II SRX's documentation!
    :caption: Contents:
 
    intro.rst
-   useful.rst
+   useful_ops.rst
    acceptance_tests.rst
    staff.rst
 
