@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Useful Commands &mdash; NSLS-II SRX  documentation</title>
+  <title>Bluesky Commands &mdash; NSLS-II SRX  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Data Management" href="data_transfer.html" />
-    <link rel="prev" title="Introduction to SRX" href="intro.html" /> 
+    <link rel="next" title="Data Analysis" href="data_analysis.html" />
+    <link rel="prev" title="CSS-Phoebus GUI" href="gui.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,7 +45,8 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to SRX</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Useful Commands</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">CSS-Phoebus GUI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bluesky Commands</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#starting-bluesky">Starting Bluesky</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#general-functions">General Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#xrf-imaging">XRF Imaging</a></li>
@@ -54,8 +55,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_transfer.html">Data Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="acceptance_tests.html">Acceptance Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acceptance_tests.html">Acceptance Tests [staff only]</a></li>
 <li class="toctree-l1"><a class="reference internal" href="staff.html">Beamline Staff Pages [staff only]</a></li>
 </ul>
 
@@ -73,9 +75,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Useful Commands</li>
+      <li class="breadcrumb-item active">Bluesky Commands</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/useful_ops.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/bluesky_cmd.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -83,15 +85,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="useful-commands">
-<h1>Useful Commands<a class="headerlink" href="#useful-commands" title="Link to this heading"></a></h1>
+  <section id="bluesky-commands">
+<h1>Bluesky Commands<a class="headerlink" href="#bluesky-commands" title="Link to this heading"></a></h1>
 <p>Below is a list of useful commands for running the SRX beamline. Previous commands can be seen by hitting the up arrow in Bluesky. To search through them, you can start typing a command before hitting the up arrow to filter your history.</p>
 <section id="starting-bluesky">
 <h2>Starting Bluesky<a class="headerlink" href="#starting-bluesky" title="Link to this heading"></a></h2>
-<p>Start Bluesky - <em>Start Bluesky from the terminal.</em></p>
+<p>Start Bluesky - <em>Bluesky can be started by going to the top left corner of the screen and choosing Activities. Then click on the Bluesky icon - a blue cloud with a b - to automatically open a new terminal and start Bluesky.</em></p>
+<p><em>Alternatively, start Bluesky from an existing terminal.</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bsui
 </pre></div>
 </div>
+<p>After starting Bluesky, it is important to confirm that the proposal number in the terminal matches the experiment.</p>
 </section>
 <section id="general-functions">
 <h2>General Functions<a class="headerlink" href="#general-functions" title="Link to this heading"></a></h2>
@@ -101,10 +105,14 @@
 </pre></div>
 </div>
 <p>Optimize the beam - <em>Maximize the X-ray flux.</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">peakup</span><span class="p">())</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">peakup</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>Setting a region of interest - <em>Set the ROI on the detector. The specific edge is optional.</em></p>
+<p>Optimize the ion chambers - <em>Check that the ion chambers have their ideal preamp settings.</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">optimize_scalers</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Setting a region of interest - <em>Set the ROI on the detector. The specific line is optional.</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">setroi</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Fe&#39;</span><span class="p">)</span>
 <span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">setroi</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Fe&#39;</span><span class="p">,</span> <span class="s1">&#39;ka1&#39;</span><span class="p">)</span>
 </pre></div>
@@ -134,7 +142,7 @@
 </section>
 <section id="xas-spectroscopy">
 <h2>XAS Spectroscopy<a class="headerlink" href="#xas-spectroscopy" title="Link to this heading"></a></h2>
-<p>Print element binding energies - <em>Print the binding energies for the element of interest. The “best” edge can be returned as available.</em></p>
+<p>Print element binding energies - <em>Print the binding energies for the element of interest. The “best” edge in eV is returned as available.</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">Fe_k</span> <span class="o">=</span> <span class="n">getbindingE</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -154,8 +162,8 @@
 <section id="metadata">
 <h2>Metadata<a class="headerlink" href="#metadata" title="Link to this heading"></a></h2>
 <p>Print the <code class="docutils literal notranslate"><span class="pre">start</span></code> or <code class="docutils literal notranslate"><span class="pre">stop</span></code> document for a scan - <em>A scan ID of 12345 is assumed. A value of -1 can be used to see the previous scan.</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">db</span><span class="p">[</span><span class="mi">12345</span><span class="p">]</span><span class="o">.</span><span class="n">start</span>
-<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">db</span><span class="p">[</span><span class="mi">12345</span><span class="p">]</span><span class="o">.</span><span class="n">stop</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">c</span><span class="p">[</span><span class="mi">12345</span><span class="p">]</span><span class="o">.</span><span class="n">start</span>
+<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">c</span><span class="p">[</span><span class="mi">12345</span><span class="p">]</span><span class="o">.</span><span class="n">stop</span>
 </pre></div>
 </div>
 <p>Print the <code class="docutils literal notranslate"><span class="pre">baseline</span></code> information for a scan - <em>baseline will collect the motor positions at the start (column 1) and completion (column 2) of a scan. There are many motors positions captured so it is helpful to filter the list of values. A scan ID of 12345 is assumed.</em></p>
@@ -170,7 +178,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CTRL</span><span class="o">+</span><span class="n">C</span>
 </pre></div>
 </div>
-<p>Urgently stop a scan - <em>With each CTRL-C, Bluesky raisens the urgency of stopping the scan.</em></p>
+<p>Urgently stop a scan - <em>With each CTRL-C, Bluesky raises the urgency of stopping the scan.</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CTRL</span><span class="o">+</span><span class="n">C</span> <span class="n">x20</span>
 </pre></div>
 </div>
@@ -190,8 +198,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="intro.html" class="btn btn-neutral float-left" title="Introduction to SRX" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="data_transfer.html" class="btn btn-neutral float-right" title="Data Management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="gui.html" class="btn btn-neutral float-left" title="CSS-Phoebus GUI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="data_analysis.html" class="btn btn-neutral float-right" title="Data Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
