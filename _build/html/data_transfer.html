@@ -1,0 +1,166 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Management &mdash; NSLS-II SRX  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Acceptance Tests" href="acceptance_tests.html" />
+    <link rel="prev" title="Useful Commands" href="useful_ops.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            NSLS-II SRX
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to SRX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_ops.html">Useful Commands</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#useful-links">Useful Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#proposal-directories">Proposal Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transfer-over-globus">Transfer over Globus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setup-globus-connect-personal">Setup Globus Connect Personal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#locate-proposal-data">Locate Proposal Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="acceptance_tests.html">Acceptance Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="staff.html">Beamline Staff Pages [staff only]</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NSLS-II SRX</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Data Management</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/data_transfer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-management">
+<h1>Data Management<a class="headerlink" href="#data-management" title="Link to this heading"></a></h1>
+<p>Tools are available to securely transfer data between NSLS-II servers and your home institute. Options include ssh, sftp, and <a class="reference internal" href="#transfer-over-globus">Globus</a>.</p>
+<section id="useful-links">
+<h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://www.globus.org/globus-connect-personal">Globus Connect Personal</a></p></li>
+<li><p><a class="reference external" href="https://docs.globus.org/guides/tutorials/manage-files/transfer-files/">Globus Tranfer Files Tutorial</a></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="proposal-directories">
+<h2>Proposal Directories<a class="headerlink" href="#proposal-directories" title="Link to this heading"></a></h2>
+<p>Each proposal will have its own folder where files are saved and processed. The folders for the proposals at the SRX beamline are found at <code class="docutils literal notranslate"><span class="pre">/nsls2/data/srx/proposals</span></code>. From there, the proposals are broken down into operating cycles, <em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">2025-1</span></code>. Finally, the prefix <code class="docutils literal notranslate"><span class="pre">pass-</span></code> with the proposal number is used to identify each proposal to make the folder name, <em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">pass-1234</span></code>.</p>
+<p>Inside each proposal folder, files will be written automatically. During data collection, raw detector data is written and stored in the <code class="docutils literal notranslate"><span class="pre">assets/</span></code> folder. This folder is set as read-only. You are welcome to copy this data, but it will be difficult to correlate raw detector files to particular scans.</p>
+<p>Additionally, at the completion of each scan, a process will automatically kick-off to export the scan data. If the scan was an XRF map, files will be generated and written to the root proposal directory with the filename <code class="docutils literal notranslate"><span class="pre">autorun_scan2D_{scanid}_xs_sumch.h5</span></code>. Spectroscopy files will also be written to the root of this proposal directory with a filename of <code class="docutils literal notranslate"><span class="pre">scan_{scanid}_xanes.txt</span></code>. Finally, a running logfile records the scan ID, UID, and some scan parameters for each scan that is run.</p>
+</section>
+<section id="transfer-over-globus">
+<h2>Transfer over Globus<a class="headerlink" href="#transfer-over-globus" title="Link to this heading"></a></h2>
+<p>Globus is an efficient system for transferring large data sets and folders. The Globus endpoint for NSLS-II systems is found at <a class="reference external" href="https://globus.nsls2.bnl.gov">globus.nsls2.bnl.gov</a>. The Globus origin ID is <code class="docutils literal notranslate"><span class="pre">819379a8-47db-439d-a5ba-a2387b79add9</span></code></p>
+<section id="setup-globus-connect-personal">
+<h3>Setup Globus Connect Personal<a class="headerlink" href="#setup-globus-connect-personal" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Download and install Globus Connect Personal</p></li>
+<li><p>Run the application. If this is the first time, it should run a setup.</p></li>
+<li><p>Click to Login. This should bring up a website. Choose “Brookhaven National Laboratory” as the organization. Click Continue.</p></li>
+<li><p>Login to the BNL Single Sign On using your BNL account.</p></li>
+<li><p>Provide a label for this Endpoint and click Allow.</p></li>
+<li><p>Provide a collection name and description. Now you have an endpoint to transfer data to locally.</p></li>
+<li><p>Make sure to leave the Globus Personal Connect running.</p></li>
+</ol>
+</section>
+<section id="locate-proposal-data">
+<h3>Locate Proposal Data<a class="headerlink" href="#locate-proposal-data" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Go to the NSLS-II Globus endpoint. Make usre the organization login is set to “Brookhaven National Laboratory”. Click on Continue and login to the BNL Single Sign On using your BNL account and password.</p></li>
+<li><p>Once logged on, the Globus main page should appear. The collection at the top should say “NSLS2”</p></li>
+<li><p>If there is a message saying that “Authentication/Consent is required for Globus transfer service to manage data in this collection”, click Continue. Click on your email address. Allow Globus Web App to manage data using Globus Transfer.</p></li>
+<li><p>Once logged in, you may start off in your home directory, <code class="docutils literal notranslate"><span class="pre">/nsls2/users/your_user_name</span></code></p></li>
+<li><p>In the Path textbox, the location of the proposals can be entered. It is convenient to start at <code class="docutils literal notranslate"><span class="pre">/nsls2/data/srx/proposals/</span></code>. From there the cycle, <em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">2025-1</span></code>, is selected followed by the folder that corresponds with the proposal number, <em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">pass-{proposal</span> <span class="pre">number}</span></code>.</p></li>
+<li><p>At this point, the contents of the proposal directory are displayed. Data can be downloaded or transfered from here.</p></li>
+<li><p>Select your files for download. We recommend ommitting the <code class="docutils literal notranslate"><span class="pre">assets/</span></code> folder. Click on Transfer of Sync to… Another panel will pop up where you can select your local Enpoint. Choose a location to download the data. Click start to start the transfer.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="useful_ops.html" class="btn btn-neutral float-left" title="Useful Commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="acceptance_tests.html" class="btn btn-neutral float-right" title="Acceptance Tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, SRX.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
