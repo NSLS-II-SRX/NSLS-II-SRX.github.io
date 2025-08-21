@@ -28,51 +28,12 @@ Setting up Users
 #. Post SAF to `PASS Admin <http://passadmin.bnl.gov>`_ 
 #. Start the experiment using the proposal ID by running the command: ::
 
-    $ start-experiment -b SRX -p {proposal_id}
+    $ start-experiment -p {proposal_id}
 
 #. Perform beamline specific training. `5-ID BST Form <https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf>`_
 
 Setting up the analysis environment
 -----------------------------------
-#. Setting up SRX Autosave for XRF maps
-
-   - Open a terminal and login as the user: ::
-     
-       su - username
-
-   - Change directory to the scripts folder: ::
-
-       cd /nsls2/data/srx/shared/config/bluesky/profile_analysis/scripts
-
-   - Start SRX Autosave ::
-
-       ./run-srxautosave-new
-
-   - Confirm the input parameters including output directory and run.
-
-#. Setting up the XAS exporter
-
-   - Open a terminal and login as the user: ::
-     
-       su - username
-
-   - Change directory to the proposal folder: ::
-
-       cd /nsls2/data/srx/proposals/2024-1/pass-{proposal_id}
-
-   - Open the conda environment. ::
-
-       conda activate $BS_ENV
-    
-   - Open iPython and load the exporter. If the export file is not there, please ask a beamline scientist to copy it from another proposal directory. ::
-
-       ipython
-       %run -i export_xanes.py
-
-   - Now a scan can be exported into the proposal directory using the `exporter` function. ::
-
-       exporter(scanid)
-
 #. Setting up a file browser
 
    - Open a terminal and login as the user: ::
@@ -117,35 +78,14 @@ Guacamole Title: "Windows VM 1" |br|
 Password: See shared vault in Bitwarden
 
 
-Fly-scanning spectroscopy
--------------------------
-Fly-scanning spectroscopy is still in beta. Below is some information on how to use this capability.
-
-In order to have coordinated motion, the IVU Delta Tau will take complete control over the motion for the IVU, HDCM Bragg, and HDCM C2X. When a scan is started, the IVU will request control, and when the scan is complete, the IVU will disable control. If the scan is stopped or aborted, this may not clean up properly so it is important to check that control is disabled before moving components in bluesky or CSS.
-
-
-CSS-Pages
-*********
-To get to the IVU Scan Mode page, please navigate from |br| 
-5ID Main -> Insertion Device -> 5 SRX -> IVU 21 Operator Page -> Scan Mode
-
-.. _fig-ivu:
-.. figure::  _images/ivu_scan_mode.png
-   :target: _images/ivu_scan_mode.png
-   :width: 100%
-   :align: center
-
-   SRX IVU 21 scan mode CSS page.
-
-
 Tiled Notes
-***********
+-----------
 While in a bluesky session, it is possible to continue using `db` and it's associated commands. This will still use `tiled` as the backend and allow for a familiar interface using `db`. For `tiled` specific usage, the bluesky startup scripts define `c` as a catalog of scans. This can be accessed from the bluesky session.
 
 If logging in from a separate session, the catalog will need to be initialized. For completeness, all steps are shown here. ::
 
-    [akiss@xf05id2-ws2 ~]$ conda activate 2024-1.0-py310-tiled
-    (2024-1.0-py310-tiled) [akiss@xf05id2-ws2 ~]$ ipython
+    [akiss@xf05id2-ws2 ~]$ conda activate 2025-2.0-py311-tiled
+    (2025-2.0-py311-tiled) [akiss@xf05id2-ws2 ~]$ ipython
     In [1]: from tiled.client import from_profile
     In [2]: c = from_profile("srx")["raw"]
 
@@ -167,6 +107,27 @@ This `BlueskyRun` object behaves like a dictionary. To access the data, start ad
 The data can then be extracted using ::
 
     d = bs_run["primary"]["data"]["fluor"][:]
+
+
+Fly-scanning spectroscopy
+-------------------------
+Fly-scanning spectroscopy is still in beta. Below is some information on how to use this capability.
+
+In order to have coordinated motion, the IVU Delta Tau will take complete control over the motion for the IVU, HDCM Bragg, and HDCM C2X. When a scan is started, the IVU will request control, and when the scan is complete, the IVU will disable control. If the scan is stopped or aborted, this may not clean up properly so it is important to check that control is disabled before moving components in bluesky or CSS.
+
+
+CSS-Pages
+*********
+To get to the IVU Scan Mode page, please navigate from |br| 
+5ID Main -> Insertion Device -> 5 SRX -> IVU 21 Operator Page -> Scan Mode
+
+.. _fig-ivu:
+.. figure::  _images/ivu_scan_mode.png
+   :target: _images/ivu_scan_mode.png
+   :width: 100%
+   :align: center
+
+   SRX IVU 21 scan mode CSS page.
 
 
 Fly-scanning XAS Commands
@@ -274,7 +235,7 @@ These are the complete instructions for focusing the K-B mirrors. Some steps can
     #. Check that the local bump is at the nominal values.
     #. Open the slits: JJ Slits (2.0 x 2.0 mm), SSA (1.0 x 0.05 mm).
     #. Move the K-B mirrors out of the beam. They should return to 0 pitch and translate out of the beam path.
-    #. Make sure the X-ray beam goes through the system. Check the X-ray eye. The ion chambers should see X-rays. The X-rays should pass through the nanoKB chamber. The X-ray beam should be about 1.5 x 1.2 mm (HxV) on the Merlin detector. Be sure to keep the total counts below 100k.
+    #. Make sure the X-ray beam goes through the system. Check the X-ray eye. The ion chambers should see X-rays. The X-rays should pass through the nanoKB chamber. The X-ray beam should be about 1.5 x 1.2 mm (HxV) on the Merlin detector. Be sure to keep the total counts below 100 kcps.
     #. Check that the JJ slits are centered on the X-ray beam. Close down the JJ slits to 0.3 x 0.6 mm (HxV).
     #. Move in and roughly align the K-B mirrors:
         * Start with the fine pitch motors for both K-B mirrors at 15 μm (the middle of their range).
@@ -282,11 +243,11 @@ These are the complete instructions for focusing the K-B mirrors. Some steps can
         * Move in the horizontal mirror. Check that the mirror is flat and set to zero. Move to middle of the X-ray beam.
         * Pitch the vertical mirror to 3 mrad. Translate the mirror down by 0.63 mm.
         * Pitch the horizontal mirror to 3 mrad. Translate the mirror outboard by 0.15 mm.
-        * Check that the focused beam can be seen by the Merlin and the VLM is not blocking the focused beam. VLM positions January 2022 (X, Y, Z) = (0.332, -3.730, 0.196)
-    #. Put in the diving board. Look for the fiducial marker patterns (Pt/Cr, 50 nm) with 5 μm wide horizontal and vertical features on the very edge.
+        * Check that the focused beam can be seen by the Merlin and the VLM is not blocking the focused beam.
+    #. Put in the diving board. Look for the fiducial marker patterns (Pt/Cr, 50 nm thick) with 5 μm wide horizontal and vertical features on the very edge.
     #. Use the VLM and fluorescence signal to roughly align the X-ray position cross-hair.
     #. Start with the vertical focus alignment:
-        * Run a knife-edge scan across a line to get an initial beam size. ``RE(nano_knife_edge(nano_stage.sy, -10, 10, 0.2, 0.1))``
+        * Run a knife-edge scan across a line to get an initial beam size. ``RE(knife_edge(nano_stage.sy, -10, 10, 0.2, 0.1))``
         * If the beam size is greater than 1 μm, move the coarse Z by 500 μm and look for a smaller beam size. Be aware line features will move horizontally when changing coarse Z.
         * Repeat until the beam size is smaller than 1 μm.
         * Run the slit-scan script. Here we as scanning the sample from -8 to 8 μm to move across the Pt line. The JJ slits are set to a gap of 0.1 mm and scanned a total of 1 mm centered around the beam center. Some of the knife-edge scans will not hit the mirror, so these scans will need to be excluded from the final analysis. ``RE(focusKB('ver'))``
@@ -313,11 +274,11 @@ These are the complete instructions for focusing the K-B mirrors. Some steps can
 Calibrating the monochromator
 *****************************
 *Calibrating the monochromator is done by collecting XANES spectra across several element absorption edges. A least-squares fitting routine will then calculate the HDCM parameters for the calibration*
-    #. Collect XANES scans at 3-5 different energies. For the best fit, a wide range of energies is best. Typically, scans are performed using V, Cr, Fe, Cu, Se, Zr foils. *It is a good idea to record the C1 Roll and C2 Pitch values for each energy. These can be used for a lookup table to improve the peakup function.*::
+    #. Collect XANES scans at 4-6 different energies. For the best fit, a wide range of energies is best. Typically, scans are performed using V, Cr, Fe, Cu, Se, Zr, Mo foils. *It is a good idea to record the C1 Roll and C2 Pitch values for each energy. These can be used for a lookup table to improve the peakup function.* ::
 
         Bluesky@SRX [1] X = getbindingE('Fe')
         Bluesky@SRX [2] %mov energy X
-        Bluesky@SRX [3] RE(peakup_fine())
+        Bluesky@SRX [3] RE(peakup())
         Bluesky@SRX [4] RE(xanes_plan([X-50, X+50], [1], 1.0))
 
     #. Define a dictionary in bluesky with element symbols mapped to scan IDs.::
@@ -327,13 +288,34 @@ Calibrating the monochromator
                                       'Fe': 1002,
                                       'Cu': 1003,
                                       'Se': 1004,
-                                      'Zr': 1005}
+                                      'Zr': 1005,
+                                      'Mo": 1006}
 
     #. Run the *braggcalib()* function with the dictionary as input. The function will go through each scan and display a plot marking where the edge was found. Finally, this will output the new HDCM parameters.::
 
         Bluesky@SRX [6] braggcalib(scanlogDic=scanlogDic, use_xrf=True)
 
     #. Update the values in the bluesky profile (10-machine.py). Save and restart bluesky.
+
+
+Updating the IVU LUT
+********************
+When asked to move to a given X-ray energy, the undulator (IVU) gap must move accordingly to stay on a harmonic. Variations from cycle-to-cycle have been observed so calibrating the lookup-table for the IVU is an important step at the beginning of the cycle.
+
+To generate a new lookup-table, start by installing the Ti foil for BPM4. A scan plan is written to scan across a given harmonic - the default is the third harmonic - at different gaps and export a LUT file. This scan can be run using ::
+
+    Bluesky@SRX [1] undulator_calibration()
+
+This will export a text file of the LUT in the `xf05id1` home directory.
+
+If the LUT is satisfactory, the file should be copied into the SRX startup scripts. These are found at `/home/xf05id1/ipython_ophyd/data`
+
+There is a symlink that points to the current calibration. To update this to point to the new calibration, from a terminal in the `data` directory execute the following commands ::
+
+    $ unlink SRXUgapCalibration.txt
+    $ ln -s YYYYMMDD_SRXUgapCalibration.txt SRXUgapCalibration.txt
+
+Since bluesky is only looking at the symlink, the new LUT can be loaded by restarting bluesky.
 
 
 Beamline Maintenance
