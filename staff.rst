@@ -19,7 +19,7 @@ Quick Links
 
 .. todo::
 
-  - Fix IOCs reference 
+  - Add archiver link
 
 
 Setting up Users
@@ -32,41 +32,10 @@ Setting up Users
 
 #. Perform beamline specific training. `5-ID BST Form <https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf>`_
 
-Setting up the analysis environment
------------------------------------
-#. Setting up a file browser
-
-   - Open a terminal and login as the user: ::
-     
-       su - username
-
-   - Launch the file browser ::
-
-       nautilus
-
-#. Setting up a Athena
-
-   - Open a terminal and login as the user: ::
-     
-       su - username
-
-   - Launch Athena ::
-
-       dathena
-
-#. Setting up pyXRF
-
-   - Open a terminal and login as the user: ::
-     
-       su - username
-
-   - Change directory to the scripts folder: ::
-
-       cd /nsls2/data/srx/shared/config/bluesky/profile_analysis/scripts
-
-   - Start pyXRF ::
-
-       ./run-pyxrf
+Setting up the Scan Report
+--------------------------
+.. todo::
+    - Add instructions
 
 
 Virtual Machine Information
@@ -108,8 +77,11 @@ The data can then be extracted using ::
 
     d = bs_run["primary"]["data"]["fluor"][:]
 
+.. todo::
+    - Add searching
 
-Fly-scanning spectroscopy
+
+Fly-Scanning Spectroscopy
 -------------------------
 Fly-scanning spectroscopy is still in beta. Below is some information on how to use this capability.
 
@@ -132,18 +104,18 @@ To get to the IVU Scan Mode page, please navigate from |br|
 
 Fly-scanning XAS Commands
 *************************
-Run a fly spectroscopy scan. ``num_scans`` is optional. ``scan_type`` can be set to ``uni`` or ``bi`` to determine if the scan will only in one direction or both.::
+Run a fly spectroscopy scan. ``num_scans`` is optional. ``scan_type`` can be set to ``uni`` or ``bi`` to determine if the scan will only fly in one direction or both. ::
 
-        RE(fly_multiple_passes(e_start, e_stop, e_width, dwell, num_pts,
+        Bluesky@SRX [1] RE(fly_multiple_passes(e_start, e_stop, e_width, dwell, num_pts,
                                num_scans=1, scan_type='uni'))
 
-Export scan data.::
+Export scan data. ::
 
-        export_flyer_id_mono_data(uid_or_scanid)
+        Bluesky@SRX [1] export_flyer_id_mono_data(uid_or_scanid)
 
-Recover the bluesky environment from an aborted scan.::
+Recover the bluesky environment from an aborted scan. ::
 
-        RE(flying_xas_reset())
+        Bluesky@SRX [1] RE(flying_xas_reset())
         
 Debugging
 *********
@@ -233,7 +205,8 @@ Focusing the K-B Mirrors
 ************************
 These are the complete instructions for focusing the K-B mirrors. Some steps can be skipped if the optics are already aligned and the goal is to tweak the optics.
     #. Check that the local bump is at the nominal values.
-    #. Open the slits: JJ Slits (2.0 x 2.0 mm), SSA (1.0 x 0.05 mm).
+    #. Remove the pinhole aperture out of the beam path. Move to Y maximum.
+    #. Open the slits: JJ Slits (2.0 x 2.0 mm), SSA (0.050 x 1.0 mm) (HxV).
     #. Move the K-B mirrors out of the beam. They should return to 0 pitch and translate out of the beam path.
     #. Make sure the X-ray beam goes through the system. Check the X-ray eye. The ion chambers should see X-rays. The X-rays should pass through the nanoKB chamber. The X-ray beam should be about 1.5 x 1.2 mm (HxV) on the Merlin detector. Be sure to keep the total counts below 100 kcps.
     #. Check that the JJ slits are centered on the X-ray beam. Close down the JJ slits to 0.3 x 0.6 mm (HxV).
@@ -247,11 +220,11 @@ These are the complete instructions for focusing the K-B mirrors. Some steps can
     #. Put in the diving board. Look for the fiducial marker patterns (Pt/Cr, 50 nm thick) with 5 μm wide horizontal and vertical features on the very edge.
     #. Use the VLM and fluorescence signal to roughly align the X-ray position cross-hair.
     #. Start with the vertical focus alignment:
-        * Run a knife-edge scan across a line to get an initial beam size. ``RE(knife_edge(nano_stage.sy, -10, 10, 0.2, 0.1))``
+        * Run a knife-edge scan across a line to get an initial beam size. ``RE(knife_edge(nano_stage.sy, -10, 10, 0.1, 0.05))``
         * If the beam size is greater than 1 μm, move the coarse Z by 500 μm and look for a smaller beam size. Be aware line features will move horizontally when changing coarse Z.
         * Repeat until the beam size is smaller than 1 μm.
         * Run the slit-scan script. Here we as scanning the sample from -8 to 8 μm to move across the Pt line. The JJ slits are set to a gap of 0.1 mm and scanned a total of 1 mm centered around the beam center. Some of the knife-edge scans will not hit the mirror, so these scans will need to be excluded from the final analysis. ``RE(focusKB('ver'))``
-        * The slit-scan script will perform a calculation with ``orthogonality=False`` and ignoring the first and last scans. If further adjustment is needed, you can manually run the ``slit_nanoflyscan_cal`` function.
+        * The slit-scan script will perform a calculation with ``orthogonality=False`` and ignoring the first two and last two scans. If further adjustment is needed, you can manually run the ``slit_nanoflyscan_cal`` function.
         * The script will show a plot of the Pt line center and report some values. In particular, pay attention to the defocus amount. Move the sample by the defocus amount using the coarse Z stage.
         * Run another knife-edge scan to make sure the focus improved.
         * Run the slit-scan script and calculation again. Hopefully upon calculation, the defocus amount is small (< 100 μm) and the curve is relatively flat. In that case, change the orthogonality flag to True and run the calculation again. Otherwise, repeat until the defocus amount is small.
@@ -263,10 +236,11 @@ These are the complete instructions for focusing the K-B mirrors. Some steps can
         .. warning::
            For horizontal mirror alignment, only horizontal mirror pitch should be moved to prevent astigmatism in the two focal planes.
 
-        * Find a line for scanning and run a knife-edge scan to get the initial beam size.
+        * Find a line for scanning and run a knife-edge scan to get the initial beam size. ``RE(knife_edge(nano_stage.sx, -10, 10, 0.1, 0.05))``
+
         * Run the slit-scan to scan the JJ slits across the mirror. ``RE(focusKB('hor'))``
         * Perform the slit-scan calculations with ``orthogonality=False``
-        * The calculation will output an amount to move the horizontal K-B mirror in mrad. To translate this to a linear distance for the fine actuator, multiply by 100 mm. Move the horizontal fine pitch actuator by this amount.
+        * The calculation will output an amount to move the horizontal K-B mirror in mrad. Move the horizontal fine pitch actuator by this amount.
         * Similar to the vertical mirror, run a knife-edge scan to make sure the actuator was moved the correct direction and measure the new focus.
         * Repeat the slit-scans until the focus is acceptable.
         * Check the horizontal focus as a function of SSA width.
@@ -274,14 +248,14 @@ These are the complete instructions for focusing the K-B mirrors. Some steps can
 Calibrating the monochromator
 *****************************
 *Calibrating the monochromator is done by collecting XANES spectra across several element absorption edges. A least-squares fitting routine will then calculate the HDCM parameters for the calibration*
-    #. Collect XANES scans at 4-6 different energies. For the best fit, a wide range of energies is best. Typically, scans are performed using V, Cr, Fe, Cu, Se, Zr, Mo foils. *It is a good idea to record the C1 Roll and C2 Pitch values for each energy. These can be used for a lookup table to improve the peakup function.* ::
+    #. Collect XANES scans at 4-6 different energies. For the best fit, a wide range of energies is best. Typically, scans are performed using V, Cr, Fe, Cu, Se, Zr, Mo foils. :: 
 
         Bluesky@SRX [1] X = getbindingE('Fe')
         Bluesky@SRX [2] %mov energy X
         Bluesky@SRX [3] RE(peakup())
         Bluesky@SRX [4] RE(xanes_plan([X-50, X+50], [1], 1.0))
 
-    #. Define a dictionary in bluesky with element symbols mapped to scan IDs.::
+    #. Define a dictionary in bluesky with element symbols mapped to scan IDs. ::
 
         Bluesky@SRX [5] scanlogDic = {'V' : 1000,
                                       'Cr': 1001,
@@ -289,13 +263,13 @@ Calibrating the monochromator
                                       'Cu': 1003,
                                       'Se': 1004,
                                       'Zr': 1005,
-                                      'Mo": 1006}
+                                      'Mo': 1006}
 
-    #. Run the *braggcalib()* function with the dictionary as input. The function will go through each scan and display a plot marking where the edge was found. Finally, this will output the new HDCM parameters.::
+    #. Run the ``braggcalib()`` function with the dictionary as input. The function will go through each scan and display a plot marking where the edge was found. Finally, this will output the new HDCM parameters. ::
 
         Bluesky@SRX [6] braggcalib(scanlogDic=scanlogDic, use_xrf=True)
 
-    #. Update the values in the bluesky profile (10-machine.py). Save and restart bluesky.
+    #. Update the values in the bluesky profile (``10-machine.py``). Save and restart bluesky.
 
 
 Updating the IVU LUT
@@ -306,11 +280,11 @@ To generate a new lookup-table, start by installing the Ti foil for BPM4. A scan
 
     Bluesky@SRX [1] undulator_calibration()
 
-This will export a text file of the LUT in the `xf05id1` home directory.
+This will export a text file of the LUT in the ``xf05id1`` home directory.
 
-If the LUT is satisfactory, the file should be copied into the SRX startup scripts. These are found at `/home/xf05id1/ipython_ophyd/data`
+If the LUT is satisfactory, the file should be copied into the SRX startup scripts. These are found at ``/home/xf05id1/ipython_ophyd/data``
 
-There is a symlink that points to the current calibration. To update this to point to the new calibration, from a terminal in the `data` directory execute the following commands ::
+There is a symlink that points to the current calibration. To update this to point to the new calibration, from a terminal in the ``data`` directory execute the following commands ::
 
     $ unlink SRXUgapCalibration.txt
     $ ln -s YYYYMMDD_SRXUgapCalibration.txt SRXUgapCalibration.txt
@@ -329,7 +303,7 @@ Cryocooler
 *The manual for the cryocooler can be found here.*
 
 .. todo::
-    * Upload cryocooler manual
+    * Add link to cryocooler manual
 
 Warming the cryocooler
 ^^^^^^^^^^^^^^^^^^^^^^

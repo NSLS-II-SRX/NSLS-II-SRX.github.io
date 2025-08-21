@@ -11,7 +11,9 @@ Welcome to NSLS-II SRX's documentation!
    :caption: Contents:
 
    intro.rst
-   useful_ops.rst
+   gui.rst
+   bluesky_cmd.rst
+   data_analysis.rst
    data_transfer.rst
    acceptance_tests.rst
    staff.rst

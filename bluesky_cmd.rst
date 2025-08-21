@@ -1,5 +1,5 @@
-Useful Commands
-===============
+Bluesky Commands
+================
 Below is a list of useful commands for running the SRX beamline. Previous commands can be seen by hitting the up arrow in Bluesky. To search through them, you can start typing a command before hitting the up arrow to filter your history.
 
 Starting Bluesky
@@ -21,13 +21,13 @@ Change X-ray energy - *Either command can be used below. The energy can be enter
 
 Optimize the beam - *Maximize the X-ray flux.* ::
 
-    RE(peakup())
+    Bluesky@SRX [1] RE(peakup())
 
-Optimize the ion chambers - *Check that the ion chambers have their ideal preamp settings* ::
+Optimize the ion chambers - *Check that the ion chambers have their ideal preamp settings.* ::
 
-    RE(optimize_scalers())
+    Bluesky@SRX [1] RE(optimize_scalers())
 
-Setting a region of interest - *Set the ROI on the detector. The specific edge is optional.* ::
+Setting a region of interest - *Set the ROI on the detector. The specific line is optional.* ::
 
     Bluesky@SRX [1] setroi(1, 'Fe')
     Bluesky@SRX [2] setroi(1, 'Fe', 'ka1')
@@ -55,7 +55,7 @@ Step scan - *Perform a step scan. Note: these arguments take a step size, not th
 
 XAS Spectroscopy
 ****************
-Print element binding energies - *Print the binding energies for the element of interest. The "best" edge can be returned as available.* ::
+Print element binding energies - *Print the binding energies for the element of interest. The "best" edge in eV is returned as available.* ::
 
     Bluesky@SRX [1] Fe_k = getbindingE('Fe')
 
@@ -70,10 +70,6 @@ XANES scan - *Run a XANES scan. This scan has 3 regions with different steps spa
                                   acqtime=1.0,
                                   samplename='Fe foil',
                                   filename='Fe_foil'))
-
-X-ray Diffraction
-*****************
-
 
 Metadata
 ********
