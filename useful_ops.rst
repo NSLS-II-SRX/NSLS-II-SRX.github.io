@@ -12,10 +12,6 @@ Start Bluesky - *Bluesky can be started by going to the top left corner of the s
 
 After starting Bluesky, it is important to confirm that the proposal number in the terminal matches the experiment.
 
-To activate an experiment, open a new terminal and run the following command. Here we assume the proposal number is 12345. The user will be asked to enter their username and password to authenticate and start the experiment ::
-
-    $ start-experiment -p 12345
-
 General Functions
 *****************
 Change X-ray energy - *Either command can be used below. The energy can be entered in units of eV or keV.* ::
