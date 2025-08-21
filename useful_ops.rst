@@ -4,9 +4,17 @@ Below is a list of useful commands for running the SRX beamline. Previous comman
 
 Starting Bluesky
 ****************
-Start Bluesky - *Start Bluesky from the terminal.* ::
+Start Bluesky - *Bluesky can be started by going to the top left corner of the screen and choosing Activities. Then click on the Bluesky icon - a blue cloud with a b - to automatically open a new terminal and start Bluesky.* 
+
+*Alternatively, start Bluesky from an existing terminal.* ::
 
     $ bsui
+
+After starting Bluesky, it is important to confirm that the proposal number in the terminal matches the experiment.
+
+To activate an experiment, open a new terminal and run the following command. Here we assume the proposal number is 12345. The user will be asked to enter their username and password to authenticate and start the experiment ::
+
+    $ start-experiment -p 12345
 
 General Functions
 *****************
@@ -18,6 +26,10 @@ Change X-ray energy - *Either command can be used below. The energy can be enter
 Optimize the beam - *Maximize the X-ray flux.* ::
 
     RE(peakup())
+
+Optimize the ion chambers - *Check that the ion chambers have their ideal preamp settings* ::
+
+    RE(optimize_scalers())
 
 Setting a region of interest - *Set the ROI on the detector. The specific edge is optional.* ::
 
@@ -63,12 +75,16 @@ XANES scan - *Run a XANES scan. This scan has 3 regions with different steps spa
                                   samplename='Fe foil',
                                   filename='Fe_foil'))
 
+X-ray Diffraction
+*****************
+
+
 Metadata
 ********
 Print the ``start`` or ``stop`` document for a scan - *A scan ID of 12345 is assumed. A value of -1 can be used to see the previous scan.* ::
 
-    Bluesky@SRX [1] db[12345].start
-    Bluesky@SRX [2] db[12345].stop
+    Bluesky@SRX [1] c[12345].start
+    Bluesky@SRX [2] c[12345].stop
 
 Print the ``baseline`` information for a scan - *baseline will collect the motor positions at the start (column 1) and completion (column 2) of a scan. There are many motors positions captured so it is helpful to filter the list of values. A scan ID of 12345 is assumed.* ::
 
@@ -82,7 +98,7 @@ Pause a scan - *The scan will pause at the next checkpoint.* ::
 
     CTRL+C
 
-Urgently stop a scan - *With each CTRL-C, Bluesky raisens the urgency of stopping the scan.* ::
+Urgently stop a scan - *With each CTRL-C, Bluesky raises the urgency of stopping the scan.* ::
 
     CTRL+C x20
 
