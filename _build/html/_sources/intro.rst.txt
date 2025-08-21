@@ -1,6 +1,6 @@
 Introduction to SRX
 ===================
-The Sub-micron Resolution X-ray Spectroscopy (SRX) beamline at the NSLS-II supports a wide variety of scientific use-cases, ranging from geoscience through energy materials. Facilities include state-of-the-art, sub-micron focusing X-ray optics and a flexible sample environment.
+The Submicron Resolution X-ray Spectroscopy (SRX) beamline at the NSLS-II supports a wide variety of scientific use-cases, ranging from geoscience through energy materials. Facilities include state-of-the-art, submicron focusing X-ray optics and a flexible sample environment.
 
 .. _fig-prompt:
 .. figure::  _images/SRX_BeamlineSchematic_text_tab_web.png

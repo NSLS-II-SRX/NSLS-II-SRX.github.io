@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Acceptance Tests" href="acceptance_tests.html" /> 
+    <link rel="prev" title="Acceptance Tests [staff only]" href="acceptance_tests.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,17 +44,19 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to SRX</a></li>
-<li class="toctree-l1"><a class="reference internal" href="useful_ops.html">Useful Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">CSS-Phoebus GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bluesky_cmd.html">Bluesky Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_transfer.html">Data Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="acceptance_tests.html">Acceptance Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acceptance_tests.html">Acceptance Tests [staff only]</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Beamline Staff Pages [staff only]</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#quick-links">Quick Links</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#setting-up-users">Setting up Users</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#setting-up-the-analysis-environment">Setting up the analysis environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-the-scan-report">Setting up the Scan Report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#virtual-machine-information">Virtual Machine Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#fly-scanning-spectroscopy">Fly-scanning spectroscopy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tiled-notes">Tiled Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fly-scanning-spectroscopy">Fly-Scanning Spectroscopy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#css-pages">CSS-Pages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tiled-notes">Tiled Notes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fly-scanning-xas-commands">Fly-scanning XAS Commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#debugging">Debugging</a></li>
 </ul>
@@ -64,6 +66,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#aligning-the-beamline">Aligning the Beamline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#focusing-the-k-b-mirrors">Focusing the K-B Mirrors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#calibrating-the-monochromator">Calibrating the monochromator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#updating-the-ivu-lut">Updating the IVU LUT</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#beamline-maintenance">Beamline Maintenance</a><ul>
@@ -128,7 +131,7 @@
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <ul class="simple">
-<li><p>Fix IOCs reference</p></li>
+<li><p>Add archiver link</p></li>
 </ul>
 </div>
 </section>
@@ -137,114 +140,21 @@
 <ol class="arabic">
 <li><p>Post SAF to <a class="reference external" href="http://passadmin.bnl.gov">PASS Admin</a></p></li>
 <li><p>Start the experiment using the proposal ID by running the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ start-experiment -b SRX -p {proposal_id}
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ start-experiment -p {proposal_id}
 </pre></div>
 </div>
 </li>
 <li><p>Perform beamline specific training. <a class="reference external" href="https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf">5-ID BST Form</a></p></li>
 </ol>
 </section>
-<section id="setting-up-the-analysis-environment">
-<h2>Setting up the analysis environment<a class="headerlink" href="#setting-up-the-analysis-environment" title="Link to this heading"></a></h2>
-<ol class="arabic">
-<li><p>Setting up SRX Autosave for XRF maps</p>
-<ul>
-<li><p>Open a terminal and login as the user:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">su</span> <span class="o">-</span> <span class="n">username</span>
-</pre></div>
-</div>
-</li>
-<li><p>Change directory to the scripts folder:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">nsls2</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">srx</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">bluesky</span><span class="o">/</span><span class="n">profile_analysis</span><span class="o">/</span><span class="n">scripts</span>
-</pre></div>
-</div>
-</li>
-<li><p>Start SRX Autosave</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run</span><span class="o">-</span><span class="n">srxautosave</span><span class="o">-</span><span class="n">new</span>
-</pre></div>
-</div>
-</li>
-<li><p>Confirm the input parameters including output directory and run.</p></li>
+<section id="setting-up-the-scan-report">
+<h2>Setting up the Scan Report<a class="headerlink" href="#setting-up-the-scan-report" title="Link to this heading"></a></h2>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<ul class="simple">
+<li><p>Add instructions</p></li>
 </ul>
-</li>
-<li><p>Setting up the XAS exporter</p>
-<ul>
-<li><p>Open a terminal and login as the user:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">su</span> <span class="o">-</span> <span class="n">username</span>
-</pre></div>
 </div>
-</li>
-<li><p>Change directory to the proposal folder:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">nsls2</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">srx</span><span class="o">/</span><span class="n">proposals</span><span class="o">/</span><span class="mi">2024</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="k">pass</span><span class="o">-</span><span class="p">{</span><span class="n">proposal_id</span><span class="p">}</span>
-</pre></div>
-</div>
-</li>
-<li><p>Open the conda environment.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>conda activate $BS_ENV
-</pre></div>
-</div>
-</li>
-<li><p>Open iPython and load the exporter. If the export file is not there, please ask a beamline scientist to copy it from another proposal directory.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipython</span>
-<span class="o">%</span><span class="n">run</span> <span class="o">-</span><span class="n">i</span> <span class="n">export_xanes</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
-</li>
-<li><p>Now a scan can be exported into the proposal directory using the <cite>exporter</cite> function.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exporter</span><span class="p">(</span><span class="n">scanid</span><span class="p">)</span>
-</pre></div>
-</div>
-</li>
-</ul>
-</li>
-<li><p>Setting up a file browser</p>
-<ul>
-<li><p>Open a terminal and login as the user:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">su</span> <span class="o">-</span> <span class="n">username</span>
-</pre></div>
-</div>
-</li>
-<li><p>Launch the file browser</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nautilus</span>
-</pre></div>
-</div>
-</li>
-</ul>
-</li>
-<li><p>Setting up a Athena</p>
-<ul>
-<li><p>Open a terminal and login as the user:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">su</span> <span class="o">-</span> <span class="n">username</span>
-</pre></div>
-</div>
-</li>
-<li><p>Launch Athena</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dathena</span>
-</pre></div>
-</div>
-</li>
-</ul>
-</li>
-<li><p>Setting up pyXRF</p>
-<ul>
-<li><p>Open a terminal and login as the user:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">su</span> <span class="o">-</span> <span class="n">username</span>
-</pre></div>
-</div>
-</li>
-<li><p>Change directory to the scripts folder:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">nsls2</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">srx</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">bluesky</span><span class="o">/</span><span class="n">profile_analysis</span><span class="o">/</span><span class="n">scripts</span>
-</pre></div>
-</div>
-</li>
-<li><p>Start pyXRF</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run</span><span class="o">-</span><span class="n">pyxrf</span>
-</pre></div>
-</div>
-</li>
-</ul>
-</li>
-</ol>
 </section>
 <section id="virtual-machine-information">
 <h2>Virtual Machine Information<a class="headerlink" href="#virtual-machine-information" title="Link to this heading"></a></h2>
@@ -253,28 +163,12 @@
 Guacamole Title: “Windows VM 1” <br>
 Password: See shared vault in Bitwarden</p>
 </section>
-<section id="fly-scanning-spectroscopy">
-<h2>Fly-scanning spectroscopy<a class="headerlink" href="#fly-scanning-spectroscopy" title="Link to this heading"></a></h2>
-<p>Fly-scanning spectroscopy is still in beta. Below is some information on how to use this capability.</p>
-<p>In order to have coordinated motion, the IVU Delta Tau will take complete control over the motion for the IVU, HDCM Bragg, and HDCM C2X. When a scan is started, the IVU will request control, and when the scan is complete, the IVU will disable control. If the scan is stopped or aborted, this may not clean up properly so it is important to check that control is disabled before moving components in bluesky or CSS.</p>
-<section id="css-pages">
-<h3>CSS-Pages<a class="headerlink" href="#css-pages" title="Link to this heading"></a></h3>
-<p>To get to the IVU Scan Mode page, please navigate from <br>
-5ID Main -&gt; Insertion Device -&gt; 5 SRX -&gt; IVU 21 Operator Page -&gt; Scan Mode</p>
-<figure class="align-center" id="id7">
-<span id="fig-ivu"></span><a class="reference external image-reference" href="_images/ivu_scan_mode.png"><img alt="_images/ivu_scan_mode.png" src="_images/ivu_scan_mode.png" style="width: 100%;" />
-</a>
-<figcaption>
-<p><span class="caption-text">SRX IVU 21 scan mode CSS page.</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
-</figcaption>
-</figure>
-</section>
 <section id="tiled-notes">
-<h3>Tiled Notes<a class="headerlink" href="#tiled-notes" title="Link to this heading"></a></h3>
+<h2>Tiled Notes<a class="headerlink" href="#tiled-notes" title="Link to this heading"></a></h2>
 <p>While in a bluesky session, it is possible to continue using <cite>db</cite> and it’s associated commands. This will still use <cite>tiled</cite> as the backend and allow for a familiar interface using <cite>db</cite>. For <cite>tiled</cite> specific usage, the bluesky startup scripts define <cite>c</cite> as a catalog of scans. This can be accessed from the bluesky session.</p>
 <p>If logging in from a separate session, the catalog will need to be initialized. For completeness, all steps are shown here.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[akiss@xf05id2-ws2 ~]$ conda activate 2024-1.0-py310-tiled
-(2024-1.0-py310-tiled) [akiss@xf05id2-ws2 ~]$ ipython
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[akiss@xf05id2-ws2 ~]$ conda activate 2025-2.0-py311-tiled
+(2025-2.0-py311-tiled) [akiss@xf05id2-ws2 ~]$ ipython
 In [1]: from tiled.client import from_profile
 In [2]: c = from_profile(&quot;srx&quot;)[&quot;raw&quot;]
 </pre></div>
@@ -298,20 +192,42 @@ In [2]: c = from_profile(&quot;srx&quot;)[&quot;raw&quot;]
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">bs_run</span><span class="p">[</span><span class="s2">&quot;primary&quot;</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;fluor&quot;</span><span class="p">][:]</span>
 </pre></div>
 </div>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<ul class="simple">
+<li><p>Add searching</p></li>
+</ul>
+</div>
+</section>
+<section id="fly-scanning-spectroscopy">
+<h2>Fly-Scanning Spectroscopy<a class="headerlink" href="#fly-scanning-spectroscopy" title="Link to this heading"></a></h2>
+<p>Fly-scanning spectroscopy is still in beta. Below is some information on how to use this capability.</p>
+<p>In order to have coordinated motion, the IVU Delta Tau will take complete control over the motion for the IVU, HDCM Bragg, and HDCM C2X. When a scan is started, the IVU will request control, and when the scan is complete, the IVU will disable control. If the scan is stopped or aborted, this may not clean up properly so it is important to check that control is disabled before moving components in bluesky or CSS.</p>
+<section id="css-pages">
+<h3>CSS-Pages<a class="headerlink" href="#css-pages" title="Link to this heading"></a></h3>
+<p>To get to the IVU Scan Mode page, please navigate from <br>
+5ID Main -&gt; Insertion Device -&gt; 5 SRX -&gt; IVU 21 Operator Page -&gt; Scan Mode</p>
+<figure class="align-center" id="id9">
+<span id="fig-ivu"></span><a class="reference external image-reference" href="_images/ivu_scan_mode.png"><img alt="_images/ivu_scan_mode.png" src="_images/ivu_scan_mode.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">SRX IVU 21 scan mode CSS page.</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
 </section>
 <section id="fly-scanning-xas-commands">
 <h3>Fly-scanning XAS Commands<a class="headerlink" href="#fly-scanning-xas-commands" title="Link to this heading"></a></h3>
-<p>Run a fly spectroscopy scan. <code class="docutils literal notranslate"><span class="pre">num_scans</span></code> is optional. <code class="docutils literal notranslate"><span class="pre">scan_type</span></code> can be set to <code class="docutils literal notranslate"><span class="pre">uni</span></code> or <code class="docutils literal notranslate"><span class="pre">bi</span></code> to determine if the scan will only in one direction or both.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">fly_multiple_passes</span><span class="p">(</span><span class="n">e_start</span><span class="p">,</span> <span class="n">e_stop</span><span class="p">,</span> <span class="n">e_width</span><span class="p">,</span> <span class="n">dwell</span><span class="p">,</span> <span class="n">num_pts</span><span class="p">,</span>
+<p>Run a fly spectroscopy scan. <code class="docutils literal notranslate"><span class="pre">num_scans</span></code> is optional. <code class="docutils literal notranslate"><span class="pre">scan_type</span></code> can be set to <code class="docutils literal notranslate"><span class="pre">uni</span></code> or <code class="docutils literal notranslate"><span class="pre">bi</span></code> to determine if the scan will only fly in one direction or both.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">fly_multiple_passes</span><span class="p">(</span><span class="n">e_start</span><span class="p">,</span> <span class="n">e_stop</span><span class="p">,</span> <span class="n">e_width</span><span class="p">,</span> <span class="n">dwell</span><span class="p">,</span> <span class="n">num_pts</span><span class="p">,</span>
                        <span class="n">num_scans</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scan_type</span><span class="o">=</span><span class="s1">&#39;uni&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Export scan data.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export_flyer_id_mono_data</span><span class="p">(</span><span class="n">uid_or_scanid</span><span class="p">)</span>
+<p>Export scan data.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">export_flyer_id_mono_data</span><span class="p">(</span><span class="n">uid_or_scanid</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Recover the bluesky environment from an aborted scan.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RE</span><span class="p">(</span><span class="n">flying_xas_reset</span><span class="p">())</span>
+<p>Recover the bluesky environment from an aborted scan.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">flying_xas_reset</span><span class="p">())</span>
 </pre></div>
 </div>
 </section>
@@ -323,20 +239,20 @@ In [2]: c = from_profile(&quot;srx&quot;)[&quot;raw&quot;]
 </div>
 <p>If the HDCM Bragg or C2X motors are not moving, it is good to check if the IVU scan mode is enabled. If the scan mode is enabled and a move is tried from CSS or bluesky, the motor can be put into an alarm state with a following error. On one of the motor pages, such as the SRX Align page, you can see a red box around the motor in alarm. To confirm a following error, you can go from <br>
 5ID Main -&gt; HDCM -&gt; &lt;motor&gt; More -&gt; PMAC Axis Status</p>
-<figure class="align-center" id="id8">
+<figure class="align-center" id="id10">
 <span id="fig-axis"></span><a class="reference external image-reference" href="_images/axis_status.png"><img alt="_images/axis_status.png" src="_images/axis_status.png" style="width: 70%;" />
 </a>
 <figcaption>
-<p><span class="caption-text">SRX HDCM Bragg axis page.</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+<p><span class="caption-text">SRX HDCM Bragg axis page.</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>To reset the amplifier fault, go to the asyn page to send commands to the motor controller. <br>
 5ID Main -&gt; HDCM -&gt; &lt;motor&gt; More -&gt; Asyn -&gt; More -&gt; Asyn Octet Interface I/O</p>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id11">
 <span id="fig-asyn"></span><a class="reference external image-reference" href="_images/asyn.png"><img alt="_images/asyn.png" src="_images/asyn.png" style="width: 70%;" />
 </a>
 <figcaption>
-<p><span class="caption-text">SRX HDCM Bragg asyn page.</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+<p><span class="caption-text">SRX HDCM Bragg asyn page.</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>Check that the IVU control is disabled. Type the following command on the motor’s asyn page and hit Enter:</p>
@@ -349,7 +265,7 @@ In [2]: c = from_profile(&quot;srx&quot;)[&quot;raw&quot;]
 <section id="beamline-setup">
 <h2>Beamline Setup<a class="headerlink" href="#beamline-setup" title="Link to this heading"></a></h2>
 <p>These tasks are typically done once a cycle.</p>
-<div class="admonition-todo admonition" id="id2">
+<div class="admonition-todo admonition" id="id4">
 <p class="admonition-title">Todo</p>
 <ul class="simple">
 <li><p>Beamline alignment</p></li>
@@ -414,9 +330,10 @@ In [2]: c = from_profile(&quot;srx&quot;)[&quot;raw&quot;]
 <dl>
 <dt>These are the complete instructions for focusing the K-B mirrors. Some steps can be skipped if the optics are already aligned and the goal is to tweak the optics.</dt><dd><ol class="arabic">
 <li><p>Check that the local bump is at the nominal values.</p></li>
-<li><p>Open the slits: JJ Slits (2.0 x 2.0 mm), SSA (1.0 x 0.05 mm).</p></li>
+<li><p>Remove the pinhole aperture out of the beam path. Move to Y maximum.</p></li>
+<li><p>Open the slits: JJ Slits (2.0 x 2.0 mm), SSA (0.050 x 1.0 mm) (HxV).</p></li>
 <li><p>Move the K-B mirrors out of the beam. They should return to 0 pitch and translate out of the beam path.</p></li>
-<li><p>Make sure the X-ray beam goes through the system. Check the X-ray eye. The ion chambers should see X-rays. The X-rays should pass through the nanoKB chamber. The X-ray beam should be about 1.5 x 1.2 mm (HxV) on the Merlin detector. Be sure to keep the total counts below 100k.</p></li>
+<li><p>Make sure the X-ray beam goes through the system. Check the X-ray eye. The ion chambers should see X-rays. The X-rays should pass through the nanoKB chamber. The X-ray beam should be about 1.5 x 1.2 mm (HxV) on the Merlin detector. Be sure to keep the total counts below 100 kcps.</p></li>
 <li><p>Check that the JJ slits are centered on the X-ray beam. Close down the JJ slits to 0.3 x 0.6 mm (HxV).</p></li>
 <li><dl class="simple">
 <dt>Move in and roughly align the K-B mirrors:</dt><dd><ul class="simple">
@@ -425,20 +342,20 @@ In [2]: c = from_profile(&quot;srx&quot;)[&quot;raw&quot;]
 <li><p>Move in the horizontal mirror. Check that the mirror is flat and set to zero. Move to middle of the X-ray beam.</p></li>
 <li><p>Pitch the vertical mirror to 3 mrad. Translate the mirror down by 0.63 mm.</p></li>
 <li><p>Pitch the horizontal mirror to 3 mrad. Translate the mirror outboard by 0.15 mm.</p></li>
-<li><p>Check that the focused beam can be seen by the Merlin and the VLM is not blocking the focused beam. VLM positions January 2022 (X, Y, Z) = (0.332, -3.730, 0.196)</p></li>
+<li><p>Check that the focused beam can be seen by the Merlin and the VLM is not blocking the focused beam.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>Put in the diving board. Look for the fiducial marker patterns (Pt/Cr, 50 nm) with 5 μm wide horizontal and vertical features on the very edge.</p></li>
+<li><p>Put in the diving board. Look for the fiducial marker patterns (Pt/Cr, 50 nm thick) with 5 μm wide horizontal and vertical features on the very edge.</p></li>
 <li><p>Use the VLM and fluorescence signal to roughly align the X-ray position cross-hair.</p></li>
 <li><dl class="simple">
 <dt>Start with the vertical focus alignment:</dt><dd><ul class="simple">
-<li><p>Run a knife-edge scan across a line to get an initial beam size. <code class="docutils literal notranslate"><span class="pre">RE(nano_knife_edge(nano_stage.sy,</span> <span class="pre">-10,</span> <span class="pre">10,</span> <span class="pre">0.2,</span> <span class="pre">0.1))</span></code></p></li>
+<li><p>Run a knife-edge scan across a line to get an initial beam size. <code class="docutils literal notranslate"><span class="pre">RE(knife_edge(nano_stage.sy,</span> <span class="pre">-10,</span> <span class="pre">10,</span> <span class="pre">0.1,</span> <span class="pre">0.05))</span></code></p></li>
 <li><p>If the beam size is greater than 1 μm, move the coarse Z by 500 μm and look for a smaller beam size. Be aware line features will move horizontally when changing coarse Z.</p></li>
 <li><p>Repeat until the beam size is smaller than 1 μm.</p></li>
 <li><p>Run the slit-scan script. Here we as scanning the sample from -8 to 8 μm to move across the Pt line. The JJ slits are set to a gap of 0.1 mm and scanned a total of 1 mm centered around the beam center. Some of the knife-edge scans will not hit the mirror, so these scans will need to be excluded from the final analysis. <code class="docutils literal notranslate"><span class="pre">RE(focusKB('ver'))</span></code></p></li>
-<li><p>The slit-scan script will perform a calculation with <code class="docutils literal notranslate"><span class="pre">orthogonality=False</span></code> and ignoring the first and last scans. If further adjustment is needed, you can manually run the <code class="docutils literal notranslate"><span class="pre">slit_nanoflyscan_cal</span></code> function.</p></li>
+<li><p>The slit-scan script will perform a calculation with <code class="docutils literal notranslate"><span class="pre">orthogonality=False</span></code> and ignoring the first two and last two scans. If further adjustment is needed, you can manually run the <code class="docutils literal notranslate"><span class="pre">slit_nanoflyscan_cal</span></code> function.</p></li>
 <li><p>The script will show a plot of the Pt line center and report some values. In particular, pay attention to the defocus amount. Move the sample by the defocus amount using the coarse Z stage.</p></li>
 <li><p>Run another knife-edge scan to make sure the focus improved.</p></li>
 <li><p>Run the slit-scan script and calculation again. Hopefully upon calculation, the defocus amount is small (&lt; 100 μm) and the curve is relatively flat. In that case, change the orthogonality flag to True and run the calculation again. Otherwise, repeat until the defocus amount is small.</p></li>
@@ -456,10 +373,10 @@ In [2]: c = from_profile(&quot;srx&quot;)[&quot;raw&quot;]
 <p>For horizontal mirror alignment, only horizontal mirror pitch should be moved to prevent astigmatism in the two focal planes.</p>
 </div>
 <ul class="simple">
-<li><p>Find a line for scanning and run a knife-edge scan to get the initial beam size.</p></li>
+<li><p>Find a line for scanning and run a knife-edge scan to get the initial beam size. <code class="docutils literal notranslate"><span class="pre">RE(knife_edge(nano_stage.sx,</span> <span class="pre">-10,</span> <span class="pre">10,</span> <span class="pre">0.1,</span> <span class="pre">0.05))</span></code></p></li>
 <li><p>Run the slit-scan to scan the JJ slits across the mirror. <code class="docutils literal notranslate"><span class="pre">RE(focusKB('hor'))</span></code></p></li>
 <li><p>Perform the slit-scan calculations with <code class="docutils literal notranslate"><span class="pre">orthogonality=False</span></code></p></li>
-<li><p>The calculation will output an amount to move the horizontal K-B mirror in mrad. To translate this to a linear distance for the fine actuator, multiply by 100 mm. Move the horizontal fine pitch actuator by this amount.</p></li>
+<li><p>The calculation will output an amount to move the horizontal K-B mirror in mrad. Move the horizontal fine pitch actuator by this amount.</p></li>
 <li><p>Similar to the vertical mirror, run a knife-edge scan to make sure the actuator was moved the correct direction and measure the new focus.</p></li>
 <li><p>Repeat the slit-scans until the focus is acceptable.</p></li>
 <li><p>Check the horizontal focus as a function of SSA width.</p></li>
@@ -474,38 +391,55 @@ In [2]: c = from_profile(&quot;srx&quot;)[&quot;raw&quot;]
 <h3>Calibrating the monochromator<a class="headerlink" href="#calibrating-the-monochromator" title="Link to this heading"></a></h3>
 <dl>
 <dt><em>Calibrating the monochromator is done by collecting XANES spectra across several element absorption edges. A least-squares fitting routine will then calculate the HDCM parameters for the calibration</em></dt><dd><ol class="arabic">
-<li><p>Collect XANES scans at 3-5 different energies. For the best fit, a wide range of energies is best. Typically, scans are performed using V, Cr, Fe, Cu, Se, Zr foils. <em>It is a good idea to record the C1 Roll and C2 Pitch values for each energy. These can be used for a lookup table to improve the peakup function.</em>:</p>
+<li><p>Collect XANES scans at 4-6 different energies. For the best fit, a wide range of energies is best. Typically, scans are performed using V, Cr, Fe, Cu, Se, Zr, Mo foils.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">X</span> <span class="o">=</span> <span class="n">getbindingE</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">)</span>
 <span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">%</span><span class="n">mov</span> <span class="n">energy</span> <span class="n">X</span>
-<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">peakup_fine</span><span class="p">())</span>
+<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">peakup</span><span class="p">())</span>
 <span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">xanes_plan</span><span class="p">([</span><span class="n">X</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="n">X</span><span class="o">+</span><span class="mi">50</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">1.0</span><span class="p">))</span>
 </pre></div>
 </div>
 </li>
-<li><p>Define a dictionary in bluesky with element symbols mapped to scan IDs.:</p>
+<li><p>Define a dictionary in bluesky with element symbols mapped to scan IDs.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="n">scanlogDic</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;V&#39;</span> <span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
                               <span class="s1">&#39;Cr&#39;</span><span class="p">:</span> <span class="mi">1001</span><span class="p">,</span>
                               <span class="s1">&#39;Fe&#39;</span><span class="p">:</span> <span class="mi">1002</span><span class="p">,</span>
                               <span class="s1">&#39;Cu&#39;</span><span class="p">:</span> <span class="mi">1003</span><span class="p">,</span>
                               <span class="s1">&#39;Se&#39;</span><span class="p">:</span> <span class="mi">1004</span><span class="p">,</span>
-                              <span class="s1">&#39;Zr&#39;</span><span class="p">:</span> <span class="mi">1005</span><span class="p">}</span>
+                              <span class="s1">&#39;Zr&#39;</span><span class="p">:</span> <span class="mi">1005</span><span class="p">,</span>
+                              <span class="s1">&#39;Mo&#39;</span><span class="p">:</span> <span class="mi">1006</span><span class="p">}</span>
 </pre></div>
 </div>
 </li>
-<li><p>Run the <em>braggcalib()</em> function with the dictionary as input. The function will go through each scan and display a plot marking where the edge was found. Finally, this will output the new HDCM parameters.:</p>
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">braggcalib()</span></code> function with the dictionary as input. The function will go through each scan and display a plot marking where the edge was found. Finally, this will output the new HDCM parameters.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="n">braggcalib</span><span class="p">(</span><span class="n">scanlogDic</span><span class="o">=</span><span class="n">scanlogDic</span><span class="p">,</span> <span class="n">use_xrf</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
-<li><p>Update the values in the bluesky profile (10-machine.py). Save and restart bluesky.</p></li>
+<li><p>Update the values in the bluesky profile (<code class="docutils literal notranslate"><span class="pre">10-machine.py</span></code>). Save and restart bluesky.</p></li>
 </ol>
 </dd>
 </dl>
 </section>
+<section id="updating-the-ivu-lut">
+<h3>Updating the IVU LUT<a class="headerlink" href="#updating-the-ivu-lut" title="Link to this heading"></a></h3>
+<p>When asked to move to a given X-ray energy, the undulator (IVU) gap must move accordingly to stay on a harmonic. Variations from cycle-to-cycle have been observed so calibrating the lookup-table for the IVU is an important step at the beginning of the cycle.</p>
+<p>To generate a new lookup-table, start by installing the Ti foil for BPM4. A scan plan is written to scan across a given harmonic - the default is the third harmonic - at different gaps and export a LUT file. This scan can be run using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">undulator_calibration</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will export a text file of the LUT in the <code class="docutils literal notranslate"><span class="pre">xf05id1</span></code> home directory.</p>
+<p>If the LUT is satisfactory, the file should be copied into the SRX startup scripts. These are found at <code class="docutils literal notranslate"><span class="pre">/home/xf05id1/ipython_ophyd/data</span></code></p>
+<p>There is a symlink that points to the current calibration. To update this to point to the new calibration, from a terminal in the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory execute the following commands</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ unlink SRXUgapCalibration.txt
+$ ln -s YYYYMMDD_SRXUgapCalibration.txt SRXUgapCalibration.txt
+</pre></div>
+</div>
+<p>Since bluesky is only looking at the symlink, the new LUT can be loaded by restarting bluesky.</p>
+</section>
 </section>
 <section id="beamline-maintenance">
 <h2>Beamline Maintenance<a class="headerlink" href="#beamline-maintenance" title="Link to this heading"></a></h2>
-<div class="admonition-todo admonition" id="id3">
+<div class="admonition-todo admonition" id="id5">
 <p class="admonition-title">Todo</p>
 <ul class="simple">
 <li><p>Calibrating the Xspress3</p></li>
@@ -515,10 +449,10 @@ In [2]: c = from_profile(&quot;srx&quot;)[&quot;raw&quot;]
 <section id="cryocooler">
 <h3>Cryocooler<a class="headerlink" href="#cryocooler" title="Link to this heading"></a></h3>
 <p><em>The manual for the cryocooler can be found here.</em></p>
-<div class="admonition-todo admonition" id="id4">
+<div class="admonition-todo admonition" id="id6">
 <p class="admonition-title">Todo</p>
 <ul class="simple">
-<li><p>Upload cryocooler manual</p></li>
+<li><p>Add link to cryocooler manual</p></li>
 </ul>
 </div>
 <section id="warming-the-cryocooler">
@@ -615,7 +549,7 @@ $ telnet localhost port
 </section>
 <section id="motion-controls">
 <h3>Motion Controls<a class="headerlink" href="#motion-controls" title="Link to this heading"></a></h3>
-<div class="admonition-todo admonition" id="id5">
+<div class="admonition-todo admonition" id="id7">
 <p class="admonition-title">Todo</p>
 <ul class="simple">
 <li><p>Insert table with: Motor controller, IOC, Motor, PV, Bluesky object</p></li>
@@ -854,7 +788,7 @@ $ telnet localhost port
 </section>
 <section id="eps">
 <h3>EPS<a class="headerlink" href="#eps" title="Link to this heading"></a></h3>
-<div class="admonition-todo admonition" id="id6">
+<div class="admonition-todo admonition" id="id8">
 <p class="admonition-title">Todo</p>
 <ul class="simple">
 <li><p>Upload wiring diagrams</p></li>
@@ -868,7 +802,7 @@ $ telnet localhost port
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="acceptance_tests.html" class="btn btn-neutral float-left" title="Acceptance Tests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="acceptance_tests.html" class="btn btn-neutral float-left" title="Acceptance Tests [staff only]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

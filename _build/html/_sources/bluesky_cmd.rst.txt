@@ -1,5 +1,5 @@
-Useful Commands
-===============
+Bluesky Commands
+================
 Below is a list of useful commands for running the SRX beamline. Previous commands can be seen by hitting the up arrow in Bluesky. To search through them, you can start typing a command before hitting the up arrow to filter your history.
 
 Starting Bluesky

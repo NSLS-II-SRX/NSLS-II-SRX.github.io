@@ -1,5 +1,5 @@
-Acceptance Tests
-================
+Acceptance Tests [staff only]
+=============================
 
 Prior to user operations or after upgrades, the beamline should be able to perform the following tests
 

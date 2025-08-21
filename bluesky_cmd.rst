@@ -1,12 +1,16 @@
-Useful Commands
-===============
+Bluesky Commands
+================
 Below is a list of useful commands for running the SRX beamline. Previous commands can be seen by hitting the up arrow in Bluesky. To search through them, you can start typing a command before hitting the up arrow to filter your history.
 
 Starting Bluesky
 ****************
-Start Bluesky - *Start Bluesky from the terminal.* ::
+Start Bluesky - *Bluesky can be started by going to the top left corner of the screen and choosing Activities. Then click on the Bluesky icon - a blue cloud with a b - to automatically open a new terminal and start Bluesky.* 
+
+*Alternatively, start Bluesky from an existing terminal.* ::
 
     $ bsui
+
+After starting Bluesky, it is important to confirm that the proposal number in the terminal matches the experiment.
 
 General Functions
 *****************
@@ -17,9 +21,13 @@ Change X-ray energy - *Either command can be used below. The energy can be enter
 
 Optimize the beam - *Maximize the X-ray flux.* ::
 
-    RE(peakup())
+    Bluesky@SRX [1] RE(peakup())
 
-Setting a region of interest - *Set the ROI on the detector. The specific edge is optional.* ::
+Optimize the ion chambers - *Check that the ion chambers have their ideal preamp settings.* ::
+
+    Bluesky@SRX [1] RE(optimize_scalers())
+
+Setting a region of interest - *Set the ROI on the detector. The specific line is optional.* ::
 
     Bluesky@SRX [1] setroi(1, 'Fe')
     Bluesky@SRX [2] setroi(1, 'Fe', 'ka1')
@@ -47,7 +55,7 @@ Step scan - *Perform a step scan. Note: these arguments take a step size, not th
 
 XAS Spectroscopy
 ****************
-Print element binding energies - *Print the binding energies for the element of interest. The "best" edge can be returned as available.* ::
+Print element binding energies - *Print the binding energies for the element of interest. The "best" edge in eV is returned as available.* ::
 
     Bluesky@SRX [1] Fe_k = getbindingE('Fe')
 
@@ -67,8 +75,8 @@ Metadata
 ********
 Print the ``start`` or ``stop`` document for a scan - *A scan ID of 12345 is assumed. A value of -1 can be used to see the previous scan.* ::
 
-    Bluesky@SRX [1] db[12345].start
-    Bluesky@SRX [2] db[12345].stop
+    Bluesky@SRX [1] c[12345].start
+    Bluesky@SRX [2] c[12345].stop
 
 Print the ``baseline`` information for a scan - *baseline will collect the motor positions at the start (column 1) and completion (column 2) of a scan. There are many motors positions captured so it is helpful to filter the list of values. A scan ID of 12345 is assumed.* ::
 
@@ -82,7 +90,7 @@ Pause a scan - *The scan will pause at the next checkpoint.* ::
 
     CTRL+C
 
-Urgently stop a scan - *With each CTRL-C, Bluesky raisens the urgency of stopping the scan.* ::
+Urgently stop a scan - *With each CTRL-C, Bluesky raises the urgency of stopping the scan.* ::
 
     CTRL+C x20
 
