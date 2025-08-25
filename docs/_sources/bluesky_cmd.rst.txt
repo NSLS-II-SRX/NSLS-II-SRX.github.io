@@ -68,8 +68,7 @@ XANES scan - *Run a XANES scan. This scan has 3 regions with different steps spa
     Bluesky@SRX [1] RE(xanes_plan(erange=[Fe_k-50, Fe_k-10, Fe_k+50, Fe_k+150],
                                   estep=[2.0, 1.0, 2.0],
                                   acqtime=1.0,
-                                  samplename='Fe foil',
-                                  filename='Fe_foil'))
+                                  samplename='Fe foil'))
 
 Metadata
 ********

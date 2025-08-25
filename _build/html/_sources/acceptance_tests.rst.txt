@@ -19,7 +19,7 @@ General Functions
 ◻ Change energy ::
 
     [1] %mov energy 12
-    [2] energy.mov(12)
+    [2] energy.move(12)
 
 ◻ Optimize the beam ::
 
