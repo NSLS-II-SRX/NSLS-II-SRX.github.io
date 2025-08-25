@@ -30,7 +30,7 @@ Setting up Users
 
     $ start-experiment -p {proposal_id}
 
-#. Perform beamline specific training. `5-ID BST Form <https://www.bnl.gov/ps/training/Beamline-BST-Forms/PS-BST-5-ID.pdf>`_
+#. Perform beamline specific training. `5-ID BST Form <https://brookhavenlab.sharepoint.com/sites/NSLS2Training/Courses/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FNSLS2Training%2FCourses%2FShared%20Documents%2FBeamline%20BST%20Forms%2FPS%2DBST%2D5%2DID%2Epdf&parent=%2Fsites%2FNSLS2Training%2FCourses%2FShared%20Documents%2FBeamline%20BST%20Forms>`_
 
 Setting up the Scan Report
 --------------------------
