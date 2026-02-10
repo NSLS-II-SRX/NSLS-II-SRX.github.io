@@ -34,9 +34,26 @@ Setting up Users
 
 Setting up the Scan Report
 --------------------------
-.. todo::
-    - Add instructions
+#. Start by logging in as you - authorized beamline staff.
+#. Check to see if ``run-scan_report`` is in your ``PATH`` variable. Either try to run ``run-scan_report`` or you can check if ``which run-scan_report`` returns a path.
+    - If this needs to be added, it is best to add the script location to your startup. Open the ``.bashrc`` file in your home directory, ``/home/{username}/.bashrc`` and add the line ::
 
+       export PATH=$PATH:/nsls2/data/srx/shared/config/staff_overlays
+
+    - Load your changes by running ::
+
+       source ~/.bashrc
+
+#. Open a ``tmux`` session using the command ``tmux``
+#. Start the scan report ipython session using ``run-scan_report``
+#. Utilize the docstring ``generate_scan_report?`` or follow an example such as ::
+
+    In [1]: generate_scan_report(12345, None, ["Ti", "Fe", "As"])
+
+#. Disconnect from the ``tmux`` session and leave it running in the background using key combination ``CTRL-b`` then ``d``
+#. When ready to stop the scan report, login and connect to the ``tmux`` session using the command ``tmux``
+#. The scan report can be stopped by hitting ``CTRL-c`` twice.
+#. Proceed to start a new scan report, or you can exit the scan report session with an ``exit`` command
 
 Virtual Machine Information
 ---------------------------
