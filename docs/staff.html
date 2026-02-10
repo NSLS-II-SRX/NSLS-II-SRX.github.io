@@ -149,12 +149,36 @@
 </section>
 <section id="setting-up-the-scan-report">
 <h2>Setting up the Scan Report<a class="headerlink" href="#setting-up-the-scan-report" title="Link to this heading"></a></h2>
-<div class="admonition-todo admonition" id="id2">
-<p class="admonition-title">Todo</p>
-<ul class="simple">
-<li><p>Add instructions</p></li>
-</ul>
+<ol class="arabic">
+<li><p>Start by logging in as you - authorized beamline staff.</p></li>
+<li><dl>
+<dt>Check to see if <code class="docutils literal notranslate"><span class="pre">run-scan_report</span></code> is in your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> variable. Either try to run <code class="docutils literal notranslate"><span class="pre">run-scan_report</span></code> or you can check if <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">run-scan_report</span></code> returns a path.</dt><dd><ul>
+<li><p>If this needs to be added, it is best to add the script location to your startup. Open the <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> file in your home directory, <code class="docutils literal notranslate"><span class="pre">/home/{username}/.bashrc</span></code> and add the line</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export PATH=$PATH:/nsls2/data/srx/shared/config/staff_overlays
+</pre></div>
 </div>
+</li>
+<li><p>Load your changes by running</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">~/.</span><span class="n">bashrc</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Open a <code class="docutils literal notranslate"><span class="pre">tmux</span></code> session using the command <code class="docutils literal notranslate"><span class="pre">tmux</span></code></p></li>
+<li><p>Start the scan report ipython session using <code class="docutils literal notranslate"><span class="pre">run-scan_report</span></code></p></li>
+<li><p>Utilize the docstring <code class="docutils literal notranslate"><span class="pre">generate_scan_report?</span></code> or follow an example such as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">generate_scan_report</span><span class="p">(</span><span class="mi">12345</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span> <span class="s2">&quot;Fe&quot;</span><span class="p">,</span> <span class="s2">&quot;As&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>Disconnect from the <code class="docutils literal notranslate"><span class="pre">tmux</span></code> session and leave it running in the background using key combination <code class="docutils literal notranslate"><span class="pre">CTRL-b</span></code> then <code class="docutils literal notranslate"><span class="pre">d</span></code></p></li>
+<li><p>When ready to stop the scan report, login and connect to the <code class="docutils literal notranslate"><span class="pre">tmux</span></code> session using the command <code class="docutils literal notranslate"><span class="pre">tmux</span></code></p></li>
+<li><p>The scan report can be stopped by hitting <code class="docutils literal notranslate"><span class="pre">CTRL-c</span></code> twice.</p></li>
+<li><p>Proceed to start a new scan report, or you can exit the scan report session with an <code class="docutils literal notranslate"><span class="pre">exit</span></code> command</p></li>
+</ol>
 </section>
 <section id="virtual-machine-information">
 <h2>Virtual Machine Information<a class="headerlink" href="#virtual-machine-information" title="Link to this heading"></a></h2>
@@ -192,7 +216,7 @@ In [2]: c = from_profile(&quot;srx&quot;)[&quot;raw&quot;]
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">bs_run</span><span class="p">[</span><span class="s2">&quot;primary&quot;</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;fluor&quot;</span><span class="p">][:]</span>
 </pre></div>
 </div>
-<div class="admonition-todo admonition" id="id3">
+<div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
 <ul class="simple">
 <li><p>Add searching</p></li>
@@ -207,11 +231,11 @@ In [2]: c = from_profile(&quot;srx&quot;)[&quot;raw&quot;]
 <h3>CSS-Pages<a class="headerlink" href="#css-pages" title="Link to this heading"></a></h3>
 <p>To get to the IVU Scan Mode page, please navigate from <br>
 5ID Main -&gt; Insertion Device -&gt; 5 SRX -&gt; IVU 21 Operator Page -&gt; Scan Mode</p>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id8">
 <span id="fig-ivu"></span><a class="reference external image-reference" href="_images/ivu_scan_mode.png"><img alt="_images/ivu_scan_mode.png" src="_images/ivu_scan_mode.png" style="width: 100%;" />
 </a>
 <figcaption>
-<p><span class="caption-text">SRX IVU 21 scan mode CSS page.</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+<p><span class="caption-text">SRX IVU 21 scan mode CSS page.</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>
@@ -239,20 +263,20 @@ In [2]: c = from_profile(&quot;srx&quot;)[&quot;raw&quot;]
 </div>
 <p>If the HDCM Bragg or C2X motors are not moving, it is good to check if the IVU scan mode is enabled. If the scan mode is enabled and a move is tried from CSS or bluesky, the motor can be put into an alarm state with a following error. On one of the motor pages, such as the SRX Align page, you can see a red box around the motor in alarm. To confirm a following error, you can go from <br>
 5ID Main -&gt; HDCM -&gt; &lt;motor&gt; More -&gt; PMAC Axis Status</p>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id9">
 <span id="fig-axis"></span><a class="reference external image-reference" href="_images/axis_status.png"><img alt="_images/axis_status.png" src="_images/axis_status.png" style="width: 70%;" />
 </a>
 <figcaption>
-<p><span class="caption-text">SRX HDCM Bragg axis page.</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+<p><span class="caption-text">SRX HDCM Bragg axis page.</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>To reset the amplifier fault, go to the asyn page to send commands to the motor controller. <br>
 5ID Main -&gt; HDCM -&gt; &lt;motor&gt; More -&gt; Asyn -&gt; More -&gt; Asyn Octet Interface I/O</p>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id10">
 <span id="fig-asyn"></span><a class="reference external image-reference" href="_images/asyn.png"><img alt="_images/asyn.png" src="_images/asyn.png" style="width: 70%;" />
 </a>
 <figcaption>
-<p><span class="caption-text">SRX HDCM Bragg asyn page.</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+<p><span class="caption-text">SRX HDCM Bragg asyn page.</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>Check that the IVU control is disabled. Type the following command on the motor’s asyn page and hit Enter:</p>
@@ -265,7 +289,7 @@ In [2]: c = from_profile(&quot;srx&quot;)[&quot;raw&quot;]
 <section id="beamline-setup">
 <h2>Beamline Setup<a class="headerlink" href="#beamline-setup" title="Link to this heading"></a></h2>
 <p>These tasks are typically done once a cycle.</p>
-<div class="admonition-todo admonition" id="id4">
+<div class="admonition-todo admonition" id="id3">
 <p class="admonition-title">Todo</p>
 <ul class="simple">
 <li><p>Beamline alignment</p></li>
@@ -439,7 +463,7 @@ $ ln -s YYYYMMDD_SRXUgapCalibration.txt SRXUgapCalibration.txt
 </section>
 <section id="beamline-maintenance">
 <h2>Beamline Maintenance<a class="headerlink" href="#beamline-maintenance" title="Link to this heading"></a></h2>
-<div class="admonition-todo admonition" id="id5">
+<div class="admonition-todo admonition" id="id4">
 <p class="admonition-title">Todo</p>
 <ul class="simple">
 <li><p>Calibrating the Xspress3</p></li>
@@ -449,7 +473,7 @@ $ ln -s YYYYMMDD_SRXUgapCalibration.txt SRXUgapCalibration.txt
 <section id="cryocooler">
 <h3>Cryocooler<a class="headerlink" href="#cryocooler" title="Link to this heading"></a></h3>
 <p><em>The manual for the cryocooler can be found here.</em></p>
-<div class="admonition-todo admonition" id="id6">
+<div class="admonition-todo admonition" id="id5">
 <p class="admonition-title">Todo</p>
 <ul class="simple">
 <li><p>Add link to cryocooler manual</p></li>
@@ -549,7 +573,7 @@ $ telnet localhost port
 </section>
 <section id="motion-controls">
 <h3>Motion Controls<a class="headerlink" href="#motion-controls" title="Link to this heading"></a></h3>
-<div class="admonition-todo admonition" id="id7">
+<div class="admonition-todo admonition" id="id6">
 <p class="admonition-title">Todo</p>
 <ul class="simple">
 <li><p>Insert table with: Motor controller, IOC, Motor, PV, Bluesky object</p></li>
@@ -788,7 +812,7 @@ $ telnet localhost port
 </section>
 <section id="eps">
 <h3>EPS<a class="headerlink" href="#eps" title="Link to this heading"></a></h3>
-<div class="admonition-todo admonition" id="id8">
+<div class="admonition-todo admonition" id="id7">
 <p class="admonition-title">Todo</p>
 <ul class="simple">
 <li><p>Upload wiring diagrams</p></li>
