@@ -7,6 +7,7 @@ version = "0.1.0"
 
 [tasks]
 build-html = "sphinx-build -M html --doctree-dir doctrees/ . docs/html"
+clean = "rm -r doctrees/ docs/"
 
 [dependencies]
 python = ">=3.11"
