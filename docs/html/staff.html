@@ -77,6 +77,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#updating-this-documentation">Updating this documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#controls">Controls</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ioc-monitoring">IOC Monitoring</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#motion-controls">Motion Controls</a></li>
@@ -533,6 +534,37 @@ $ ln -s YYYYMMDD_SRXUgapCalibration.txt SRXUgapCalibration.txt
 </div></blockquote>
 </section>
 </section>
+</section>
+<section id="updating-this-documentation">
+<h2>Updating this documentation<a class="headerlink" href="#updating-this-documentation" title="Link to this heading"></a></h2>
+<p>This documentation lives on GitHub at this <a class="reference external" href="https://github.com/NSLS-II-SRX/NSLS-II-SRX.github.io">link</a></p>
+<p>The documentation is written in reStructuredText and built using sphinx. Using these tools, the barrier for editing and building documentation is hopefully lowered. <code class="docutils literal notranslate"><span class="pre">rst</span></code> files can be edited using a standard text editor. A cheatsheet to demonstrate how to use reStructuredText can be found <a class="reference external" href="https://sphinx-tutorial.readthedocs.io/cheatsheet/">here</a></p>
+<ol class="arabic">
+<li><p>Prerequisites for setting up the development environment include <code class="docutils literal notranslate"><span class="pre">git</span></code> and <code class="docutils literal notranslate"><span class="pre">pixi</span></code></p></li>
+<li><p>Clone the repository using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/NSLS-II-SRX/NSLS-II-SRX.github.io
+</pre></div>
+</div>
+</li>
+<li><p>Install the build environment using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pixi install
+</pre></div>
+</div>
+</li>
+<li><p>At this point, it should be possible to build the <code class="docutils literal notranslate"><span class="pre">rst</span></code> documentation into <code class="docutils literal notranslate"><span class="pre">html</span></code>. The <code class="docutils literal notranslate"><span class="pre">html</span></code> code is built using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pixi run build-html
+</pre></div>
+</div>
+<p>It is possible some warnings or errors might be displayed. Check the output carefully. The <code class="docutils literal notranslate"><span class="pre">html</span></code> code might still be built successfully, or try again.</p>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">html</span></code> code lives in the <code class="docutils literal notranslate"><span class="pre">docs/html/</span></code> folder. You can open your favorite web browser and open the <code class="docutils literal notranslate"><span class="pre">index.html</span></code> file to view the documentation locally.</p></li>
+<li><p>If it is desired to start from scratch and clean all files, the <code class="docutils literal notranslate"><span class="pre">docs/</span></code> and <code class="docutils literal notranslate"><span class="pre">doctree/</span></code> folders can be deleted and rebuilt. For convenience, there is a command to do this automatically</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pixi run clean
+</pre></div>
+</div>
+</li>
+<li><p>To make changes to the documentation, good programming practices are encouraged. It is preferred to create your own branch to make changes and test in, before creating a pull request and merging with the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.</p></li>
+</ol>
 </section>
 <section id="controls">
 <h2>Controls<a class="headerlink" href="#controls" title="Link to this heading"></a></h2>
