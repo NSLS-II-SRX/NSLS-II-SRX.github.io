@@ -352,6 +352,38 @@ Cooling the cryocooler
         * From the cryocooler CSS page, click "Cool Down".
         * Once full, in CSS click on the "A" to enable automatic filling of the cryocooler.
 
+Updating this documentation
+---------------------------
+This documentation lives on GitHub at this `link <https://github.com/NSLS-II-SRX/NSLS-II-SRX.github.io>`_
+
+The documentation is written in reStructuredText and built using sphinx. Using these tools, the barrier for editing and building documentation is hopefully lowered. ``rst`` files can be edited using a standard text editor. A cheatsheet to demonstrate how to use reStructuredText can be found `here <https://sphinx-tutorial.readthedocs.io/cheatsheet/>`_
+
+Setting up the development environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. Prerequisites for setting up the development environment include ``git`` and ``pixi``
+#. Clone the repository using ::
+
+       $ git clone https://github.com/NSLS-II-SRX/NSLS-II-SRX.github.io
+
+#. Install the build environment using ::
+
+       $ pixi install
+
+#. At this point, it should be possible to build the ``rst`` documentation into ``html``. The ``html`` code is built using ::
+
+       $ pixi run build-html
+
+   It is possible some warnings or errors might be displayed. Check the output carefully. The ``html`` code might still be built successfully, or try again.
+
+#. The ``html`` code lives in the ``docs/html/`` folder. You can open your favorite web browser and open the ``index.html`` file to view the documentation locally.
+
+#. If it is desired to start from scratch and clean all files, the ``docs/`` and ``doctree/`` folders can be deleted and rebuilt. For convenience, there is a command to do this automatically ::
+
+       $ pixi run clean
+
+#. To make changes to the documentation, good programming practices are encouraged. It is preferred to create your own branch to make changes and test in, before creating a pull request and merging with the ``main`` branch.
+
+
 Controls
 --------
 
