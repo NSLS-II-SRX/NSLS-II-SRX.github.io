@@ -1,2 +1,7 @@
+doctrees
 _site
 *.swp
+
+# pixi environments
+.pixi/*
+!.pixi/config.toml

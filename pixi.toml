@@ -1,0 +1,14 @@
+[workspace]
+authors = ["Andy Kiss <akiss@bnl.gov>"]
+channels = ["conda-forge"]
+name = "NSLS-II SRX Documentation"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+build-html = "sphinx-build -M html --doctree-dir doctrees/ . docs/html"
+
+[dependencies]
+python = ">=3.11"
+sphinx = ">=8.2.3,<9"
+sphinx_rtd_theme = ">=3.1.0,<4"
