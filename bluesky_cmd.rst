@@ -34,19 +34,40 @@ Setting a region of interest - *Set the ROI on the detector. The specific line i
 
 XRF Imaging
 ***********
-Fly scan - *Perform a high-resolution, position-based fly scan. Return an image with dimensions (numX, numY)* ::
+XRF Map - *Perform a high-resolution, position-based fly scan. Return an image with dimensions (numX, numY)*
 
-    Bluesky@SRX [1] RE(nano_scan_and_fly(startX, stopX, numX,
-                                         startY, stopY, numY, dwell))
-    Bluesky@SRX [2] RE(nano_y_scan_and_fly(startY, stopY, numY,
-                                           startX, stopX, numX, dwell))
+.. code-block::
 
-Fly scan - *Perform a coarse, time-based fly scan. Return an image with dimensions (numX, numY)* ::
+   Bluesky@SRX [1] RE(xrf_map(startX, stopX, numX,
+                              startY, stopY, numY, dwell))
 
-    Bluesky@SRX [1] RE(coarse_scan_and_fly(startX, stopX, numX,
-                                           startY, stopY, numY, dwell))
-    Bluesky@SRX [2] RE(coarse_y_scan_and_fly(startY, stopY, numY,
-                                             startX, stopX, numX, dwell))
+.. function:: xrf_map(startX, stopX, numX, startY, stopY, numY, dwell, fly_on_y=False, resolution="nano")
+
+   Collect an XRF map given the specified range that starts at (startX, startY) and ends at (stopX, stopY) with a shape of (numX, numY).
+
+   :param startX: starting X position
+   :param stopX: stopping X position
+   :param numX: number of points to collect in X
+   :param startY: starting Y position
+   :param stopY: stopping Y position
+   :param numY: number of points to collect in Y
+   :param dwell: desired time per point
+   :param fly_on_y: fly in the Y direction, defaults to False
+   :type fly_on_y: bool, optional
+   :param resolution: set to "coarse" for larger maps. Be sure to use the coarse motor coordinates, defaults to "nano"
+   :type resolution: str, optional
+
+   .. warning::
+      As of June 30, 2026, the following functions have been deprecated in favor of :func:`xrf_map`. Please update your scripts to use :func:`xrf_map`. ::
+   
+         Bluesky@SRX [1] RE(nano_scan_and_fly(startX, stopX, numX,
+                                              startY, stopY, numY, dwell))
+         Bluesky@SRX [2] RE(nano_y_scan_and_fly(startY, stopY, numY,
+                                                startX, stopX, numX, dwell))
+         Bluesky@SRX [3] RE(coarse_scan_and_fly(startX, stopX, numX,
+                                                startY, stopY, numY, dwell))
+         Bluesky@SRX [4] RE(coarse_y_scan_and_fly(startY, stopY, numY,
+                                                  startX, stopX, numX, dwell))
 
 Step scan - *Perform a step scan. Note: these arguments take a step size, not the number of points.* ::
 

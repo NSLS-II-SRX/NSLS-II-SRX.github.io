@@ -49,7 +49,10 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Bluesky Commands</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#starting-bluesky">Starting Bluesky</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#general-functions">General Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#xrf-imaging">XRF Imaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xrf-imaging">XRF Imaging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xrf_map"><code class="docutils literal notranslate"><span class="pre">xrf_map()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#xas-spectroscopy">XAS Spectroscopy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#metadata">Metadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
@@ -120,20 +123,46 @@
 </section>
 <section id="xrf-imaging">
 <h2>XRF Imaging<a class="headerlink" href="#xrf-imaging" title="Link to this heading"></a></h2>
-<p>Fly scan - <em>Perform a high-resolution, position-based fly scan. Return an image with dimensions (numX, numY)</em></p>
+<p>XRF Map - <em>Perform a high-resolution, position-based fly scan. Return an image with dimensions (numX, numY)</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">xrf_map</span><span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span>
+                           <span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">numY</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="xrf_map">
+<span class="sig-name descname"><span class="pre">xrf_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">startX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dwell</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fly_on_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nano'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xrf_map" title="Link to this definition"></a></dt>
+<dd><p>Collect an XRF map given the specified range that starts at (startX, startY) and ends at (stopX, stopY) with a shape of (numX, numY).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>startX</strong> – starting X position</p></li>
+<li><p><strong>stopX</strong> – stopping X position</p></li>
+<li><p><strong>numX</strong> – number of points to collect in X</p></li>
+<li><p><strong>startY</strong> – starting Y position</p></li>
+<li><p><strong>stopY</strong> – stopping Y position</p></li>
+<li><p><strong>numY</strong> – number of points to collect in Y</p></li>
+<li><p><strong>dwell</strong> – desired time per point</p></li>
+<li><p><strong>fly_on_y</strong> (<em>bool</em><em>, </em><em>optional</em>) – fly in the Y direction, defaults to False</p></li>
+<li><p><strong>resolution</strong> (<em>str</em><em>, </em><em>optional</em>) – set to “coarse” for larger maps. Be sure to use the coarse motor coordinates, defaults to “nano”</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>As of June 30, 2026, the following functions have been deprecated in favor of <a class="reference internal" href="#xrf_map" title="xrf_map"><code class="xref py py-func docutils literal notranslate"><span class="pre">xrf_map()</span></code></a>. Please update your scripts to use <a class="reference internal" href="#xrf_map" title="xrf_map"><code class="xref py py-func docutils literal notranslate"><span class="pre">xrf_map()</span></code></a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">nano_scan_and_fly</span><span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span>
                                      <span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">numY</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
 <span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">nano_y_scan_and_fly</span><span class="p">(</span><span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">numY</span><span class="p">,</span>
                                        <span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>Fly scan - <em>Perform a coarse, time-based fly scan. Return an image with dimensions (numX, numY)</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">coarse_scan_and_fly</span><span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span>
+<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">coarse_scan_and_fly</span><span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span>
                                        <span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">numY</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
-<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">coarse_y_scan_and_fly</span><span class="p">(</span><span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">numY</span><span class="p">,</span>
+<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">coarse_y_scan_and_fly</span><span class="p">(</span><span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">numY</span><span class="p">,</span>
                                          <span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+</dd></dl>
+
 <p>Step scan - <em>Perform a step scan. Note: these arguments take a step size, not the number of points.</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">nano_xrf</span><span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">stepX</span><span class="p">,</span>
                             <span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">stepY</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
