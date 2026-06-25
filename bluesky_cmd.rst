@@ -34,31 +34,46 @@ Setting a region of interest - *Set the ROI on the detector. The specific line i
 
 XRF Imaging
 ***********
-XRF Map - *Perform a high-resolution, position-based fly scan. Return an image with dimensions (numX, numY)*
+**XRF Fly Scan Map**
 
 .. code-block::
 
-   Bluesky@SRX [1] RE(xrf_map(startX, stopX, numX,
-                              startY, stopY, numY, dwell))
+   Bluesky@SRX [1] RE(xrf_map(xstart, xstop, xnum,
+                              ystart, ystop, ynum, dwell, sample_name="my special sample"))
 
-.. function:: xrf_map(startX, stopX, numX, startY, stopY, numY, dwell, fly_on_y=False, resolution="nano")
+.. function:: xrf_map(xstart, xstop, xnum, ystart, ystop, ynum, dwell, sample_name="", fly_on_y=False, resolution="nano", extra_dets=[], vlm_snapshot=True, center=True)
 
-   Collect an XRF map given the specified range that starts at (startX, startY) and ends at (stopX, stopY) with a shape of (numX, numY).
+   Collect an XRF map given the specified range that starts at (xstart, ystart) and ends at (xstop, ystop) with a shape of (xnum, ynum).
 
-   :param startX: starting X position
-   :param stopX: stopping X position
-   :param numX: number of points to collect in X
-   :param startY: starting Y position
-   :param stopY: stopping Y position
-   :param numY: number of points to collect in Y
+   :param xstart: starting X position
+   :type xstart: float
+   :param xstop: stopping X position
+   :type xstop: float
+   :param xnum: number of points to collect in X
+   :type xnum: int
+   :param ystart: starting Y position
+   :type ystart: float
+   :param ystop: stopping Y position
+   :type ystop: float
+   :param ynum: number of points to collect in Y
+   :type ynum: int
    :param dwell: desired time per point
+   :type dwell: float
+   :param sample_name: a human-readable name for the sample, defaults to an empty string, ""
+   :type sample_name: str, optional
    :param fly_on_y: fly in the Y direction, defaults to False
    :type fly_on_y: bool, optional
    :param resolution: set to "coarse" for larger maps. Be sure to use the coarse motor coordinates, defaults to "nano"
    :type resolution: str, optional
+   :param extra_dets: add additional detectors - such as *eiger*, *dexela*, or *merlin* - to your maps, defaults to an empty list
+   :type extra_dets: list of ophyd objects, optional
+   :param vlm_snapshot: collect an optical image at the beginning and end of the scan, defaults to True
+   :type vlm_snapshot: bool, optional
+   :param center: move the scanner stages to the center at the end of the scan, defaults to True
+   :type center: bool, optional
 
    .. warning::
-      As of June 30, 2026, the following functions have been deprecated in favor of :func:`xrf_map`. Please update your scripts to use :func:`xrf_map`. ::
+      As of September 1, 2026, the following functions have been deprecated in favor of :func:`xrf_map`. Please update your scripts to use :func:`xrf_map`. Beamline staff are happy to assist using the new function. ::
    
          Bluesky@SRX [1] RE(nano_scan_and_fly(startX, stopX, numX,
                                               startY, stopY, numY, dwell))
@@ -69,10 +84,39 @@ XRF Map - *Perform a high-resolution, position-based fly scan. Return an image w
          Bluesky@SRX [4] RE(coarse_y_scan_and_fly(startY, stopY, numY,
                                                   startX, stopX, numX, dwell))
 
-Step scan - *Perform a step scan. Note: these arguments take a step size, not the number of points.* ::
+**XRF Step Scan Map**
 
-    Bluesky@SRX [1] RE(nano_xrf(startX, stopX, stepX,
-                                startY, stopY, stepY, dwell))
+.. code-block::
+
+   Bluesky@SRX [1] RE(nano_xrf(xstart, xstop, xstep,
+                               ystart, ystop, ystep, dwell, sample_name="my special sample"))
+
+.. function:: nano_xrf(xstart, xstop, xstep, ystart, ystop, ystep, dwell, sample_name="", snake=True)
+
+   Collect an XRF map by stepping through each point. The scan will start at (xstart, ystart) and complete at (xstop, ystop) using a step size of stepx and stepy.
+
+   :param xstart: starting X position
+   :type xstart: float
+   :param xstop: stopping X position
+   :type xstop: float
+   :param xstep: step between points in X
+   :type xstep: float
+   :param ystart: starting Y position
+   :type ystart: float
+   :param ystop: stopping Y position
+   :type ystop: float
+   :param ystep: step between points in Y
+   :type ystep: float
+   :param dwell: desired time per point
+   :type dwell: float
+   :param sample_name: a human-readable name for the sample, defaults to an empty string, ""
+   :type sample_name: str, optional
+   :param snake: using a snaking scan strategy, defaults to True
+   :type snake: bool, optional
+
+   .. warning::
+      The :func:`nano_xrf` uses a *step size* rather than number of points, like :func:`xrf_map`
+
 
 XAS Spectroscopy
 ****************
@@ -84,12 +128,33 @@ Print element emission energies - *Print the emission energies for the element o
 
     Bluesky@SRX [1] getemissionE('Fe')
 
-XANES scan - *Run a XANES scan. This scan has 3 regions with different steps spanning the iron K-edge.* ::
+**XANES scan**
+
+.. code-block::
 
     Bluesky@SRX [1] RE(xanes_plan(erange=[Fe_k-50, Fe_k-10, Fe_k+50, Fe_k+150],
                                   estep=[2.0, 1.0, 2.0],
-                                  acqtime=1.0,
-                                  samplename='Fe foil'))
+                                  dwell=1.0,
+                                  sample_name="Fe foil"))
+
+.. function:: xanes_plan(erange, estep, dwell, sample_name="", roinum=1, harmonic=1, vlm_snapshot=True)
+
+   Collect a XANES scan by scanning the incident energy on the sample. The energy points are defined using regions in `erange` with given steps between the points, defined by `estep`.
+
+   :param erange: Endpoints for different regions that define the energy points for the scan
+   :type erange: list of floats
+   :param estep: Energy step size for each region
+   :type estep: list of floats
+   :param dwell: The dwell time per energy point
+   :type dwell: float
+   :param sample_name: a human-readable name for the sample, defaults to an empty string, ""
+   :type sample_name: str, optional
+   :param roinum: The region of interest to measure, default to 1
+   :type roinum: int, optional
+   :param harmonic: The undulator harmonic to use for the scan. The default behavior will use the harmonic with the highest X-ray flux for the current energy. Defaults to 1
+   :type harmonic: int, optional
+   :param vlm_snapshot: collect an optical image at the beginning and end of the scan, defaults to True
+   :type vlm_snapshot: bool, optional
 
 Metadata
 ********
