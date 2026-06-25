@@ -88,34 +88,31 @@ XRF Imaging
 
 .. code-block::
 
-   Bluesky@SRX [1] RE(nano_xrf(xstart, xstop, xstep,
-                               ystart, ystop, ystep, dwell, sample_name="my special sample"))
+   Bluesky@SRX [1] RE(nano_xrf(xstart, xstop, xnum,
+                               ystart, ystop, ynum, dwell, sample_name="my special sample"))
 
-.. function:: nano_xrf(xstart, xstop, xstep, ystart, ystop, ystep, dwell, sample_name="", snake=True)
+.. function:: nano_xrf(xstart, xstop, xnum, ystart, ystop, ynum, dwell, sample_name="", snake=True)
 
-   Collect an XRF map by stepping through each point. The scan will start at (xstart, ystart) and complete at (xstop, ystop) using a step size of stepx and stepy.
+   Collect an XRF map by stepping through each point. The scan will start at (xstart, ystart) and complete at (xstop, ystop), creating a map with size (xnum, ynum).
 
    :param xstart: starting X position
    :type xstart: float
    :param xstop: stopping X position
    :type xstop: float
-   :param xstep: step between points in X
-   :type xstep: float
+   :param xnum: number of points in X
+   :type xnum: float
    :param ystart: starting Y position
    :type ystart: float
    :param ystop: stopping Y position
    :type ystop: float
-   :param ystep: step between points in Y
-   :type ystep: float
+   :param ynum: number of points in Y
+   :type ynum: float
    :param dwell: desired time per point
    :type dwell: float
    :param sample_name: a human-readable name for the sample, defaults to an empty string, ""
    :type sample_name: str, optional
    :param snake: using a snaking scan strategy, defaults to True
    :type snake: bool, optional
-
-   .. warning::
-      The :func:`nano_xrf` uses a *step size* rather than number of points, like :func:`xrf_map`
 
 
 XAS Spectroscopy
