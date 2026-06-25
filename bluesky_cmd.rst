@@ -138,17 +138,17 @@ Print element emission energies - *Print the emission energies for the element o
 
    Collect a XANES scan by scanning the incident energy on the sample. The energy points are defined using regions in `erange` with given steps between the points, defined by `estep`.
 
-   :param erange: Endpoints for different regions that define the energy points for the scan
+   :param erange: endpoints for different regions that define the energy points for the scan
    :type erange: list of floats
-   :param estep: Energy step size for each region
+   :param estep: energy step size for each region
    :type estep: list of floats
-   :param dwell: The dwell time per energy point
+   :param dwell: dwell time per energy point
    :type dwell: float
    :param sample_name: a human-readable name for the sample, defaults to an empty string, ""
    :type sample_name: str, optional
-   :param roinum: The region of interest to measure, default to 1
+   :param roinum: region of interest to measure, default to 1
    :type roinum: int, optional
-   :param harmonic: The undulator harmonic to use for the scan. The default behavior will use the harmonic with the highest X-ray flux for the current energy. Defaults to 1
+   :param harmonic: undulator harmonic to use for the scan. The default behavior will use the harmonic with the highest X-ray flux for the current energy. Defaults to 1
    :type harmonic: int, optional
    :param vlm_snapshot: collect an optical image at the beginning and end of the scan, defaults to True
    :type vlm_snapshot: bool, optional
