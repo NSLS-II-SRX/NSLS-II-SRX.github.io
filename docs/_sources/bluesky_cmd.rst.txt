@@ -145,7 +145,7 @@ Print element emission energies - *Print the emission energies for the element o
                                   dwell=1.0,
                                   sample_name="Fe foil"))
 
-.. function:: xanes_plan(erange, estep, dwell, sample_name="", roinum=1, harmonic=1, vlm_snapshot=True)
+.. function:: xanes_plan(erange, estep, dwell, sample_name="", roi_num=1, harmonic=1, vlm_snapshot=True)
 
    Collect a XANES scan by step scanning the incident energy on the sample. The energy points are defined using regions in `erange` with given steps between the points, defined by `estep`.
 
@@ -157,8 +157,8 @@ Print element emission energies - *Print the emission energies for the element o
    :type dwell: float
    :param sample_name: a human-readable name for the sample, defaults to an empty string, ""
    :type sample_name: str, optional
-   :param roinum: region of interest to measure, default to 1
-   :type roinum: int, optional
+   :param roi_num: region of interest to measure, default to 1 or roi within energy range
+   :type roi_num: int, optional
    :param harmonic: undulator harmonic to use for the scan. The default behavior will use the harmonic with the highest X-ray flux for the current energy. Defaults to 1
    :type harmonic: int, optional
    :param vlm_snapshot: collect an optical image at the beginning and end of the scan, defaults to True
@@ -174,7 +174,7 @@ Print element emission energies - *Print the emission energies for the element o
 
     Bluesky@SRX [1] RE(fly_multiple_passes(Fe_k-50, Fe_k+150, 251, 1, sample_name="Fe foil"))
 
-.. function:: fly_multiple_passes(estart, estop, enum, dwell, sample_name="", roinum=1, harmonic=1, vlm_snapshot=True)
+.. function:: fly_multiple_passes(estart, estop, enum, dwell, sample_name="", roi_num=1, harmonic=1, num_scans=1, vlm_snapshot=True)
 
    Collect a XANES scan by fly scanning the incident energy on the sample. The scan run from `estart` to `estop` collecting `enum` number of points.
 
@@ -188,10 +188,12 @@ Print element emission energies - *Print the emission energies for the element o
    :type dwell: float
    :param sample_name: a human-readable name for the sample, defaults to an empty string, ""
    :type sample_name: str, optional
-   :param roinum: region of interest to measure, default to 1
-   :type roinum: int, optional
+   :param roi_num: region of interest to measure, default to 1 or roi within energy range
+   :type roi_num: int, optional
    :param harmonic: undulator harmonic to use for the scan. The default behavior will use the harmonic with the highest X-ray flux for the starting energy. Defaults to 1
    :type harmonic: int, optional
+   :param num_scans: number of repeated scans to perform, defaults to 1
+   :type num_scans: int
    :param vlm_snapshot: collect an optical image at the beginning and end of the scan, defaults to True
    :type vlm_snapshot: bool, optional
 
