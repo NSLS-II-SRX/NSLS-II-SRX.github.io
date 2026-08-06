@@ -79,7 +79,9 @@
 <h1>Estimating Scan Times<a class="headerlink" href="#estimating-scan-times" title="Link to this heading"></a></h1>
 <section id="xrf-map">
 <h2>xrf_map<a class="headerlink" href="#xrf-map" title="Link to this heading"></a></h2>
+<!--Style block is only needed for first time estimate-->
 <style>
+
     /* Removes increment arrows for Chrome, Safari, Edge, and Opera */
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
@@ -108,35 +110,36 @@
     }
 </style>
 
-<div style="background-color: #fafafa; border: 1px solid #e1e4e6; border-radius: 8px; padding: 24px; margin: 24px 0; max-width: 450px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+<div style="background-color: #fafafa; border: 1px solid #e1e4e6; border-radius: 8px; padding: 24px; margin: 24px auto; max-width: 600px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
 
-   <h5 style="margin-top: 0; margin-bottom: 15px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 6px;">
-   Time Estimate
-   </h5>
+    <h5 style="margin-top: 0; margin-bottom: 15px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
+        <span>xrf_map time estimate</span>
+        <span style="font-weight: normal; font-size: 11px; color: #666;">(fly_num * step_num * dwell) + (step_num * 4) + 10</span>
+    </h5>
 
    <!-- Input 1 Group -->
    <div class="input-group">
       <label>xnum (int)</label>
-      <input type="number" id="val1" min="0" step="1" placeholder="0" oninput="calc()" style="border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;">
+      <input type="number" id="xrf_map_xnum" min="1" step="1" placeholder="1" oninput="xrf_map_estimate_time()" style="border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;">
    </div>
 
    <!-- Input 2 Group -->
    <div class="input-group">
       <label>ynum (int)</label>
-      <input type="number" id="val2" min="0" step="1" placeholder="0" oninput="calc()" style="border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;">
+      <input type="number" id="xrf_map_ynum" min="1" step="1" placeholder="1" oninput="xrf_map_estimate_time()" style="border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;">
    </div>
 
    <!-- Input 3 Group -->
    <div class="input-group">
       <label>dwell (sec)</label>
-      <input type="number" id="val3" min="0" step="any" placeholder="0.0" oninput="calc()" style="border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;">
+      <input type="number" id="xrf_map_dwell" min="0" step="any" placeholder="0.0" oninput="xrf_map_estimate_time()" style="border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;">
    </div>
 
    <!-- Checkbox Group aligned to the bottom with the inputs -->
    <div class="input-group">
       <label>fly_on_y</label>
       <div style="display: flex; align-items: center; height: 30px;">
-         <input type="checkbox" id="toggleBtn" onchange="calc()" style="margin: 0; width: auto;">
+         <input type="checkbox" id="xrf_map_fly_on_y" onchange="xrf_map_estimate_time()" style="margin: 0; width: auto;">
          <span style="font-size: 13px; margin-left: 5px; font-weight: bold; white-space: nowrap;"></span>
       </div>
    </div>
@@ -146,51 +149,273 @@
    <div style="text-align: right; display: flow-root;">
       <!-- Left-aligned result text on the same line -->
       <span style="float: left; font-weight: bold; font-size: 16px; line-height: 28px;">
-         Result: <span id="res">0 sec</span>
+         Result: <span id="xrf_map_res">0 sec</span>
       </span>
    </div>
 
 </div>
 
 <script>
-function calc() {
-    var v1 = Math.max(1, Math.floor(parseInt(document.getElementById('val1').value) || 0));
-    var v2 = Math.max(1, Math.floor(parseInt(document.getElementById('val2').value) || 0));
-    var v3 = Math.max(0, parseFloat(document.getElementById('val3').value) || 0);
-
-    var fly_on_y = document.getElementById('toggleBtn').checked;
-
-    var row_overhead = 0;
-    if (fly_on_y) {
-      row_overhead = v1 * 4
-   } else {
-      row_overhead = v2 * 4
-   }
-
-   var res_sec = 10 + (v1 * v2 * v3) + row_overhead;
-   var res_text = "";
-
-   // Dwell issue
-   if (v3 == 0) {
-      res_sec = 0
+// Only defined once!
+function formatTimeFromSeconds(res_sec) {
+   // Handle the 0 seconds case immediately
+   if (res_sec <= 0) {
+      return "0 sec";
    }
 
    // Time reporting logic
    if (res_sec < 60) {
-      // Round to 1 decimal place if it's a float
-      res_text = Math.round(res_sec) + " sec";
+      return Math.round(res_sec) + " sec";
    } else if (res_sec < 3600) {
       var res_min = Math.floor(res_sec / 60);
       var remaining_sec = Math.round(res_sec % 60);
-      res_text = res_min + " min and " + remaining_sec + " sec";
+      return res_min + " min and " + remaining_sec + " sec";
    } else {
       var res_hr = Math.floor(res_sec / 3600);
       var remaining_sec = res_sec % 3600;
       var res_min = Math.round(remaining_sec / 60);
-      res_text = res_hr + " hr and " + res_min + " min";
+      return res_hr + " hr and " + res_min + " min";
+   }
+}
+
+function xrf_map_estimate_time() {
+    var xnum = Math.max(1, Math.floor(parseInt(document.getElementById('xrf_map_xnum').value) || 0));
+    var ynum = Math.max(1, Math.floor(parseInt(document.getElementById('xrf_map_ynum').value) || 0));
+    var dwell = Math.max(0, parseFloat(document.getElementById('xrf_map_dwell').value) || 0);
+
+    var fly_on_y = document.getElementById('xrf_map_fly_on_y').checked;
+
+    var row_overhead = 0;
+    if (fly_on_y) {
+      row_overhead = xnum * 4
+   } else {
+      row_overhead = ynum * 4
    }
 
-   document.getElementById('res').innerText = res_text;
+   var res_sec = 10 + (xnum * ynum * dwell) + row_overhead;
+
+   // Dwell issue
+   if (dwell == 0) {
+      res_sec = 0
+   }
+
+   document.getElementById('xrf_map_res').innerText = formatTimeFromSeconds(res_sec);
+}
+</script></section>
+<section id="nano-xrf">
+<h2>nano_xrf<a class="headerlink" href="#nano-xrf" title="Link to this heading"></a></h2>
+<div style="background-color: #fafafa; border: 1px solid #e1e4e6; border-radius: 8px; padding: 24px; margin: 24px auto; max-width: 600px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+
+    <h5 style="margin-top: 0; margin-bottom: 15px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
+        <span>nano_xrf time estimate</span>
+        <span style="font-weight: normal; font-size: 11px; color: #666;">(fly_num * step_num * dwell) + (step_num * 4) + 10</span>
+    </h5>
+
+   <!-- Input 1 Group -->
+   <div class="input-group">
+      <label>xnum (int)</label>
+      <input type="number" id="nano_xrf_xnum" min="1" step="1" placeholder="1" oninput="nano_xrf_estimate_time()" style="border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;">
+   </div>
+
+   <!-- Input 2 Group -->
+   <div class="input-group">
+      <label>ynum (int)</label>
+      <input type="number" id="nano_xrf_ynum" min="1" step="1" placeholder="1" oninput="nano_xrf_estimate_time()" style="border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;">
+   </div>
+
+   <!-- Input 3 Group -->
+   <div class="input-group">
+      <label>dwell (sec)</label>
+      <input type="number" id="nano_xrf_dwell" min="0" step="any" placeholder="0.0" oninput="nano_xrf_estimate_time()" style="border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;">
+   </div>
+
+   <div style="margin-bottom: 10px;"></div>
+
+   <div style="text-align: right; display: flow-root;">
+      <!-- Left-aligned result text on the same line -->
+      <span style="float: left; font-weight: bold; font-size: 16px; line-height: 28px;">
+         Result: <span id="nano_xrf_res">0 sec</span>
+      </span>
+   </div>
+
+</div>
+
+<script>
+function nano_xrf_estimate_time() {
+    var xnum = Math.max(1, Math.floor(parseInt(document.getElementById('nano_xrf_xnum').value) || 0));
+    var ynum = Math.max(1, Math.floor(parseInt(document.getElementById('nano_xrf_ynum').value) || 0));
+    var dwell = Math.max(0, parseFloat(document.getElementById('nano_xrf_dwell').value) || 0);
+
+   var res_sec = 10 + (xnum * ynum * (dwell + 4));
+
+   // Dwell issue
+   if (dwell == 0) {
+      res_sec = 0
+   }
+
+   document.getElementById('nano_xrf_res').innerText = formatTimeFromSeconds(res_sec);
+}
+</script></section>
+<section id="xas-step">
+<h2>xas_step<a class="headerlink" href="#xas-step" title="Link to this heading"></a></h2>
+<div style="background-color: #fafafa; border: 1px solid #e1e4e6; border-radius: 8px; padding: 24px; margin: 24px auto; max-width: 600px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+
+    <h5 style="margin-top: 0; margin-bottom: 15px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
+        <span>xas_step time estimate</span>
+        <span style="font-weight: normal; font-size: 11px; color: #666;">(fly_num * step_num * dwell) + (step_num * 4) + 10</span>
+    </h5>
+
+   <!-- Input 1 Group -->
+   <div class="input-group">
+      <label>erange (list)</label>
+      <input type="string" id="xas_step_erange" placeholder="950, 990, 1010, 1050" oninput="xas_step_estimate_time()" style="border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 250px; box-sizing: border-box;">
+   </div>
+
+   <!-- Input 2 Group -->
+   <div class="input-group">
+      <label>estep (list)</label>
+      <input type="string" id="xas_step_estep" placeholder="2, 1, 2" oninput="xas_step_estimate_time()" style="border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 100px; box-sizing: border-box;">
+   </div>
+
+   <!-- Input 3 Group -->
+   <div class="input-group">
+      <label>dwell (sec)</label>
+      <input type="number" id="xas_step_dwell" min="0" step="any" placeholder="1.0" oninput="xas_step_estimate_time()" style="border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;">
+   </div>
+
+   <div style="margin-bottom: 10px;"></div>
+
+   <div style="text-align: right; display: flow-root;">
+      <!-- Left-aligned result text on the same line -->
+      <span style="float: left; font-weight: bold; font-size: 16px; line-height: 28px;">
+         Result: <span id="xas_step_res">0 sec</span>
+      </span>
+   </div>
+
+</div>
+
+<script>
+function xas_step_estimate_time() {
+   var erange_text = document.getElementById('xas_step_erange').value || "0";
+   var erange_list = erange_text.split(',')
+                              .map(function(item) { return parseFloat(item.trim()); })
+                              .filter(function(num) { return !isNaN(num); });
+
+   var estep_text = document.getElementById('xas_step_estep').value || "0";
+   var estep_list = estep_text.split(',')
+                              .map(function(item) { return parseFloat(item.trim()); })
+                              .filter(function(num) { return !isNaN(num); });
+
+   var dwell = Math.max(0, parseFloat(document.getElementById('xas_step_dwell').value) || 0);
+
+   // Get results first to display errors
+   var res = document.getElementById('xas_step_res');
+   if (!res) return; // Guard clause if element doesn't exist
+
+   // CHECK 1: Ensure steps list length is exactly 1 less than erange list length
+   if (erange_list.length !== estep_list.length + 1) {
+      res.innerText = "Error: erange must be exactly 1 longer than estep";
+      res.style.color = "red"; // Optional: Makes error text pop out
+      return; // Stop the script immediately
+   }
+
+   // CHECK 2: Ensure erange numbers are sequential (no duplicates, no direction changes)
+   for (var j = 0; j < erange_list.length - 2; j++) {
+      var first_diff = erange_list[j+1] - erange_list[j];
+      var second_diff = erange_list[j+2] - erange_list[j+1];
+
+      // If a difference is 0, they entered a duplicate number.
+      // If multiplying the differences yields a negative number, the scan changed direction.
+      if (first_diff === 0 || second_diff === 0 || (first_diff * second_diff) < 0) {
+         res.innerText = "Error: erange values must be sequential";
+         res.style.color = "red";
+         return;
+      }
+   }
+   res.style.color = "";
+
+   // Get total points by looping
+   var total_points = 0;
+
+   // Loop through each segment (defined by steps list)
+   for (var i = 0; i < estep_list.length; i++) {
+      // Ensure we have a matching pair of start/end points for this step size
+      if (i + 1 < erange_list.length) {
+         var start = erange_list[i];
+         var end = erange_list[i + 1];
+         var step = estep_list[i];
+
+         if (step > 0) {
+            // Points in segment = Math.abs(end - start) / step
+            // We use Math.round to fix floating-point math issues (e.g., 0.1 + 0.2 = 0.30000004)
+            var segment_steps = Math.round(Math.abs(end - start) / step);
+            total_points += segment_steps;
+         }
+      }
+   }
+
+   // Add 1 for the very first starting point if any points were created
+   if (total_points > 0) {
+      total_points += 1;
+   }
+   // -----------------------------------------------------
+
+   var res_sec = 10 + (total_points * (dwell + 4));
+
+   // Dwell issue
+   if (dwell == 0) {
+      res_sec = 0
+   }
+
+   res.innerText = formatTimeFromSeconds(res_sec);
+}
+</script></section>
+<section id="xas-fly">
+<h2>xas_fly<a class="headerlink" href="#xas-fly" title="Link to this heading"></a></h2>
+<div style="background-color: #fafafa; border: 1px solid #e1e4e6; border-radius: 8px; padding: 24px; margin: 24px auto; max-width: 600px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+
+    <h5 style="margin-top: 0; margin-bottom: 15px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
+        <span>xas_fly time estimate</span>
+        <span style="font-weight: normal; font-size: 11px; color: #666;">(fly_num * step_num * dwell) + (step_num * 4) + 10</span>
+    </h5>
+
+   <!-- Input 1 Group -->
+   <div class="input-group">
+      <label>enum (int)</label>
+      <input type="number" id="xas_fly_enum" min="1" step="1" placeholder="1" oninput="xas_fly_estimate_time()" style="border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;">
+   </div>
+
+   <!-- Input 3 Group -->
+   <div class="input-group">
+      <label>dwell (sec)</label>
+      <input type="number" id="xas_fly_dwell" min="0" step="any" placeholder="0.0" oninput="xas_fly_estimate_time()" style="border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;">
+   </div>
+
+   <div style="margin-bottom: 10px;"></div>
+
+   <div style="text-align: right; display: flow-root;">
+      <!-- Left-aligned result text on the same line -->
+      <span style="float: left; font-weight: bold; font-size: 16px; line-height: 28px;">
+         Result: <span id="xas_fly_res">0 sec</span>
+      </span>
+   </div>
+
+</div>
+
+<script>
+function xas_fly_estimate_time() {
+    var e_num = Math.max(1, Math.floor(parseInt(document.getElementById('xas_fly_enum').value) || 0));
+    var dwell = Math.max(0, parseFloat(document.getElementById('xas_fly_dwell').value) || 0);
+
+   var res_sec = 30 + (e_num * (dwell));
+   var res_text = "";
+
+   // Dwell issue
+   if (dwell == 0) {
+      res_sec = 0
+   }
+
+   document.getElementById('xas_fly_res').innerText = formatTimeFromSeconds(res_sec);
 }
 </script></section>
 </section>

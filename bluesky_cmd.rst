@@ -2,6 +2,10 @@ Bluesky Commands
 ================
 Below is a list of useful commands for running the SRX beamline. Previous commands can be seen by hitting the up arrow in Bluesky. To search through them, you can start typing a command before hitting the up arrow to filter your history.
 
+.. include:: includes/time_estimates.html
+   :start-after: <!--START base-->
+   :end-before: <!--END base-->
+
 Starting Bluesky
 ****************
 Start Bluesky - *Bluesky can be started by going to the top left corner of the screen and choosing Activities. Then click on the Bluesky icon - a blue cloud with a b - to automatically open a new terminal and start Bluesky.* 
@@ -84,6 +88,10 @@ XRF Imaging
          Bluesky@SRX [4] RE(coarse_y_scan_and_fly(startY, stopY, numY,
                                                   startX, stopX, numX, dwell))
 
+.. include:: includes/time_estimates.html
+   :start-after: <!--START xrf_map-->
+   :end-before: <!--END xrf_map-->
+
 **XRF Step Scan Map**
 
 .. code-block::
@@ -114,6 +122,9 @@ XRF Imaging
    :param snake: using a snaking scan strategy, defaults to True
    :type snake: bool, optional
 
+.. include:: includes/time_estimates.html
+   :start-after: <!--START nano_xrf-->
+   :end-before: <!--END nano_xrf-->
 
 XAS Spectroscopy
 ****************
@@ -152,6 +163,10 @@ Print element emission energies - *Print the emission energies for the element o
    :type harmonic: int, optional
    :param vlm_snapshot: collect an optical image at the beginning and end of the scan, defaults to True
    :type vlm_snapshot: bool, optional
+
+.. include:: includes/time_estimates.html
+   :start-after: <!--START xas_step-->
+   :end-before: <!--END xas_step-->
 
 Metadata
 ********
