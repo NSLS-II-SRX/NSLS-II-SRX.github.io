@@ -16,11 +16,7 @@ Quick Links
 #. `NSLS-II Controls Documentation <http://nsls-ii.github.io/>`_
 #. `NSLS-II Sharepoint Documentation <https://ps.bnl.gov/phot/ros/Shared%20Documents/MAXIMO%20Development/Beamlines/LT-R-XFD-CO-DR-SRX-002_Rev1.xlsx>`_
 #. `Former SRX Wiki Staff Page <https://beamline5id.bnl.gov/index.php/Main_Page>`_
-
-.. todo::
-
-  - Add archiver link
-
+#. `Beamline Archivers <https://docs.nsls2.bnl.gov/docs/services/archiver-appliance.html>`_
 
 Setting up Users
 ----------------
@@ -34,6 +30,9 @@ Setting up Users
 
 Setting up the Scan Report
 --------------------------
+
+Initial Setup
+
 #. Start by logging in as you - authorized beamline staff.
 #. Check to see if ``run-scan_report`` is in your ``PATH`` variable. Either try to run ``run-scan_report`` or you can check if ``which run-scan_report`` returns a path.
     - If this needs to be added, it is best to add the script location to your startup. Open the ``.bashrc`` file in your home directory, ``/home/{username}/.bashrc`` and add the line ::
@@ -44,16 +43,32 @@ Setting up the Scan Report
 
        source ~/.bashrc
 
-#. Open a ``tmux`` session using the command ``tmux``
-#. Start the scan report ipython session using ``run-scan_report``
+Starting from command line
+
+#. In a terminal with your permissions, start the scan report ipython session using ``run-scan_report``
 #. Utilize the docstring ``generate_scan_report?`` or follow an example such as ::
 
     In [1]: generate_scan_report(12345, None, ["Ti", "Fe", "As"])
 
-#. Disconnect from the ``tmux`` session and leave it running in the background using key combination ``CTRL-b`` then ``d``
-#. When ready to stop the scan report, login and connect to the ``tmux`` session using the command ``tmux``
 #. The scan report can be stopped by hitting ``CTRL-c`` twice.
 #. Proceed to start a new scan report, or you can exit the scan report session with an ``exit`` command
+
+Starting with GUI
+
+#. In a terminal with your or the user's permissions, start the GUI with ``run-scan_report-gui``; or on WS2, open the open the "SRX Scan Report" icon in activities.
+#. Select the Start ID, or Cycle and Proposal ID to define where the report should begin.
+#. Select other parameters according to the users' experimental parameters.
+#. To start the report, click the green "Run" button. This will disable other buttons.
+#. To pause the report, click the yellow "Pause" button. This will re-enable certain buttons allowing for changes in between scans. Any errors encountered during generation may also pause the report. The run button will be changed to "Resume" and clicking on it will restart the report generation.
+#. To stop the report, click the red "Stop" button. This will rewrite the file name, and the report cannot be continued afterwards.
+#. Click the "x" icon in the top right corner of the GUI window to close the GUI. The original terminal may also need to be closed.
+
+Starting a tmux session (for running with your permissions)
+
+#. In a terminal with your permissions, open a ``tmux`` session using the command ``tmux``.
+#. Run the scan report using one of the methods above.
+#. Disconnect from the ``tmux`` session and leave it running in the background using key combination ``CTRL-b`` then ``d``
+#. When ready to stop the scan report, login and connect to the ``tmux`` session using the command ``tmux``
 
 Virtual Machine Information
 ---------------------------
@@ -389,7 +404,7 @@ Controls
 
 IOC Monitoring
 **************
-The ``manage-iocs`` tool can be used to monitor the IOC status. SSH into the server that hosts the IOC (*e.g.* xf05idd-ioc1) and run:
+The ``manage-iocs`` tool can be used to monitor the IOC status. SSH into the server that hosts the IOC (*e.g.* xf05idd-ioc1, xf05idd-ioc2, xf05idd-inst-ioc1) and run:
     * List all IOCs ::
 
         $ manage-iocs report
