@@ -56,6 +56,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#xas-spectroscopy">XAS Spectroscopy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#xanes_plan"><code class="docutils literal notranslate"><span class="pre">xanes_plan()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fly_multiple_passes"><code class="docutils literal notranslate"><span class="pre">fly_multiple_passes()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#metadata">Metadata</a></li>
@@ -378,7 +379,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">getemissionE</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>XANES scan</strong></p>
+<p><strong>XANES Step Scan</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">xanes_plan</span><span class="p">(</span><span class="n">erange</span><span class="o">=</span><span class="p">[</span><span class="n">Fe_k</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="n">Fe_k</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">Fe_k</span><span class="o">+</span><span class="mi">50</span><span class="p">,</span> <span class="n">Fe_k</span><span class="o">+</span><span class="mi">150</span><span class="p">],</span>
                               <span class="n">estep</span><span class="o">=</span><span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span>
                               <span class="n">dwell</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
@@ -388,7 +389,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="xanes_plan">
 <span class="sig-name descname"><span class="pre">xanes_plan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">erange</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estep</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dwell</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roinum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">harmonic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlm_snapshot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xanes_plan" title="Link to this definition"></a></dt>
-<dd><p>Collect a XANES scan by scanning the incident energy on the sample. The energy points are defined using regions in <cite>erange</cite> with given steps between the points, defined by <cite>estep</cite>.</p>
+<dd><p>Collect a XANES scan by step scanning the incident energy on the sample. The energy points are defined using regions in <cite>erange</cite> with given steps between the points, defined by <cite>estep</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -514,6 +515,75 @@
       }
 
       res.innerText = formatTimeFromSeconds(res_sec);
+   }
+</script><p><strong>XANES Fly Scan</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">fly_multiple_passes</span><span class="p">(</span><span class="n">Fe_k</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="n">Fe_k</span><span class="o">+</span><span class="mi">150</span><span class="p">,</span> <span class="mi">251</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sample_name</span><span class="o">=</span><span class="s2">&quot;Fe foil&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="fly_multiple_passes">
+<span class="sig-name descname"><span class="pre">fly_multiple_passes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dwell</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roinum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">harmonic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlm_snapshot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fly_multiple_passes" title="Link to this definition"></a></dt>
+<dd><p>Collect a XANES scan by fly scanning the incident energy on the sample. The scan run from <cite>estart</cite> to <cite>estop</cite> collecting <cite>enum</cite> number of points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estart</strong> (<em>int</em>) – starting energy</p></li>
+<li><p><strong>estop</strong> (<em>int</em>) – stopping energy</p></li>
+<li><p><strong>enum</strong> (<em>int</em>) – number of points in energy</p></li>
+<li><p><strong>dwell</strong> (<em>float</em>) – dwell time per energy point</p></li>
+<li><p><strong>sample_name</strong> (<em>str</em><em>, </em><em>optional</em>) – a human-readable name for the sample, defaults to an empty string, “”</p></li>
+<li><p><strong>roinum</strong> (<em>int</em><em>, </em><em>optional</em>) – region of interest to measure, default to 1</p></li>
+<li><p><strong>harmonic</strong> (<em>int</em><em>, </em><em>optional</em>) – undulator harmonic to use for the scan. The default behavior will use the harmonic with the highest X-ray flux for the starting energy. Defaults to 1</p></li>
+<li><p><strong>vlm_snapshot</strong> (<em>bool</em><em>, </em><em>optional</em>) – collect an optical image at the beginning and end of the scan, defaults to True</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<div style="background-color: #fafafa; border: 1px solid #e1e4e6; border-radius: 8px; padding: 24px; margin: 24px auto; max-width: 600px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+
+    <h5 style="margin-top: 0; margin-bottom: 15px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
+        <span>xas_fly time estimate</span>
+        <span style="font-weight: normal; font-size: 11px; color: #666;">(enum * dwell) + 30</span>
+    </h5>
+
+   <!-- Input 1 Group -->
+   <div class="input-group">
+      <label>enum (int)</label>
+      <input type="number" id="xas_fly_enum" min="1" step="1" placeholder="1" oninput="xas_fly_estimate_time()" style="border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;">
+   </div>
+
+   <!-- Input 3 Group -->
+   <div class="input-group">
+      <label>dwell (sec)</label>
+      <input type="number" id="xas_fly_dwell" min="0" step="any" placeholder="0.0" oninput="xas_fly_estimate_time()" style="border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;">
+   </div>
+
+   <div style="margin-bottom: 10px;"></div>
+
+   <div style="text-align: right; display: flow-root;">
+      <!-- Left-aligned result text on the same line -->
+      <span style="float: left; font-weight: bold; font-size: 16px; line-height: 28px;">
+         Result: <span id="xas_fly_res">0 sec</span>
+      </span>
+   </div>
+
+</div>
+
+<script>
+   function xas_fly_estimate_time() {
+         var e_num = Math.max(1, Math.floor(parseInt(document.getElementById('xas_fly_enum').value) || 0));
+         var dwell = Math.max(0, parseFloat(document.getElementById('xas_fly_dwell').value) || 0);
+
+      var res_sec = 30 + (e_num * (dwell));
+      var res_text = "";
+
+      // Dwell issue
+      if (dwell == 0) {
+         res_sec = 0
+      }
+
+      document.getElementById('xas_fly_res').innerText = formatTimeFromSeconds(res_sec);
    }
 </script></section>
 <section id="metadata">
