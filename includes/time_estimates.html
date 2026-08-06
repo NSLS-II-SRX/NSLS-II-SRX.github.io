@@ -138,7 +138,7 @@
 
        <h5 style="margin-top: 0; margin-bottom: 15px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
            <span>nano_xrf time estimate</span>
-           <span style="font-weight: normal; font-size: 11px; color: #666;">(xnum * ynum * (dwell + 4)) + 10</span>
+           <span style="font-weight: normal; font-size: 11px; color: #666;">(xnum * ynum * (dwell + 2)) + 10</span>
        </h5>
       
       <!-- Input 1 Group -->
@@ -176,7 +176,7 @@
             var ynum = Math.max(1, Math.floor(parseInt(document.getElementById('nano_xrf_ynum').value) || 0));
             var dwell = Math.max(0, parseFloat(document.getElementById('nano_xrf_dwell').value) || 0);
 
-         var res_sec = 10 + (xnum * ynum * (dwell + 4));
+         var res_sec = 10 + (xnum * ynum * (dwell + 2));
 
          // Dwell issue
          if (dwell == 0) {
@@ -195,7 +195,7 @@
 
        <h5 style="margin-top: 0; margin-bottom: 15px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
            <span>xanes_plan time estimate</span>
-           <span style="font-weight: normal; font-size: 11px; color: #666;">(num_energies * (dwell + 4)) + 10</span>
+           <span style="font-weight: normal; font-size: 11px; color: #666;">(num_energies * (dwell + 2)) + 10</span>
        </h5>
       
       <!-- Input 1 Group -->
@@ -293,7 +293,7 @@
          }
          // -----------------------------------------------------
 
-         var res_sec = 10 + (total_points * (dwell + 4));
+         var res_sec = 10 + (total_points * (dwell + 2));
 
          // Dwell issue
          if (dwell == 0) {
@@ -312,7 +312,7 @@
 
        <h5 style="margin-top: 0; margin-bottom: 15px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
            <span>xas_fly time estimate</span>
-           <span style="font-weight: normal; font-size: 11px; color: #666;">(enum * dwell) + 30</span>
+           <span style="font-weight: normal; font-size: 11px; color: #666;">(enum * dwell) + 20</span>
        </h5>
       
       <!-- Input 1 Group -->
@@ -343,7 +343,7 @@
             var e_num = Math.max(1, Math.floor(parseInt(document.getElementById('xas_fly_enum').value) || 0));
             var dwell = Math.max(0, parseFloat(document.getElementById('xas_fly_dwell').value) || 0);
 
-         var res_sec = 30 + (e_num * (dwell));
+         var res_sec = 20 + (e_num * (dwell));
          var res_text = "";
 
          // Dwell issue
