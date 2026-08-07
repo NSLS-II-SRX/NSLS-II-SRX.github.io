@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>&lt;no title&gt; &mdash; NSLS-II SRX  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            NSLS-II SRX
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction to SRX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui.html">CSS-Phoebus GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bluesky_cmd.html">Bluesky Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_transfer.html">Data Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../acceptance_tests.html">Acceptance Tests [staff only]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../staff.html">Beamline Staff Pages [staff only]</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">NSLS-II SRX</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/includes/time_estimates.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p>&lt;!–START base–&gt;
+.. raw:: html</p>
+<blockquote>
+<div><dl>
+<dt>&lt;style&gt;</dt><dd><p>/* Removes increment arrows for Chrome, Safari, Edge, and Opera <a href="#id1"><span class="problematic" id="id2">*</span></a>/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {</p>
+<blockquote>
+<div><p>-webkit-appearance: none;
+margin: 0;</p>
+</div></blockquote>
+<p>}</p>
+<p>/* Removes increment arrows for Firefox <a href="#id3"><span class="problematic" id="id4">*</span></a>/
+input[type=number] {</p>
+<blockquote>
+<div><p>-moz-appearance: textfield;</p>
+</div></blockquote>
+<p>}</p>
+<p>/* Container to stack label above input and keep them side-by-side <a href="#id5"><span class="problematic" id="id6">*</span></a>/
+.input-group {</p>
+<blockquote>
+<div><p>display: inline-block;
+margin-right: 15px;
+vertical-align: bottom;</p>
+</div></blockquote>
+<p>}</p>
+<p>/* Style for the text labels <a href="#id7"><span class="problematic" id="id8">*</span></a>/
+.input-group label {</p>
+<blockquote>
+<div><p>display: block;
+font-size: 13px;
+margin-bottom: 4px;
+font-weight: bold;</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+<p>&lt;/style&gt;</p>
+</div></blockquote>
+<p>&lt;!–END base–&gt;</p>
+<p>&lt;!–START xrf_map–&gt;
+.. raw:: html</p>
+<blockquote>
+<div><p>&lt;div style=”background-color: #fafafa; border: 1px solid #e1e4e6; border-radius: 8px; padding: 24px; margin: 24px auto; max-width: 600px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);”&gt;</p>
+<blockquote>
+<div><blockquote>
+<div><dl class="simple">
+<dt>&lt;h5 style=”margin-top: 0; margin-bottom: 15px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;”&gt;</dt><dd><p>&lt;span&gt;xrf_map time estimate&lt;/span&gt;
+&lt;span style=”font-weight: normal; font-size: 11px; color: #666;”&gt;(fly_num * step_num * dwell) + (step_num * 4) + 10&lt;/span&gt;</p>
+</dd>
+</dl>
+<p>&lt;/h5&gt;</p>
+</div></blockquote>
+<p>&lt;!– Input 1 Group –&gt;
+&lt;div class=”input-group”&gt;</p>
+<blockquote>
+<div><p>&lt;label&gt;xnum (int)&lt;/label&gt;
+&lt;input type=”number” id=”xrf_map_xnum” min=”1” step=”1” placeholder=”1” oninput=”xrf_map_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;!– Input 2 Group –&gt;
+&lt;div class=”input-group”&gt;</p>
+<blockquote>
+<div><p>&lt;label&gt;ynum (int)&lt;/label&gt;
+&lt;input type=”number” id=”xrf_map_ynum” min=”1” step=”1” placeholder=”1” oninput=”xrf_map_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;!– Input 3 Group –&gt;
+&lt;div class=”input-group”&gt;</p>
+<blockquote>
+<div><p>&lt;label&gt;dwell (sec)&lt;/label&gt;
+&lt;input type=”number” id=”xrf_map_dwell” min=”0” step=”any” placeholder=”0.0” oninput=”xrf_map_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;!– Checkbox Group aligned to the bottom with the inputs –&gt;
+&lt;div class=”input-group”&gt;</p>
+<blockquote>
+<div><p>&lt;label&gt;fly_on_y&lt;/label&gt;
+&lt;div style=”display: flex; align-items: center; height: 30px;”&gt;</p>
+<blockquote>
+<div><p>&lt;input type=”checkbox” id=”xrf_map_fly_on_y” onchange=”xrf_map_estimate_time()” style=”margin: 0; width: auto;”&gt;
+&lt;span style=”font-size: 13px; margin-left: 5px; font-weight: bold; white-space: nowrap;”&gt;&lt;/span&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;div style=”margin-bottom: 10px;”&gt;&lt;/div&gt;</p>
+<dl>
+<dt>&lt;div style=”text-align: right; display: flow-root;”&gt;</dt><dd><p>&lt;!– Left-aligned result text on the same line –&gt;
+&lt;span style=”float: left; font-weight: bold; font-size: 16px; line-height: 28px;”&gt;</p>
+<blockquote>
+<div><p>Result: &lt;span id=”xrf_map_res”&gt;0 sec&lt;/span&gt;</p>
+</div></blockquote>
+<p>&lt;/span&gt;</p>
+</dd>
+</dl>
+<p>&lt;/div&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+</div></blockquote>
+<p>&lt;!–END xrf_map–&gt;</p>
+<p>&lt;!–START nano_xrf–&gt;
+.. raw:: html</p>
+<blockquote>
+<div><p>&lt;div style=”background-color: #fafafa; border: 1px solid #e1e4e6; border-radius: 8px; padding: 24px; margin: 24px auto; max-width: 600px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);”&gt;</p>
+<blockquote>
+<div><blockquote>
+<div><dl class="simple">
+<dt>&lt;h5 style=”margin-top: 0; margin-bottom: 15px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;”&gt;</dt><dd><p>&lt;span&gt;nano_xrf time estimate&lt;/span&gt;
+&lt;span style=”font-weight: normal; font-size: 11px; color: #666;”&gt;(fly_num * step_num * dwell) + (step_num * 4) + 10&lt;/span&gt;</p>
+</dd>
+</dl>
+<p>&lt;/h5&gt;</p>
+</div></blockquote>
+<p>&lt;!– Input 1 Group –&gt;
+&lt;div class=”input-group”&gt;</p>
+<blockquote>
+<div><p>&lt;label&gt;xnum (int)&lt;/label&gt;
+&lt;input type=”number” id=”nano_xrf_xnum” min=”1” step=”1” placeholder=”1” oninput=”nano_xrf_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;!– Input 2 Group –&gt;
+&lt;div class=”input-group”&gt;</p>
+<blockquote>
+<div><p>&lt;label&gt;ynum (int)&lt;/label&gt;
+&lt;input type=”number” id=”nano_xrf_ynum” min=”1” step=”1” placeholder=”1” oninput=”nano_xrf_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;!– Input 3 Group –&gt;
+&lt;div class=”input-group”&gt;</p>
+<blockquote>
+<div><p>&lt;label&gt;dwell (sec)&lt;/label&gt;
+&lt;input type=”number” id=”nano_xrf_dwell” min=”0” step=”any” placeholder=”0.0” oninput=”nano_xrf_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;div style=”margin-bottom: 10px;”&gt;&lt;/div&gt;</p>
+<dl>
+<dt>&lt;div style=”text-align: right; display: flow-root;”&gt;</dt><dd><p>&lt;!– Left-aligned result text on the same line –&gt;
+&lt;span style=”float: left; font-weight: bold; font-size: 16px; line-height: 28px;”&gt;</p>
+<blockquote>
+<div><p>Result: &lt;span id=”nano_xrf_res”&gt;0 sec&lt;/span&gt;</p>
+</div></blockquote>
+<p>&lt;/span&gt;</p>
+</dd>
+</dl>
+<p>&lt;/div&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;script&gt;
+function nano_xrf_estimate_time() {</p>
+<blockquote>
+<div><blockquote>
+<div><p>var xnum = Math.max(1, Math.floor(parseInt(document.getElementById(‘nano_xrf_xnum’).value) || 0));
+var ynum = Math.max(1, Math.floor(parseInt(document.getElementById(‘nano_xrf_ynum’).value) || 0));
+var dwell = Math.max(0, parseFloat(document.getElementById(‘nano_xrf_dwell’).value) || 0);</p>
+</div></blockquote>
+<p>var res_sec = 10 + (xnum * ynum * (dwell + 4));</p>
+<p>// Dwell issue
+if (dwell == 0) {</p>
+<blockquote>
+<div><p>res_sec = 0</p>
+</div></blockquote>
+<p>}</p>
+<p>document.getElementById(‘nano_xrf_res’).innerText = formatTimeFromSeconds(res_sec);</p>
+</div></blockquote>
+<p>}
+&lt;/script&gt;</p>
+</div></blockquote>
+<p>&lt;!–END nano_xrf–&gt;</p>
+<p>&lt;!–START xas_step–&gt;
+.. raw:: html</p>
+<blockquote>
+<div><p>&lt;div style=”background-color: #fafafa; border: 1px solid #e1e4e6; border-radius: 8px; padding: 24px; margin: 24px auto; max-width: 600px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);”&gt;</p>
+<blockquote>
+<div><blockquote>
+<div><dl class="simple">
+<dt>&lt;h5 style=”margin-top: 0; margin-bottom: 15px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;”&gt;</dt><dd><p>&lt;span&gt;xas_step time estimate&lt;/span&gt;
+&lt;span style=”font-weight: normal; font-size: 11px; color: #666;”&gt;(fly_num * step_num * dwell) + (step_num * 4) + 10&lt;/span&gt;</p>
+</dd>
+</dl>
+<p>&lt;/h5&gt;</p>
+</div></blockquote>
+<p>&lt;!– Input 1 Group –&gt;
+&lt;div class=”input-group”&gt;</p>
+<blockquote>
+<div><p>&lt;label&gt;erange (list)&lt;/label&gt;
+&lt;input type=”string” id=”xas_step_erange” placeholder=”950, 990, 1010, 1050” oninput=”xas_step_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 250px; box-sizing: border-box;”&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;!– Input 2 Group –&gt;
+&lt;div class=”input-group”&gt;</p>
+<blockquote>
+<div><p>&lt;label&gt;estep (list)&lt;/label&gt;
+&lt;input type=”string” id=”xas_step_estep” placeholder=”2, 1, 2” oninput=”xas_step_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 100px; box-sizing: border-box;”&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;!– Input 3 Group –&gt;
+&lt;div class=”input-group”&gt;</p>
+<blockquote>
+<div><p>&lt;label&gt;dwell (sec)&lt;/label&gt;
+&lt;input type=”number” id=”xas_step_dwell” min=”0” step=”any” placeholder=”1.0” oninput=”xas_step_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;div style=”margin-bottom: 10px;”&gt;&lt;/div&gt;</p>
+<dl>
+<dt>&lt;div style=”text-align: right; display: flow-root;”&gt;</dt><dd><p>&lt;!– Left-aligned result text on the same line –&gt;
+&lt;span style=”float: left; font-weight: bold; font-size: 16px; line-height: 28px;”&gt;</p>
+<blockquote>
+<div><p>Result: &lt;span id=”xas_step_res”&gt;0 sec&lt;/span&gt;</p>
+</div></blockquote>
+<p>&lt;/span&gt;</p>
+</dd>
+</dl>
+<p>&lt;/div&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;script&gt;
+function xas_step_estimate_time() {</p>
+<blockquote>
+<div><p>var erange_text = document.getElementById(‘xas_step_erange’).value || “0”;
+var erange_list = erange_text.split(‘,’)</p>
+<blockquote>
+<div><p>.map(function(item) { return parseFloat(item.trim()); })
+.filter(function(num) { return !isNaN(num); });</p>
+</div></blockquote>
+<p>var estep_text = document.getElementById(‘xas_step_estep’).value || “0”;
+var estep_list = estep_text.split(‘,’)</p>
+<blockquote>
+<div><p>.map(function(item) { return parseFloat(item.trim()); })
+.filter(function(num) { return !isNaN(num); });</p>
+</div></blockquote>
+<p>var dwell = Math.max(0, parseFloat(document.getElementById(‘xas_step_dwell’).value) || 0);</p>
+<p>// Get results first to display errors
+var res = document.getElementById(‘xas_step_res’);
+if (!res) return; // Guard clause if element doesn’t exist</p>
+<p>// CHECK 1: Ensure steps list length is exactly 1 less than erange list length
+if (erange_list.length !== estep_list.length + 1) {</p>
+<blockquote>
+<div><p>res.innerText = “Error: erange must be exactly 1 longer than estep”;
+res.style.color = “red”; // Optional: Makes error text pop out
+return; // Stop the script immediately</p>
+</div></blockquote>
+<p>}</p>
+<p>// CHECK 2: Ensure erange numbers are sequential (no duplicates, no direction changes)
+for (var j = 0; j &lt; erange_list.length - 2; j++) {</p>
+<blockquote>
+<div><p>var first_diff = erange_list[j+1] - erange_list[j];
+var second_diff = erange_list[j+2] - erange_list[j+1];</p>
+<p>// If a difference is 0, they entered a duplicate number.
+// If multiplying the differences yields a negative number, the scan changed direction.
+if (first_diff === 0 || second_diff === 0 || (first_diff * second_diff) &lt; 0) {</p>
+<blockquote>
+<div><p>res.innerText = “Error: erange values must be sequential”;
+res.style.color = “red”;
+return;</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}
+res.style.color = “”;</p>
+<p>// Get total points by looping
+var total_points = 0;</p>
+<p>// Loop through each segment (defined by steps list)
+for (var i = 0; i &lt; estep_list.length; i++) {</p>
+<blockquote>
+<div><p>// Ensure we have a matching pair of start/end points for this step size
+if (i + 1 &lt; erange_list.length) {</p>
+<blockquote>
+<div><p>var start = erange_list[i];
+var end = erange_list[i + 1];
+var step = estep_list[i];</p>
+<dl class="simple">
+<dt>if (step &gt; 0) {</dt><dd><p>// Points in segment = Math.abs(end - start) / step
+// We use Math.round to fix floating-point math issues (e.g., 0.1 + 0.2 = 0.30000004)
+var segment_steps = Math.round(Math.abs(end - start) / step);
+total_points += segment_steps;</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+<p>// Add 1 for the very first starting point if any points were created
+if (total_points &gt; 0) {</p>
+<blockquote>
+<div><p>total_points += 1;</p>
+</div></blockquote>
+<p>}
+// —————————————————–</p>
+<p>var res_sec = 10 + (total_points * (dwell + 4));</p>
+<p>// Dwell issue
+if (dwell == 0) {</p>
+<blockquote>
+<div><p>res_sec = 0</p>
+</div></blockquote>
+<p>}</p>
+<p>res.innerText = formatTimeFromSeconds(res_sec);</p>
+</div></blockquote>
+<p>}
+&lt;/script&gt;</p>
+</div></blockquote>
+<p>&lt;!–END xas_step–&gt;</p>
+<p>&lt;!–START xas_fly–&gt;
+.. raw:: html</p>
+<blockquote>
+<div><p>&lt;div style=”background-color: #fafafa; border: 1px solid #e1e4e6; border-radius: 8px; padding: 24px; margin: 24px auto; max-width: 600px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);”&gt;</p>
+<blockquote>
+<div><blockquote>
+<div><dl class="simple">
+<dt>&lt;h5 style=”margin-top: 0; margin-bottom: 15px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;”&gt;</dt><dd><p>&lt;span&gt;xas_fly time estimate&lt;/span&gt;
+&lt;span style=”font-weight: normal; font-size: 11px; color: #666;”&gt;(fly_num * step_num * dwell) + (step_num * 4) + 10&lt;/span&gt;</p>
+</dd>
+</dl>
+<p>&lt;/h5&gt;</p>
+</div></blockquote>
+<p>&lt;!– Input 1 Group –&gt;
+&lt;div class=”input-group”&gt;</p>
+<blockquote>
+<div><p>&lt;label&gt;enum (int)&lt;/label&gt;
+&lt;input type=”number” id=”xas_fly_enum” min=”1” step=”1” placeholder=”1” oninput=”xas_fly_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;!– Input 3 Group –&gt;
+&lt;div class=”input-group”&gt;</p>
+<blockquote>
+<div><p>&lt;label&gt;dwell (sec)&lt;/label&gt;
+&lt;input type=”number” id=”xas_fly_dwell” min=”0” step=”any” placeholder=”0.0” oninput=”xas_fly_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;div style=”margin-bottom: 10px;”&gt;&lt;/div&gt;</p>
+<dl>
+<dt>&lt;div style=”text-align: right; display: flow-root;”&gt;</dt><dd><p>&lt;!– Left-aligned result text on the same line –&gt;
+&lt;span style=”float: left; font-weight: bold; font-size: 16px; line-height: 28px;”&gt;</p>
+<blockquote>
+<div><p>Result: &lt;span id=”xas_fly_res”&gt;0 sec&lt;/span&gt;</p>
+</div></blockquote>
+<p>&lt;/span&gt;</p>
+</dd>
+</dl>
+<p>&lt;/div&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;script&gt;
+function xas_fly_estimate_time() {</p>
+<blockquote>
+<div><blockquote>
+<div><p>var e_num = Math.max(1, Math.floor(parseInt(document.getElementById(‘xas_fly_enum’).value) || 0));
+var dwell = Math.max(0, parseFloat(document.getElementById(‘xas_fly_dwell’).value) || 0);</p>
+</div></blockquote>
+<p>var res_sec = 30 + (e_num * (dwell));
+var res_text = “”;</p>
+<p>// Dwell issue
+if (dwell == 0) {</p>
+<blockquote>
+<div><p>res_sec = 0</p>
+</div></blockquote>
+<p>}</p>
+<p>document.getElementById(‘xas_fly_res’).innerText = formatTimeFromSeconds(res_sec);</p>
+</div></blockquote>
+<p>}
+&lt;/script&gt;</p>
+</div></blockquote>
+<p>&lt;!–END xas_fly–&gt;</p>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, SRX.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

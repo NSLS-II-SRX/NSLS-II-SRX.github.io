@@ -2,6 +2,10 @@ Bluesky Commands
 ================
 Below is a list of useful commands for running the SRX beamline. Previous commands can be seen by hitting the up arrow in Bluesky. To search through them, you can start typing a command before hitting the up arrow to filter your history.
 
+.. include:: includes/time_estimates.html
+   :start-after: <!--START base-->
+   :end-before: <!--END base-->
+
 Starting Bluesky
 ****************
 Start Bluesky - *Bluesky can be started by going to the top left corner of the screen and choosing Activities. Then click on the Bluesky icon - a blue cloud with a b - to automatically open a new terminal and start Bluesky.* 
@@ -72,6 +76,12 @@ XRF Imaging
    :param center: move the scanner stages to the center at the end of the scan, defaults to True
    :type center: bool, optional
 
+.. include:: includes/time_estimates.html
+   :start-after: <!--START xrf_map-->
+   :end-before: <!--END xrf_map-->
+
+..
+
    .. warning::
       As of September 1, 2026, the following functions have been deprecated in favor of :func:`xrf_map`. Please update your scripts to use :func:`xrf_map`. Beamline staff are happy to assist using the new function. ::
    
@@ -114,6 +124,9 @@ XRF Imaging
    :param snake: using a snaking scan strategy, defaults to True
    :type snake: bool, optional
 
+.. include:: includes/time_estimates.html
+   :start-after: <!--START nano_xrf-->
+   :end-before: <!--END nano_xrf-->
 
 XAS Spectroscopy
 ****************
@@ -125,7 +138,7 @@ Print element emission energies - *Print the emission energies for the element o
 
     Bluesky@SRX [1] getemissionE('Fe')
 
-**XANES scan**
+**XANES Step Scan**
 
 .. code-block::
 
@@ -134,9 +147,9 @@ Print element emission energies - *Print the emission energies for the element o
                                   dwell=1.0,
                                   sample_name="Fe foil"))
 
-.. function:: xanes_plan(erange, estep, dwell, sample_name="", roinum=1, harmonic=1, vlm_snapshot=True)
+.. function:: xanes_plan(erange, estep, dwell, sample_name="", roi_num=1, vlm_snapshot=True)
 
-   Collect a XANES scan by scanning the incident energy on the sample. The energy points are defined using regions in `erange` with given steps between the points, defined by `estep`.
+   Collect a XANES scan by step scanning the incident energy on the sample. The energy points are defined using regions in `erange` with given steps between the points, defined by `estep`.
 
    :param erange: endpoints for different regions that define the energy points for the scan
    :type erange: list of floats
@@ -146,12 +159,45 @@ Print element emission energies - *Print the emission energies for the element o
    :type dwell: float
    :param sample_name: a human-readable name for the sample, defaults to an empty string, ""
    :type sample_name: str, optional
-   :param roinum: region of interest to measure, default to 1
-   :type roinum: int, optional
-   :param harmonic: undulator harmonic to use for the scan. The default behavior will use the harmonic with the highest X-ray flux for the current energy. Defaults to 1
-   :type harmonic: int, optional
+   :param roi_num: region of interest to measure, default to 1 or roi within energy range
+   :type roi_num: int, optional
    :param vlm_snapshot: collect an optical image at the beginning and end of the scan, defaults to True
    :type vlm_snapshot: bool, optional
+
+.. include:: includes/time_estimates.html
+   :start-after: <!--START xas_step-->
+   :end-before: <!--END xas_step-->
+
+**XANES Fly Scan**
+
+.. code-block::
+
+    Bluesky@SRX [1] RE(fly_multiple_passes(Fe_k-50, Fe_k+150, 251, 1, sample_name="Fe foil"))
+
+.. function:: fly_multiple_passes(estart, estop, enum, dwell, sample_name="", roi_num=1, num_scans=1, vlm_snapshot=True)
+
+   Collect a XANES scan by fly scanning the incident energy on the sample. The scan run from `estart` to `estop` collecting `enum` number of points.
+
+   :param estart: starting energy
+   :type estart: int
+   :param estop: stopping energy
+   :type estop: int
+   :param enum: number of points in energy
+   :type enum: int
+   :param dwell: dwell time per energy point
+   :type dwell: float
+   :param sample_name: a human-readable name for the sample, defaults to an empty string, ""
+   :type sample_name: str, optional
+   :param roi_num: region of interest to measure, default to 1 or roi within energy range
+   :type roi_num: int, optional
+   :param num_scans: number of repeated scans to perform, defaults to 1
+   :type num_scans: int
+   :param vlm_snapshot: collect an optical image at the beginning and end of the scan, defaults to True
+   :type vlm_snapshot: bool, optional
+
+.. include:: includes/time_estimates.html
+   :start-after: <!--START xas_fly-->
+   :end-before: <!--END xas_fly-->
 
 Metadata
 ********

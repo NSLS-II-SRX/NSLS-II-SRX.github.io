@@ -1,0 +1,612 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>&lt;no title&gt; &mdash; NSLS-II SRX  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            NSLS-II SRX
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction to SRX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gui.html">CSS-Phoebus GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bluesky_cmd.html">Bluesky Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data_transfer.html">Data Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acceptance_tests.html">Acceptance Tests [staff only]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../staff.html">Beamline Staff Pages [staff only]</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">NSLS-II SRX</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/includes/time_estimates.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p>&lt;!DOCTYPE html&gt;
+&lt;html class=”writer-html5” lang=”en” data-content_root=”../”&gt;
+&lt;head&gt;</p>
+<blockquote>
+<div><p>&lt;meta charset=”utf-8” /&gt;&lt;meta name=”viewport” content=”width=device-width, initial-scale=1” /&gt;</p>
+<p>&lt;meta name=”viewport” content=”width=device-width, initial-scale=1.0” /&gt;
+&lt;title&gt;&amp;lt;no title&amp;gt; &amp;mdash; NSLS-II SRX  documentation&lt;/title&gt;</p>
+<blockquote>
+<div><blockquote>
+<div><p>&lt;link rel=”stylesheet” type=”text/css” href=”../_static/pygments.css?v=b86133f3” /&gt;
+&lt;link rel=”stylesheet” type=”text/css” href=”../_static/css/theme.css?v=9edc463e” /&gt;</p>
+<p>&lt;script src=”../_static/jquery.js?v=5d32c60e”&gt;&lt;/script&gt;
+&lt;script src=”../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c”&gt;&lt;/script&gt;
+&lt;script src=”../_static/documentation_options.js?v=5929fcd5”&gt;&lt;/script&gt;
+&lt;script src=”../_static/doctools.js?v=9bcbadda”&gt;&lt;/script&gt;
+&lt;script src=”../_static/sphinx_highlight.js?v=dc90522c”&gt;&lt;/script&gt;</p>
+</div></blockquote>
+<p>&lt;script src=”../_static/js/theme.js”&gt;&lt;/script&gt;
+&lt;link rel=”index” title=”Index” href=”../genindex.html” /&gt;
+&lt;link rel=”search” title=”Search” href=”../search.html” /&gt;</p>
+</div></blockquote>
+</div></blockquote>
+<p>&lt;/head&gt;</p>
+<dl>
+<dt>&lt;body class=”wy-body-for-nav”&gt;</dt><dd><dl>
+<dt>&lt;div class=”wy-grid-for-nav”&gt;</dt><dd><dl>
+<dt>&lt;nav data-toggle=”wy-nav-shift” class=”wy-nav-side”&gt;</dt><dd><dl>
+<dt>&lt;div class=”wy-side-scroll”&gt;</dt><dd><p>&lt;div class=”wy-side-nav-search” &gt;</p>
+<blockquote>
+<div><dl class="simple">
+<dt>&lt;a href=”../index.html” class=”icon icon-home”&gt;</dt><dd><p>NSLS-II SRX</p>
+</dd>
+</dl>
+<p>&lt;/a&gt;</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>&lt;div role=”search”&gt;</dt><dd><dl class="simple">
+<dt>&lt;form id=”rtd-search-form” class=”wy-form” action=”../search.html” method=”get”&gt;</dt><dd><p>&lt;input type=”text” name=”q” placeholder=”Search docs” aria-label=”Search docs” /&gt;
+&lt;input type=”hidden” name=”check_keywords” value=”yes” /&gt;
+&lt;input type=”hidden” name=”area” value=”default” /&gt;</p>
+</dd>
+</dl>
+<p>&lt;/form&gt;</p>
+</dd>
+<dt>&lt;/div&gt;</dt><dd><dl class="simple">
+<dt>&lt;/div&gt;&lt;div class=”wy-menu wy-menu-vertical” data-spy=”affix” role=”navigation” aria-label=”Navigation menu”&gt;</dt><dd><p>&lt;p class=”caption” role=”heading”&gt;&lt;span class=”caption-text”&gt;Contents:&lt;/span&gt;&lt;/p&gt;</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>&lt;ul&gt;
+&lt;li class=”toctree-l1”&gt;&lt;a class=”reference internal” href=”../intro.html”&gt;Introduction to SRX&lt;/a&gt;&lt;/li&gt;
+&lt;li class=”toctree-l1”&gt;&lt;a class=”reference internal” href=”../gui.html”&gt;CSS-Phoebus GUI&lt;/a&gt;&lt;/li&gt;
+&lt;li class=”toctree-l1”&gt;&lt;a class=”reference internal” href=”../bluesky_cmd.html”&gt;Bluesky Commands&lt;/a&gt;&lt;/li&gt;
+&lt;li class=”toctree-l1”&gt;&lt;a class=”reference internal” href=”../data_analysis.html”&gt;Data Analysis&lt;/a&gt;&lt;/li&gt;
+&lt;li class=”toctree-l1”&gt;&lt;a class=”reference internal” href=”../data_transfer.html”&gt;Data Management&lt;/a&gt;&lt;/li&gt;
+&lt;li class=”toctree-l1”&gt;&lt;a class=”reference internal” href=”../acceptance_tests.html”&gt;Acceptance Tests [staff only]&lt;/a&gt;&lt;/li&gt;
+&lt;li class=”toctree-l1”&gt;&lt;a class=”reference internal” href=”../staff.html”&gt;Beamline Staff Pages [staff only]&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</p>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>&lt;/div&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+</div></blockquote>
+<p>&lt;/nav&gt;</p>
+<dl>
+<dt>&lt;section data-toggle=”wy-nav-shift” class=”wy-nav-content-wrap”&gt;&lt;nav class=”wy-nav-top” aria-label=”Mobile navigation menu” &gt;</dt><dd><blockquote>
+<div><p>&lt;i data-toggle=”wy-nav-top” class=”fa fa-bars”&gt;&lt;/i&gt;
+&lt;a href=”../index.html”&gt;NSLS-II SRX&lt;/a&gt;</p>
+</div></blockquote>
+<p>&lt;/nav&gt;</p>
+<dl class="simple">
+<dt>&lt;div class=”wy-nav-content”&gt;</dt><dd><dl class="simple">
+<dt>&lt;div class=”rst-content”&gt;</dt><dd><p>&lt;div role=”navigation” aria-label=”Page navigation”&gt;</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<dl>
+<dt>&lt;ul class=”wy-breadcrumbs”&gt;</dt><dd><p>&lt;li&gt;&lt;a href=”../index.html” class=”icon icon-home” aria-label=”Home”&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li class=”breadcrumb-item active”&gt;&amp;lt;no title&amp;gt;&lt;/li&gt;
+&lt;li class=”wy-breadcrumbs-aside”&gt;</p>
+<blockquote>
+<div><p>&lt;a href=”../_sources/includes/time_estimates.rst.txt” rel=”nofollow”&gt; View page source&lt;/a&gt;</p>
+</div></blockquote>
+<p>&lt;/li&gt;</p>
+</dd>
+</dl>
+<p>&lt;/ul&gt;
+&lt;hr/&gt;</p>
+</div></blockquote>
+<dl>
+<dt>&lt;/div&gt;</dt><dd><blockquote>
+<div><dl class="simple">
+<dt>&lt;div role=”main” class=”document” itemscope=”itemscope” itemtype=”<a class="reference external" href="http://schema.org/Article">http://schema.org/Article</a>”&gt;</dt><dd><p>&lt;div itemprop=”articleBody”&gt;</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl>
+<dt>&lt;style&gt;</dt><dd><p>/* Removes increment arrows for Chrome, Safari, Edge, and Opera <a href="#id1"><span class="problematic" id="id2">*</span></a>/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {</p>
+<blockquote>
+<div><p>-webkit-appearance: none;
+margin: 0;</p>
+</div></blockquote>
+<p>}</p>
+<p>/* Removes increment arrows for Firefox <a href="#id3"><span class="problematic" id="id4">*</span></a>/
+input[type=number] {</p>
+<blockquote>
+<div><p>-moz-appearance: textfield;</p>
+</div></blockquote>
+<p>}</p>
+<p>/* Container to stack label above input and keep them side-by-side <a href="#id5"><span class="problematic" id="id6">*</span></a>/
+.input-group {</p>
+<blockquote>
+<div><p>display: inline-block;
+margin-right: 15px;
+vertical-align: bottom;</p>
+</div></blockquote>
+<p>}</p>
+<p>/* Style for the text labels <a href="#id7"><span class="problematic" id="id8">*</span></a>/
+.input-group label {</p>
+<blockquote>
+<div><p>display: block;
+font-size: 13px;
+margin-bottom: 4px;
+font-weight: bold;</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+</dd>
+<dt>&lt;/style&gt;    &lt;h5 style=”margin-top: 0; margin-bottom: 15px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;”&gt;</dt><dd><blockquote>
+<div><blockquote>
+<div><p>&lt;span&gt;xrf_map time estimate&lt;/span&gt;
+&lt;span style=”font-weight: normal; font-size: 11px; color: #666;”&gt;(fly_num * step_num * dwell) + (step_num * 4) + 10&lt;/span&gt;</p>
+</div></blockquote>
+<p>&lt;/h5&gt;</p>
+</div></blockquote>
+<p>&lt;!– Input 1 Group –&gt;
+&lt;div class=”input-group”&gt;</p>
+<blockquote>
+<div><p>&lt;label&gt;xnum (int)&lt;/label&gt;
+&lt;input type=”number” id=”xrf_map_xnum” min=”1” step=”1” placeholder=”1” oninput=”xrf_map_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;!– Input 2 Group –&gt;
+&lt;div class=”input-group”&gt;</p>
+<blockquote>
+<div><p>&lt;label&gt;ynum (int)&lt;/label&gt;
+&lt;input type=”number” id=”xrf_map_ynum” min=”1” step=”1” placeholder=”1” oninput=”xrf_map_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;!– Input 3 Group –&gt;
+&lt;div class=”input-group”&gt;</p>
+<blockquote>
+<div><p>&lt;label&gt;dwell (sec)&lt;/label&gt;
+&lt;input type=”number” id=”xrf_map_dwell” min=”0” step=”any” placeholder=”0.0” oninput=”xrf_map_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;!– Checkbox Group aligned to the bottom with the inputs –&gt;
+&lt;div class=”input-group”&gt;</p>
+<blockquote>
+<div><p>&lt;label&gt;fly_on_y&lt;/label&gt;
+&lt;div style=”display: flex; align-items: center; height: 30px;”&gt;</p>
+<blockquote>
+<div><p>&lt;input type=”checkbox” id=”xrf_map_fly_on_y” onchange=”xrf_map_estimate_time()” style=”margin: 0; width: auto;”&gt;
+&lt;span style=”font-size: 13px; margin-left: 5px; font-weight: bold; white-space: nowrap;”&gt;&lt;/span&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;div style=”margin-bottom: 10px;”&gt;&lt;/div&gt;</p>
+<dl>
+<dt>&lt;div style=”text-align: right; display: flow-root;”&gt;</dt><dd><p>&lt;!– Left-aligned result text on the same line –&gt;
+&lt;span style=”float: left; font-weight: bold; font-size: 16px; line-height: 28px;”&gt;</p>
+<blockquote>
+<div><p>Result: &lt;span id=”xrf_map_res”&gt;0 sec&lt;/span&gt;</p>
+</div></blockquote>
+<p>&lt;/span&gt;</p>
+</dd>
+</dl>
+<p>&lt;/div&gt;</p>
+</dd>
+</dl>
+<p>&lt;/div&gt;&lt;p&gt;&amp;lt;!–START nano_xrf–&amp;gt;
+.. raw:: html&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;&amp;lt;div style=”background-color: #fafafa; border: 1px solid #e1e4e6; border-radius: 8px; padding: 24px; margin: 24px auto; max-width: 600px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);”&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;blockquote&gt;
+&lt;div&gt;&lt;dl class=”simple”&gt;
+&lt;dt&gt;&amp;lt;h5 style=”margin-top: 0; margin-bottom: 15px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;”&amp;gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;&amp;lt;span&amp;gt;nano_xrf time estimate&amp;lt;/span&amp;gt;
+&amp;lt;span style=”font-weight: normal; font-size: 11px; color: #666;”&amp;gt;(fly_num * step_num * dwell) + (step_num * 4) + 10&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;&amp;lt;/h5&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;!– Input 1 Group –&amp;gt;
+&amp;lt;div class=”input-group”&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;&amp;lt;label&amp;gt;xnum (int)&amp;lt;/label&amp;gt;
+&amp;lt;input type=”number” id=”nano_xrf_xnum” min=”1” step=”1” placeholder=”1” oninput=”nano_xrf_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;!– Input 2 Group –&amp;gt;
+&amp;lt;div class=”input-group”&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;&amp;lt;label&amp;gt;ynum (int)&amp;lt;/label&amp;gt;
+&amp;lt;input type=”number” id=”nano_xrf_ynum” min=”1” step=”1” placeholder=”1” oninput=”nano_xrf_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;!– Input 3 Group –&amp;gt;
+&amp;lt;div class=”input-group”&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;&amp;lt;label&amp;gt;dwell (sec)&amp;lt;/label&amp;gt;
+&amp;lt;input type=”number” id=”nano_xrf_dwell” min=”0” step=”any” placeholder=”0.0” oninput=”nano_xrf_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div style=”margin-bottom: 10px;”&amp;gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;&amp;lt;div style=”text-align: right; display: flow-root;”&amp;gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;&amp;lt;!– Left-aligned result text on the same line –&amp;gt;
+&amp;lt;span style=”float: left; font-weight: bold; font-size: 16px; line-height: 28px;”&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;Result: &amp;lt;span id=”nano_xrf_res”&amp;gt;0 sec&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;script&amp;gt;
+function nano_xrf_estimate_time() {&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;var xnum = Math.max(1, Math.floor(parseInt(document.getElementById(‘nano_xrf_xnum’).value) || 0));
+var ynum = Math.max(1, Math.floor(parseInt(document.getElementById(‘nano_xrf_ynum’).value) || 0));
+var dwell = Math.max(0, parseFloat(document.getElementById(‘nano_xrf_dwell’).value) || 0);&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;var res_sec = 10 + (xnum * ynum * (dwell + 4));&lt;/p&gt;
+&lt;p&gt;// Dwell issue
+if (dwell == 0) {&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;res_sec = 0&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;document.getElementById(‘nano_xrf_res’).innerText = formatTimeFromSeconds(res_sec);&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;}
+&amp;lt;/script&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;!–END nano_xrf–&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;!–START xas_step–&amp;gt;
+.. raw:: html&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;&amp;lt;div style=”background-color: #fafafa; border: 1px solid #e1e4e6; border-radius: 8px; padding: 24px; margin: 24px auto; max-width: 600px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);”&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;blockquote&gt;
+&lt;div&gt;&lt;dl class=”simple”&gt;
+&lt;dt&gt;&amp;lt;h5 style=”margin-top: 0; margin-bottom: 15px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;”&amp;gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;&amp;lt;span&amp;gt;xas_step time estimate&amp;lt;/span&amp;gt;
+&amp;lt;span style=”font-weight: normal; font-size: 11px; color: #666;”&amp;gt;(fly_num * step_num * dwell) + (step_num * 4) + 10&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;&amp;lt;/h5&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;!– Input 1 Group –&amp;gt;
+&amp;lt;div class=”input-group”&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;&amp;lt;label&amp;gt;erange (list)&amp;lt;/label&amp;gt;
+&amp;lt;input type=”string” id=”xas_step_erange” placeholder=”950, 990, 1010, 1050” oninput=”xas_step_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 250px; box-sizing: border-box;”&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;!– Input 2 Group –&amp;gt;
+&amp;lt;div class=”input-group”&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;&amp;lt;label&amp;gt;estep (list)&amp;lt;/label&amp;gt;
+&amp;lt;input type=”string” id=”xas_step_estep” placeholder=”2, 1, 2” oninput=”xas_step_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 100px; box-sizing: border-box;”&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;!– Input 3 Group –&amp;gt;
+&amp;lt;div class=”input-group”&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;&amp;lt;label&amp;gt;dwell (sec)&amp;lt;/label&amp;gt;
+&amp;lt;input type=”number” id=”xas_step_dwell” min=”0” step=”any” placeholder=”1.0” oninput=”xas_step_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div style=”margin-bottom: 10px;”&amp;gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;&amp;lt;div style=”text-align: right; display: flow-root;”&amp;gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;&amp;lt;!– Left-aligned result text on the same line –&amp;gt;
+&amp;lt;span style=”float: left; font-weight: bold; font-size: 16px; line-height: 28px;”&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;Result: &amp;lt;span id=”xas_step_res”&amp;gt;0 sec&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;script&amp;gt;
+function xas_step_estimate_time() {&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;var erange_text = document.getElementById(‘xas_step_erange’).value || “0”;
+var erange_list = erange_text.split(‘,’)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;.map(function(item) { return parseFloat(item.trim()); })
+.filter(function(num) { return !isNaN(num); });&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;var estep_text = document.getElementById(‘xas_step_estep’).value || “0”;
+var estep_list = estep_text.split(‘,’)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;.map(function(item) { return parseFloat(item.trim()); })
+.filter(function(num) { return !isNaN(num); });&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;var dwell = Math.max(0, parseFloat(document.getElementById(‘xas_step_dwell’).value) || 0);&lt;/p&gt;
+&lt;p&gt;// Get results first to display errors
+var res = document.getElementById(‘xas_step_res’);
+if (!res) return; // Guard clause if element doesn’t exist&lt;/p&gt;
+&lt;p&gt;// CHECK 1: Ensure steps list length is exactly 1 less than erange list length
+if (erange_list.length !== estep_list.length + 1) {&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;res.innerText = “Error: erange must be exactly 1 longer than estep”;
+res.style.color = “red”; // Optional: Makes error text pop out
+return; // Stop the script immediately&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;// CHECK 2: Ensure erange numbers are sequential (no duplicates, no direction changes)
+for (var j = 0; j &amp;lt; erange_list.length - 2; j++) {&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;var first_diff = erange_list[j+1] - erange_list[j];
+var second_diff = erange_list[j+2] - erange_list[j+1];&lt;/p&gt;
+&lt;p&gt;// If a difference is 0, they entered a duplicate number.
+// If multiplying the differences yields a negative number, the scan changed direction.
+if (first_diff === 0 || second_diff === 0 || (first_diff * second_diff) &amp;lt; 0) {&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;res.innerText = “Error: erange values must be sequential”;
+res.style.color = “red”;
+return;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;}
+res.style.color = “”;&lt;/p&gt;
+&lt;p&gt;// Get total points by looping
+var total_points = 0;&lt;/p&gt;
+&lt;p&gt;// Loop through each segment (defined by steps list)
+for (var i = 0; i &amp;lt; estep_list.length; i++) {&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;// Ensure we have a matching pair of start/end points for this step size
+if (i + 1 &amp;lt; erange_list.length) {&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;var start = erange_list[i];
+var end = erange_list[i + 1];
+var step = estep_list[i];&lt;/p&gt;
+&lt;dl class=”simple”&gt;
+&lt;dt&gt;if (step &amp;gt; 0) {&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;// Points in segment = Math.abs(end - start) / step
+// We use Math.round to fix floating-point math issues (e.g., 0.1 + 0.2 = 0.30000004)
+var segment_steps = Math.round(Math.abs(end - start) / step);
+total_points += segment_steps;&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;// Add 1 for the very first starting point if any points were created
+if (total_points &amp;gt; 0) {&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;total_points += 1;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;}
+// —————————————————–&lt;/p&gt;
+&lt;p&gt;var res_sec = 10 + (total_points * (dwell + 4));&lt;/p&gt;
+&lt;p&gt;// Dwell issue
+if (dwell == 0) {&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;res_sec = 0&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;res.innerText = formatTimeFromSeconds(res_sec);&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;}
+&amp;lt;/script&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;!–END xas_step–&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;!–START xas_fly–&amp;gt;
+.. raw:: html&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;&amp;lt;div style=”background-color: #fafafa; border: 1px solid #e1e4e6; border-radius: 8px; padding: 24px; margin: 24px auto; max-width: 600px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);”&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;blockquote&gt;
+&lt;div&gt;&lt;dl class=”simple”&gt;
+&lt;dt&gt;&amp;lt;h5 style=”margin-top: 0; margin-bottom: 15px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;”&amp;gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;&amp;lt;span&amp;gt;xas_fly time estimate&amp;lt;/span&amp;gt;
+&amp;lt;span style=”font-weight: normal; font-size: 11px; color: #666;”&amp;gt;(fly_num * step_num * dwell) + (step_num * 4) + 10&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;&amp;lt;/h5&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;!– Input 1 Group –&amp;gt;
+&amp;lt;div class=”input-group”&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;&amp;lt;label&amp;gt;enum (int)&amp;lt;/label&amp;gt;
+&amp;lt;input type=”number” id=”xas_fly_enum” min=”1” step=”1” placeholder=”1” oninput=”xas_fly_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;!– Input 3 Group –&amp;gt;
+&amp;lt;div class=”input-group”&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;&amp;lt;label&amp;gt;dwell (sec)&amp;lt;/label&amp;gt;
+&amp;lt;input type=”number” id=”xas_fly_dwell” min=”0” step=”any” placeholder=”0.0” oninput=”xas_fly_estimate_time()” style=”border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; width: 90px; box-sizing: border-box;”&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;div style=”margin-bottom: 10px;”&amp;gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;&amp;lt;div style=”text-align: right; display: flow-root;”&amp;gt;&lt;/dt&gt;&lt;dd&gt;&lt;p&gt;&amp;lt;!– Left-aligned result text on the same line –&amp;gt;
+&amp;lt;span style=”float: left; font-weight: bold; font-size: 16px; line-height: 28px;”&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;Result: &amp;lt;span id=”xas_fly_res”&amp;gt;0 sec&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;script&amp;gt;
+function xas_fly_estimate_time() {&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;var e_num = Math.max(1, Math.floor(parseInt(document.getElementById(‘xas_fly_enum’).value) || 0));
+var dwell = Math.max(0, parseFloat(document.getElementById(‘xas_fly_dwell’).value) || 0);&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;var res_sec = 30 + (e_num * (dwell));
+var res_text = “”;&lt;/p&gt;
+&lt;p&gt;// Dwell issue
+if (dwell == 0) {&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;res_sec = 0&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;document.getElementById(‘xas_fly_res’).innerText = formatTimeFromSeconds(res_sec);&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;}
+&amp;lt;/script&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;!–END xas_fly–&amp;gt;&lt;/p&gt;</p>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>&lt;/div&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;
+&lt;footer&gt;</p>
+</div></blockquote>
+<p>&lt;hr/&gt;</p>
+<dl class="simple">
+<dt>&lt;div role=”contentinfo”&gt;</dt><dd><p>&lt;p&gt;&amp;#169; Copyright 2021, SRX.&lt;/p&gt;</p>
+</dd>
+</dl>
+<p>&lt;/div&gt;</p>
+<dl class="simple">
+<dt>Built with &lt;a href=”<a class="reference external" href="https://www.sphinx-doc.org/">https://www.sphinx-doc.org/</a>”&gt;Sphinx&lt;/a&gt; using a</dt><dd><p>&lt;a href=”<a class="reference external" href="https://github.com/readthedocs/sphinx_rtd_theme">https://github.com/readthedocs/sphinx_rtd_theme</a>”&gt;theme&lt;/a&gt;
+provided by &lt;a href=”<a class="reference external" href="https://readthedocs.org">https://readthedocs.org</a>”&gt;Read the Docs&lt;/a&gt;.</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl>
+<dt>&lt;/footer&gt;</dt><dd><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>&lt;/div&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+</div></blockquote>
+<p>&lt;/section&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;
+&lt;script&gt;</p>
+<blockquote>
+<div><dl class="simple">
+<dt>jQuery(function () {</dt><dd><p>SphinxRtdTheme.Navigation.enable(true);</p>
+</dd>
+</dl>
+<p>});</p>
+</div></blockquote>
+<p>&lt;/script&gt;</p>
+</dd>
+</dl>
+<p>&lt;/body&gt;
+&lt;/html&gt;</p>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, SRX.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
