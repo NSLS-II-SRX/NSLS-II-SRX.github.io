@@ -404,7 +404,7 @@ Controls
 
 IOC Monitoring
 **************
-The ``manage-iocs`` tool can be used to monitor the IOC status. SSH into the server that hosts the IOC (*e.g.* xf05idd-ioc1, xf05idd-ioc2, xf05idd-inst-ioc1) and run:
+The ``manage-iocs`` tool can be used to monitor the IOC status. SSH into the server that hosts the IOC (*e.g.* xf05idd-ioc1, xf05idd-ioc2, xf05id2-inst-ioc1) and run:
     * List all IOCs ::
 
         $ manage-iocs report

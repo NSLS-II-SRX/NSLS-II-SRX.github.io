@@ -206,20 +206,6 @@
 </ul>
 </dd>
 </dl>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>As of September 1, 2026, the following functions have been deprecated in favor of <a class="reference internal" href="#xrf_map" title="xrf_map"><code class="xref py py-func docutils literal notranslate"><span class="pre">xrf_map()</span></code></a>. Please update your scripts to use <a class="reference internal" href="#xrf_map" title="xrf_map"><code class="xref py py-func docutils literal notranslate"><span class="pre">xrf_map()</span></code></a>. Beamline staff are happy to assist using the new function.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">nano_scan_and_fly</span><span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span>
-                                     <span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">numY</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
-<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">nano_y_scan_and_fly</span><span class="p">(</span><span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">numY</span><span class="p">,</span>
-                                       <span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
-<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">coarse_scan_and_fly</span><span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span>
-                                       <span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">numY</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
-<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">coarse_y_scan_and_fly</span><span class="p">(</span><span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">numY</span><span class="p">,</span>
-                                         <span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
 </dd></dl>
 
 <div style="background-color: #fafafa; border: 1px solid #e1e4e6; border-radius: 8px; padding: 24px; margin: 24px auto; max-width: 600px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
@@ -291,7 +277,23 @@
 
       document.getElementById('xrf_map_res').innerText = formatTimeFromSeconds(res_sec);
    }
-</script><p><strong>XRF Step Scan Map</strong></p>
+</script><blockquote>
+<div><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>As of September 1, 2026, the following functions have been deprecated in favor of <a class="reference internal" href="#xrf_map" title="xrf_map"><code class="xref py py-func docutils literal notranslate"><span class="pre">xrf_map()</span></code></a>. Please update your scripts to use <a class="reference internal" href="#xrf_map" title="xrf_map"><code class="xref py py-func docutils literal notranslate"><span class="pre">xrf_map()</span></code></a>. Beamline staff are happy to assist using the new function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">nano_scan_and_fly</span><span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span>
+                                     <span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">numY</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
+<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">nano_y_scan_and_fly</span><span class="p">(</span><span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">numY</span><span class="p">,</span>
+                                       <span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
+<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">coarse_scan_and_fly</span><span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span>
+                                       <span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">numY</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
+<span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">coarse_y_scan_and_fly</span><span class="p">(</span><span class="n">startY</span><span class="p">,</span> <span class="n">stopY</span><span class="p">,</span> <span class="n">numY</span><span class="p">,</span>
+                                         <span class="n">startX</span><span class="p">,</span> <span class="n">stopX</span><span class="p">,</span> <span class="n">numX</span><span class="p">,</span> <span class="n">dwell</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+<p><strong>XRF Step Scan Map</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bluesky</span><span class="nd">@SRX</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">RE</span><span class="p">(</span><span class="n">nano_xrf</span><span class="p">(</span><span class="n">xstart</span><span class="p">,</span> <span class="n">xstop</span><span class="p">,</span> <span class="n">xnum</span><span class="p">,</span>
                             <span class="n">ystart</span><span class="p">,</span> <span class="n">ystop</span><span class="p">,</span> <span class="n">ynum</span><span class="p">,</span> <span class="n">dwell</span><span class="p">,</span> <span class="n">sample_name</span><span class="o">=</span><span class="s2">&quot;my special sample&quot;</span><span class="p">))</span>
 </pre></div>

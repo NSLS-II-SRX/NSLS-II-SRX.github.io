@@ -76,6 +76,12 @@ XRF Imaging
    :param center: move the scanner stages to the center at the end of the scan, defaults to True
    :type center: bool, optional
 
+.. include:: includes/time_estimates.html
+   :start-after: <!--START xrf_map-->
+   :end-before: <!--END xrf_map-->
+
+..
+
    .. warning::
       As of September 1, 2026, the following functions have been deprecated in favor of :func:`xrf_map`. Please update your scripts to use :func:`xrf_map`. Beamline staff are happy to assist using the new function. ::
    
@@ -87,10 +93,6 @@ XRF Imaging
                                                 startY, stopY, numY, dwell))
          Bluesky@SRX [4] RE(coarse_y_scan_and_fly(startY, stopY, numY,
                                                   startX, stopX, numX, dwell))
-
-.. include:: includes/time_estimates.html
-   :start-after: <!--START xrf_map-->
-   :end-before: <!--END xrf_map-->
 
 **XRF Step Scan Map**
 
